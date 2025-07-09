@@ -19,14 +19,86 @@
             color: #fff;
             line-height: 1.8;
             transition: all 0.3s;
+            padding-bottom: 100px;
+            min-height: 100vh;
         }
 
-        /* دکمه تغییر زبان */
-        .lang-switcher {
+        /* هدر و لوگو */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #00172c 0%, #000a15 100%);
+            border-bottom: 2px solid #00f7ff;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-container {
+            margin-top: 80px;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            max-width: 250px;
+            filter: drop-shadow(0 0 10px rgba(0, 247, 255, 0.7));
+        }
+
+        .motivation-box {
+            background: rgba(0, 30, 60, 0.5);
+            border: 1px solid #00f7ff;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
+        }
+
+        /* نوار بالایی */
+        .top-bar {
             position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1001;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(0, 10, 20, 0.95);
+            z-index: 1000;
+            border-bottom: 1px solid #00f7ff;
+        }
+
+        .menu-btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+        }
+
+        .menu-btn span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #00f7ff;
+            transition: all 0.3s;
+            box-shadow: 0 0 5px rgba(0, 247, 255, 0.7);
+        }
+
+        .right-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lang-switcher {
             background: rgba(0, 20, 40, 0.7);
             border: 1px solid #00f7ff;
             border-radius: 5px;
@@ -42,68 +114,212 @@
             color: #00f7ff;
         }
 
-        /* هدر و لوگو */
-        .hero-section {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(135deg, #00172c 0%, #000a15 100%);
-            border-bottom: 2px solid #00f7ff;
-            box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
-        }
-
-        .logo {
-            max-width: 250px;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 0 10px rgba(0, 247, 255, 0.7));
-        }
-
-        .motivation-box {
-            background: rgba(0, 30, 60, 0.5);
-            border: 1px solid #00f7ff;
-            border-radius: 10px;
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
-        }
-
-        .motivation-text {
-            color: #b8f8ff;
-            font-size: 1rem;
-            line-height: 1.8;
-            text-shadow: 0 0 5px rgba(0, 247, 255, 0.5);
-        }
-
-        /* دکمه ثبت نام */
         .register-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px 20px;
+            padding: 8px 15px;
             background: linear-gradient(90deg, #0084ff 0%, #00f7ff 100%);
             border: none;
             border-radius: 5px;
             color: #000;
             font-weight: bold;
             cursor: pointer;
-            z-index: 1000;
             box-shadow: 0 0 15px rgba(0, 247, 255, 0.7);
             display: flex;
             align-items: center;
             transition: all 0.3s;
+            font-size: 0.9rem;
         }
 
         .register-btn:hover {
             box-shadow: 0 0 25px rgba(0, 247, 255, 0.9);
         }
 
-        .register-btn i {
-            margin-left: 8px;
+        /* منو */
+        .menu-box {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100vh;
+            background: rgba(0, 10, 20, 0.98);
+            border-left: 2px solid #00f7ff;
+            padding: 80px 20px 20px;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0, 132, 255, 0.5);
+            z-index: 999;
+            overflow-y: auto;
+        }
+
+        .menu-box.active {
+            right: 0;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #00f7ff;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .menu-box li {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .menu-box a {
+            color: #b8f8ff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            border-radius: 5px;
+        }
+
+        .menu-box a:hover {
+            color: #00f7ff;
+            background: rgba(0, 132, 255, 0.2);
+            box-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
+        }
+
+        /* بخش‌های محتوایی */
+        .content-section {
+            display: none;
+            padding: 100px 20px 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .content-section h2 {
+            color: #00f7ff;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            border-bottom: 1px solid #00f7ff;
+            padding-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+            display: flex;
+            align-items: center;
+        }
+
+        .content-section h2 i {
+            margin-left: 10px;
+        }
+
+        /* چت آنلاین */
+        .chat-icon {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0084ff 0%, #00f7ff 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.7);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .chat-icon:hover {
+            box-shadow: 0 0 30px rgba(0, 247, 255, 0.9);
+        }
+
+        .chat-icon i {
+            font-size: 1.5rem;
+            color: #000;
+        }
+
+        .chat-box {
+            position: fixed;
+            bottom: 100px;
+            left: -350px;
+            width: 300px;
+            height: 400px;
+            background: rgba(0, 15, 30, 0.98);
+            border: 1px solid #00f7ff;
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(0, 247, 255, 0.5);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .chat-box.active {
+            left: 30px;
+        }
+
+        .chat-header {
+            padding: 10px 15px;
+            background: linear-gradient(90deg, #0084ff 0%, #00f7ff 100%);
+            color: #000;
+            font-weight: bold;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-chat {
+            cursor: pointer;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+
+        .user {
+            background: rgba(0, 132, 255, 0.3);
+            margin-left: auto;
+            border-top-right-radius: 0;
+        }
+
+        .bot {
+            background: rgba(0, 20, 40, 0.7);
+            border: 1px solid #00f7ff;
+            margin-right: auto;
+            border-top-left-radius: 0;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            background: rgba(0, 30, 60, 0.7);
+            border: 1px solid #00f7ff;
+            border-radius: 5px 0 0 5px;
+            color: #fff;
+        }
+
+        .send-btn {
+            padding: 0 15px;
+            background: linear-gradient(90deg, #0084ff 0%, #00f7ff 100%);
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            color: #000;
         }
 
         /* فرم ثبت نام */
@@ -215,352 +431,18 @@
             color: #b8f8ff;
         }
 
-        /* منوی همبرگر */
-        .hamburger-menu {
-            position: fixed;
-            top: 20px;
-            left: 80px;
-            z-index: 1000;
-        }
-
-        #menu-toggle {
-            display: none;
-        }
-
-        .menu-btn {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 22px;
-            cursor: pointer;
-        }
-
-        .menu-btn span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background: #00f7ff;
-            transition: all 0.3s;
-            box-shadow: 0 0 5px rgba(0, 247, 255, 0.7);
-        }
-
-        #menu-toggle:checked + .menu-btn span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        #menu-toggle:checked + .menu-btn span:nth-child(2) {
-            opacity: 0;
-        }
-
-        #menu-toggle:checked + .menu-btn span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -8px);
-        }
-
-        .menu-box {
-            position: fixed;
-            top: 0;
-            left: -300px;
-            width: 250px;
-            height: 100vh;
-            background: rgba(0, 10, 20, 0.95);
-            border-right: 2px solid #00f7ff;
-            padding: 80px 20px 20px;
-            transition: all 0.3s;
-            box-shadow: 0 0 20px rgba(0, 132, 255, 0.5);
-        }
-
-        #menu-toggle:checked ~ .menu-box {
-            left: 0;
-        }
-
-        .back-btn {
-            display: none;
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            color: #00f7ff;
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-
-        .menu-box li {
-            list-style: none;
-            margin-bottom: 15px;
-        }
-
-        .menu-box a {
-            color: #b8f8ff;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            padding: 8px 10px;
-            border-radius: 5px;
-        }
-
-        .menu-box a:hover {
-            color: #00f7ff;
-            background: rgba(0, 132, 255, 0.2);
-            box-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
-        }
-
-        .menu-icon {
-            margin-left: 10px;
-            width: 20px;
-            text-align: center;
-        }
-
-        /* بخش‌های محتوایی */
-        .content-section {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            height: 100vh;
-            padding: 80px 5% 40px;
-            background: rgba(0, 10, 20, 0.95);
-            z-index: 999;
-            transition: all 0.3s;
-            overflow-y: auto;
-        }
-
-        .content-section.active {
-            right: 0;
-        }
-
-        .content-section h2 {
-            color: #00f7ff;
-            margin-bottom: 30px;
-            font-size: 1.8rem;
-            border-bottom: 1px solid #00f7ff;
-            padding-bottom: 10px;
-            text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
-            display: flex;
-            align-items: center;
-        }
-
-        .content-section h2 i {
-            margin-left: 10px;
-        }
-
-        .content-section p, 
-        .content-section li {
-            margin-bottom: 15px;
-            line-height: 1.8;
-        }
-
-        .service-item, 
-        .faq-item, 
-        .testimonial {
-            background: rgba(0, 20, 40, 0.5);
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(0, 247, 255, 0.3);
-            box-shadow: 0 0 10px rgba(0, 247, 255, 0.1);
-        }
-
-        .service-item h3, 
-        .faq-item h3, 
-        .testimonial h3 {
-            color: #00f7ff;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .service-item h3 i, 
-        .faq-item h3 i {
-            margin-left: 8px;
-            font-size: 0.9em;
-        }
-
-        .contact-methods p {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .contact-methods i {
-            margin-left: 10px;
-            width: 20px;
-            color: #00f7ff;
-        }
-
-        /* چت آنلاین */
-        .chat-icon {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #0084ff 0%, #00f7ff 100%);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 0 20px rgba(0, 247, 255, 0.7);
-            z-index: 1000;
-            transition: all 0.3s;
-        }
-
-        .chat-icon:hover {
-            box-shadow: 0 0 30px rgba(0, 247, 255, 0.9);
-        }
-
-        .chat-icon i {
-            font-size: 1.5rem;
-            color: #000;
-        }
-
-        .chat-box {
-            position: fixed;
-            bottom: 100px;
-            left: -350px;
-            width: 300px;
-            height: 400px;
-            background: rgba(0, 15, 30, 0.95);
-            border: 1px solid #00f7ff;
-            border-radius: 10px;
-            box-shadow: 0 0 25px rgba(0, 247, 255, 0.5);
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s;
-            z-index: 1000;
-        }
-
-        .chat-box.active {
-            left: 30px;
-        }
-
-        .chat-header {
-            padding: 10px 15px;
-            background: linear-gradient(90deg, #0084ff 0%, #00f7ff 100%);
-            color: #000;
-            font-weight: bold;
-            border-radius: 10px 10px 0 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .close-chat {
-            cursor: pointer;
-        }
-
-        .chat-messages {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-        }
-
-        .message {
-            margin-bottom: 10px;
-            padding: 8px 12px;
-            border-radius: 5px;
-            max-width: 80%;
-        }
-
-        .user {
-            background: rgba(0, 132, 255, 0.3);
-            margin-left: auto;
-            border-top-right-radius: 0;
-        }
-
-        .bot {
-            background: rgba(0, 20, 40, 0.7);
-            border: 1px solid #00f7ff;
-            margin-right: auto;
-            border-top-left-radius: 0;
-        }
-
-        .quick-questions {
-            padding: 10px 15px;
-            border-top: 1px solid #00f7ff;
-            border-bottom: 1px solid #00f7ff;
-        }
-
-        .quick-questions p {
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            color: #b8f8ff;
-        }
-
-        .quick-question {
-            display: block;
-            width: 100%;
-            padding: 8px 10px;
-            margin-bottom: 8px;
-            background: rgba(0, 132, 255, 0.2);
-            border: 1px solid #00f7ff;
-            border-radius: 5px;
-            color: #b8f8ff;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: right;
-        }
-
-        .quick-question:hover {
-            background: rgba(0, 132, 255, 0.4);
-        }
-
-        .chat-input {
-            display: flex;
-            padding: 10px;
-        }
-
-        .chat-input input {
-            flex: 1;
-            padding: 10px;
-            background: rgba(0, 30, 60, 0.7);
-            border: 1px solid #00f7ff;
-            border-radius: 5px 0 0 5px;
-            color: #fff;
-        }
-
-        .send-btn {
-            padding: 0 15px;
-            background: linear-gradient(90deg, #0084ff 0%, #00f7ff 100%);
-            border: none;
-            border-radius: 0 5px 5px 0;
-            cursor: pointer;
-            color: #000;
-        }
-
         /* رسپانسیو */
         @media (max-width: 768px) {
-            .hero-section {
-                padding: 20px;
-            }
-            
             .logo {
                 max-width: 200px;
             }
             
+            .logo-container {
+                margin-top: 90px;
+            }
+            
             .motivation-box {
                 padding: 15px;
-            }
-            
-            .hamburger-menu {
-                left: 20px;
-                top: 15px;
-            }
-            
-            .lang-switcher {
-                top: 15px;
-                left: 60px;
-                padding: 6px 10px;
-            }
-            
-            .register-btn {
-                top: 15px;
-                right: 15px;
-                padding: 8px 15px;
-                font-size: 0.9rem;
             }
             
             .register-form-container {
@@ -570,92 +452,69 @@
             }
             
             .menu-box {
-                width: 80%;
-            }
-            
-            .back-btn {
-                display: block;
+                width: 85%;
+                padding-top: 90px;
             }
             
             .content-section {
-                padding: 70px 20px 20px;
+                padding: 80px 15px 40px;
+            }
+            
+            .chat-box {
+                width: 90%;
+                max-width: 300px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- نوار بالایی -->
+    <div class="top-bar">
+        <div class="menu-btn" id="menuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="right-controls">
+            <div class="lang-switcher" id="langSwitcher">
+                <span class="lang-text">English</span>
+                <i class="fas fa-globe"></i>
+            </div>
+            <button class="register-btn" id="registerBtn">
+                <i class="fas fa-user-plus"></i>
+                ثبت نام
+            </button>
+        </div>
+    </div>
+
     <!-- صفحه اول با لوگو و متن انگیزشی -->
     <section class="hero-section" id="heroSection">
-        <img src="logo.png" alt="آموزش فارکس - مهناز خورسند" class="logo">
+        <div class="logo-container">
+            <img src="logo.png" alt="آموزش فارکس - مهناز خورسند" class="logo">
+        </div>
         <div class="motivation-box">
             <p class="motivation-text">
                 در دنیای پر از نوسان و فرصت‌های بی‌پایان بازارهای مالی، موفقیت تنها از آن کسانی است که جرئت می‌کنند قدم اول را بردارند، پشتکار دارند و همواره در مسیر یادگیری و رشد هستند. ترید کردن، هنر تحلیل و تصمیم‌گیری در لحظه‌های حساس است که می‌تواند زندگی شما را متحول کند.
+
+                ما در کنار تحلیل تکنیکال و فاندامنتال، از قدرت استرولوژی مالی نیز بهره می‌بریم؛ دانشی که با بررسی موقعیت سیارات و تأثیرات آن‌ها بر احساسات جمعی بازار، به ما دیدگاهی عمیق‌تر و زمان‌بندی دقیق‌تری برای ورود و خروج می‌دهد. این ترکیب هوشمندانه از علم و هنر، می‌تواند شما را چند قدم جلوتر از بازار نگه دارد.
+
+                امروز زمان آن است که ترس‌ها را کنار بگذارید و به سمت آینده‌ای روشن‌تر حرکت کنید.
+                با ما، آموزش ترید اسکلپی و روندی را به‌همراه نگاهی متفاوت از جنس کیهان تجربه می‌کنید.
             </p>
         </div>
     </section>
 
-    <!-- دکمه تغییر زبان -->
-    <div class="lang-switcher" id="langSwitcher">
-        <span class="lang-text">English</span>
-        <i class="fas fa-globe"></i>
-    </div>
-
-    <!-- دکمه ثبت نام -->
-    <button class="register-btn" id="registerBtn">
-        <i class="fas fa-user-plus"></i>
-        ثبت نام
-    </button>
-
-    <!-- فرم ثبت نام -->
-    <div class="register-form-container" id="registerFormContainer">
-        <i class="fas fa-times close-form" id="closeForm"></i>
-        <div class="register-form">
-            <h3>فرم ثبت نام در دوره‌ها</h3>
-            <form id="registrationForm">
-                <input type="text" placeholder="نام و نام خانوادگی" required>
-                <input type="tel" placeholder="شماره تماس" required>
-                
-                <select required>
-                    <option value="">سطح آشنایی با فارکس</option>
-                    <option value="beginner">مبتدی</option>
-                    <option value="intermediate">آشنا</option>
-                    <option value="semi-pro">نیمه حرفه‌ای</option>
-                </select>
-                
-                <select required>
-                    <option value="">دوره مورد نظر</option>
-                    <option value="free">دوره رایگان</option>
-                    <option value="pro">دوره تخصصی</option>
-                </select>
-                
-                <div class="optional-question">
-                    <i class="fas fa-question-circle"></i>
-                    <input type="text" placeholder="سوال شما (اختیاری)">
-                </div>
-                
-                <button type="submit">
-                    <i class="fas fa-paper-plane"></i>
-                    ارسال اطلاعات
-                </button>
-            </form>
-            <div id="successMessage" class="hidden">
-                <i class="fas fa-check-circle"></i>
-                ثبت نام شما با موفقیت انجام شد. همکاران ما تا ۲۴ ساعت آینده با شما تماس خواهند گرفت.
-            </div>
-        </div>
-    </div>
-
-    <!-- منوی همبرگر -->
-    <nav class="hamburger-menu">
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="menu-btn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
-        
-        <ul class="menu-box">
-            <i class="fas fa-arrow-right back-btn" id="menuBackBtn"></i>
+    <!-- منو -->
+    <div class="menu-box" id="menuBox">
+        <i class="fas fa-arrow-right back-btn" id="menuBackBtn"></i>
+        <ul>
+            <li>
+                <a href="#" id="home-link">
+                    <i class="fas fa-home menu-icon"></i>
+                    صفحه اصلی
+                </a>
+            </li>
             <li>
                 <a href="services.html" target="_blank" id="services-link">
                     <i class="fas fa-graduation-cap menu-icon"></i>
@@ -687,7 +546,7 @@
                 </a>
             </li>
         </ul>
-    </nav>
+    </div>
 
     <!-- بخش‌های محتوایی -->
     <div id="content-sections">
@@ -759,12 +618,47 @@
                     <p><i class="fas fa-phone"></i> واتساپ / تلگرام: ۰۹۱۲XXX۱۲۳۴</p>
                     <p><i class="fab fa-instagram"></i> اینستاگرام: @forex_with_mahnaz</p>
                 </div>
-                <div class="map-container" style="margin-top: 30px;">
-                    <!-- می‌توانید نقشه گوگل مپ را اینجا قرار دهید -->
-                    <iframe src="https://www.google.com/maps/embed?..." width="100%" height="300" style="border:0; border-radius: 5px;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
             </div>
         </section>
+    </div>
+
+    <!-- فرم ثبت نام -->
+    <div class="register-form-container" id="registerFormContainer">
+        <i class="fas fa-times close-form" id="closeForm"></i>
+        <div class="register-form">
+            <h3>فرم ثبت نام در دوره‌ها</h3>
+            <form id="registrationForm">
+                <input type="text" placeholder="نام و نام خانوادگی" required>
+                <input type="tel" placeholder="شماره تماس" required>
+                
+                <select required>
+                    <option value="">سطح آشنایی با فارکس</option>
+                    <option value="beginner">مبتدی</option>
+                    <option value="intermediate">آشنا</option>
+                    <option value="semi-pro">نیمه حرفه‌ای</option>
+                </select>
+                
+                <select required>
+                    <option value="">دوره مورد نظر</option>
+                    <option value="free">دوره رایگان</option>
+                    <option value="pro">دوره تخصصی</option>
+                </select>
+                
+                <div class="optional-question">
+                    <i class="fas fa-question-circle"></i>
+                    <input type="text" placeholder="سوال شما (اختیاری)">
+                </div>
+                
+                <button type="submit">
+                    <i class="fas fa-paper-plane"></i>
+                    ارسال اطلاعات
+                </button>
+            </form>
+            <div id="successMessage">
+                <i class="fas fa-check-circle"></i>
+                ثبت نام شما با موفقیت انجام شد. همکاران ما تا ۲۴ ساعت آینده با شما تماس خواهند گرفت.
+            </div>
+        </div>
     </div>
 
     <!-- چت آنلاین -->
@@ -774,13 +668,9 @@
             <i class="fas fa-times close-chat" id="closeChat"></i>
         </div>
         <div class="chat-messages" id="chatMessages">
-            <!-- پیام‌ها اینجا نمایش داده می‌شوند -->
-        </div>
-        <div class="quick-questions">
-            <p>سوالات پرتکرار:</p>
-            <button class="quick-question">ساعت کاری دوره‌ها؟</button>
-            <button class="quick-question">هزینه دوره تخصصی؟</button>
-            <button class="quick-question">نحوه پرداخت؟</button>
+            <div class="message bot">
+                چطور می‌توانم کمکتان کنم؟
+            </div>
         </div>
         <div class="chat-input">
             <input type="text" placeholder="پیام شما..." id="chatInput">
@@ -792,6 +682,23 @@
     </div>
 
     <script>
+        // مدیریت منو
+        const menuBtn = document.getElementById('menuBtn');
+        const menuBox = document.getElementById('menuBox');
+        const menuBackBtn = document.getElementById('menuBackBtn');
+        
+        menuBtn.addEventListener('click', function() {
+            menuBox.classList.toggle('active');
+        });
+        
+        menuBackBtn.addEventListener('click', function() {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('heroSection').style.display = 'flex';
+            menuBox.classList.remove('active');
+        });
+
         // مدیریت تغییر زبان
         const langSwitcher = document.getElementById('langSwitcher');
         const langText = document.querySelector('.lang-text');
@@ -814,18 +721,70 @@
                 'questionPlaceholder': 'سوال شما (اختیاری)',
                 'submitBtn': 'ارسال اطلاعات',
                 'successMessage': 'ثبت نام شما با موفقیت انجام شد. همکاران ما تا ۲۴ ساعت آینده با شما تماس خواهند گرفت.',
+                'home': 'صفحه اصلی',
                 'services': 'خدمات آموزشی',
                 'about': 'درباره ما',
                 'faq': 'سوالات متداول',
                 'testimonials': 'نظرات هنرجویان',
                 'contact': 'تماس با ما',
                 'chatTitle': 'چت آنلاین',
-                'faqQuestions': 'سوالات پرتکرار:',
-                'courseSchedule': 'ساعت کاری دوره‌ها؟',
-                'courseFee': 'هزینه دوره تخصصی؟',
-                'paymentMethod': 'نحوه پرداخت؟',
+                'faqQuestions': 'چطور می‌توانم کمک‌تان کنم؟',
                 'messagePlaceholder': 'پیام شما...',
-                'motivationText': 'در دنیای پر از نوسان و فرصت‌های بی‌پایان بازارهای مالی، موفقیت تنها از آن کسانی است که جرئت می‌کنند قدم اول را بردارند، پشتکار دارند و همواره در مسیر یادگیری و رشد هستند. ترید کردن، هنر تحلیل و تصمیم‌گیری در لحظه‌های حساس است که می‌تواند زندگی شما را متحول کند.'
+                'motivationText': 'در دنیای پر از نوسان و فرصت‌های بی‌پایان بازارهای مالی، موفقیت تنها از آن کسانی است که جرئت می‌کنند قدم اول را بردارند، پشتکار دارند و همواره در مسیر یادگیری و رشد هستند. ترید کردن، هنر تحلیل و تصمیم‌گیری در لحظه‌های حساس است که می‌تواند زندگی شما را متحول کند.\n\nما در کنار تحلیل تکنیکال و فاندامنتال، از قدرت استرولوژی مالی نیز بهره می‌بریم؛ دانشی که با بررسی موقعیت سیارات و تأثیرات آن‌ها بر احساسات جمعی بازار، به ما دیدگاهی عمیق‌تر و زمان‌بندی دقیق‌تری برای ورود و خروج می‌دهد. این ترکیب هوشمندانه از علم و هنر، می‌تواند شما را چند قدم جلوتر از بازار نگه دارد.\n\nامروز زمان آن است که ترس‌ها را کنار بگذارید و به سمت آینده‌ای روشن‌تر حرکت کنید.\nبا ما، آموزش ترید اسکلپی و روندی را به‌همراه نگاهی متفاوت از جنس کیهان تجربه می‌کنید.',
+                'aboutText': 'من مهناز خورسند هستم، متولد ۱۳۶۷، دارای مدرک فوق‌لیسانس مهندسی تکنولوژی معماری و با سابقه‌ای چندساله در مسیر پرچالش اما جذاب بازارهای مالی.\n\nاز سال ۱۳۹۸ با دنیای ترید آشنا شدم. مثل خیلی‌ها، مسیرم پر از سردرگمی، ضرر، تلاش و یادگیری بود. اما هیچ‌وقت متوقف نشدم. حالا، بعد از سال‌ها تجربه، آزمون و خطا، و یادگیری مداوم، خوشحالم که می‌تونم بگم بیش از سه ساله به سود مستمر در بازار فارکس رسیدم.\n\nاینجا رو راه‌اندازی کردم تا آموزش‌هایی ارائه بدم که صرفاً تئوری نباشن، بلکه بر پایه تجربه واقعی و قابل استفاده در معاملات واقعی باشن. آموزش‌هایی ساده، کاربردی و بدون وابستگی به اندیکاتورها و روش‌های پیچیده؛ چون معتقدم ساده‌سازی مسیر، کلید موفقیته.\n\nهدف من اینه که شما رو تبدیل کنم به یه تریدر مستقل، کسی که بازار رو می‌فهمه و بر اساس تحلیل خودش تصمیم می‌گیره — نه بر اساس سیگنال دیگران.\n\nاگر دنبال آموزش واقعی، مسیر درست و رشد مستمر در دنیای فارکس هستی، اینجا درست اومدی.',
+                'faqText': [
+                    {
+                        'question': '۱. آیا این دوره برای مبتدی‌ها مناسب است؟',
+                        'answer': 'بله. دوره رایگان مخصوص افرادی طراحی شده که هیچ آشنایی قبلی با بازار فارکس ندارند.'
+                    },
+                    {
+                        'question': '۲. دوره‌ها چه فرقی با آموزش‌های یوتیوب و اینستاگرام دارند؟',
+                        'answer': 'این دوره‌ها ساختاریافته، گام‌به‌گام، پروژه‌محور و با تمرین و پشتیبانی طراحی شده‌اند. محتوای رایگان شبکه‌های اجتماعی به هیچ‌وجه عمق لازم برای سودآوری واقعی را ندارد.'
+                    },
+                    {
+                        'question': '۳. آیا پس از اتمام دوره امکان دریافت مشاوره یا منتورینگ هست؟',
+                        'answer': 'بله. هنرجویان دوره تخصصی می‌توانند در جلسات کوچینگ اختصاصی شرکت کنند.'
+                    },
+                    {
+                        'question': '۴. آیا به نرم‌افزار یا ابزار خاصی نیاز دارم؟',
+                        'answer': 'خیر، تنها نیاز شما اینترنت، موبایل یا کامپیوتر و انگیزه برای یادگیری و تمرین مستمر است.'
+                    },
+                    {
+                        'question': '۵. آیا گواهی پایان دوره ارائه می‌شود؟',
+                        'answer': 'در حال حاضر گواهی رسمی ارائه نمی‌شود، اما تمرکز اصلی بر روی مهارت واقعی و تسلط عملی بر بازار است.'
+                    }
+                ],
+                'testimonialsText': [
+                    {
+                        'name': 'فرزانه.ک – تهران',
+                        'text': '«من چند دوره مختلف شرکت کرده بودم اما همیشه سردرگم بودم. دوره‌های مهناز خورسند به‌قدری منظم و شفاف بود که برای اولین بار واقعاً مفهوم روند، کندل و تحلیل را درک کردم.»'
+                    },
+                    {
+                        'name': 'سامان.ن – شیراز',
+                        'text': '«پشتیبانی و پیگیری واقعی‌ترین تفاوت این آموزش با بقیه بود. با اینکه از صفر شروع کرده بودم، الان با خیال راحت ترید می‌کنم و مدیریت سرمایه‌ام دست خودمه.»'
+                    },
+                    {
+                        'name': 'سحر.م – مشهد',
+                        'text': '«تجربه من از یادگیری با این دوره‌ها عالی بود. سادگی بیان، تسلط مدرس و آموزش قدم‌به‌قدم باعث شد بالاخره به سود مستمر برسم.»'
+                    }
+                ],
+                'contactText': {
+                    'intro': 'در صورت تمایل به مشاوره، ثبت‌نام در دوره‌ها، یا دریافت راهنمایی بیشتر، می‌توانید از طریق راه‌های ارتباطی زیر با ما در تماس باشید:',
+                    'methods': [
+                        {
+                            'icon': 'envelope',
+                            'text': 'ایمیل: info@example.com'
+                        },
+                        {
+                            'icon': 'phone',
+                            'text': 'واتساپ / تلگرام: ۰۹۱۲XXX۱۲۳۴'
+                        },
+                        {
+                            'icon': 'instagram',
+                            'text': 'اینستاگرام: @forex_with_mahnaz'
+                        }
+                    ]
+                }
             },
             'en': {
                 'registerBtn': 'Register',
@@ -842,18 +801,70 @@
                 'questionPlaceholder': 'Your question (optional)',
                 'submitBtn': 'Submit',
                 'successMessage': 'Your registration was successful. Our team will contact you within 24 hours.',
+                'home': 'Home',
                 'services': 'Educational Services',
                 'about': 'About Us',
                 'faq': 'FAQ',
                 'testimonials': 'Testimonials',
                 'contact': 'Contact Us',
                 'chatTitle': 'Online Chat',
-                'faqQuestions': 'Frequently Asked:',
-                'courseSchedule': 'Course schedule?',
-                'courseFee': 'Professional course fee?',
-                'paymentMethod': 'Payment methods?',
+                'faqQuestions': 'How can I help you?',
                 'messagePlaceholder': 'Your message...',
-                'motivationText': 'In the world of volatile and endless opportunities in financial markets, success belongs only to those who dare to take the first step, have perseverance and are always on the path of learning and growth. Trading is the art of analysis and decision-making in critical moments that can transform your life.'
+                'motivationText': 'In the world of volatile and endless opportunities in financial markets, success belongs only to those who dare to take the first step, have perseverance and are always on the path of learning and growth. Trading is the art of analysis and decision-making in critical moments that can transform your life.\n\nAlong with technical and fundamental analysis, we also use the power of financial astrology; a knowledge that by examining the position of planets and their effects on the collective emotions of the market, gives us a deeper perspective and more precise timing for entry and exit. This smart combination of science and art can keep you several steps ahead of the market.\n\nToday is the time to put aside your fears and move towards a brighter future.\nWith us, experience scalp and trend trading along with a unique cosmic perspective.',
+                'aboutText': 'I am Mahnaz Khorsand, born in 1988, with a Master\'s degree in Architectural Engineering Technology and several years of experience in the challenging yet fascinating path of financial markets.\n\nSince 2019, I became familiar with trading. Like many others, my path was full of confusion, loss, effort and learning. But I never stopped. Now, after years of experience, trial and error, and continuous learning, I\'m happy to say that I\'ve been consistently profitable in the Forex market for over three years.\n\nI established this platform to provide training that is not merely theoretical, but based on real experience and applicable in real trading. Simple, practical training without dependency on complex indicators and methods; because I believe simplifying the path is the key to success.\n\nMy goal is to transform you into an independent trader, someone who understands the market and makes decisions based on their own analysis - not based on others\' signals.\n\nIf you\'re looking for real education, the right path and continuous growth in the world of Forex, you\'ve come to the right place.',
+                'faqText': [
+                    {
+                        'question': '1. Is this course suitable for beginners?',
+                        'answer': 'Yes. The free course is designed for those who have no prior knowledge of the Forex market.'
+                    },
+                    {
+                        'question': '2. How are these courses different from YouTube and Instagram tutorials?',
+                        'answer': 'These courses are structured, step-by-step, project-based with exercises and support. Free content on social media lacks the depth needed for real profitability.'
+                    },
+                    {
+                        'question': '3. Is there mentoring or consulting available after completing the course?',
+                        'answer': 'Yes. Students of the professional course can participate in private coaching sessions.'
+                    },
+                    {
+                        'question': '4. Do I need any special software or tools?',
+                        'answer': 'No, all you need is internet, a mobile or computer, and motivation to learn and practice consistently.'
+                    },
+                    {
+                        'question': '5. Is a certificate provided upon completion?',
+                        'answer': 'Currently no official certificate is provided, as the main focus is on real skills and practical mastery of the market.'
+                    }
+                ],
+                'testimonialsText': [
+                    {
+                        'name': 'Farzaneh K - Tehran',
+                        'text': '"I had taken several different courses but was always confused. Mahnaz Khorsand\'s courses were so organized and clear that for the first time I truly understood the concepts of trend, candlestick and analysis."'
+                    },
+                    {
+                        'name': 'Saman N - Shiraz',
+                        'text': '"The real difference in this training was the support and follow-up. Even though I started from zero, now I trade with peace of mind and my money management is in my own hands."'
+                    },
+                    {
+                        'name': 'Sahar M - Mashhad',
+                        'text': '"My learning experience with these courses was excellent. The simple explanations, the instructor\'s mastery, and step-by-step training finally helped me achieve consistent profits."'
+                    }
+                ],
+                'contactText': {
+                    'intro': 'For consultation, course registration, or further guidance, you can contact us through the following methods:',
+                    'methods': [
+                        {
+                            'icon': 'envelope',
+                            'text': 'Email: info@example.com'
+                        },
+                        {
+                            'icon': 'phone',
+                            'text': 'WhatsApp/Telegram: +98 912 XXX 1234'
+                        },
+                        {
+                            'icon': 'instagram',
+                            'text': 'Instagram: @forex_with_mahnaz'
+                        }
+                    ]
+                }
             }
         };
         
@@ -891,6 +902,7 @@
             document.getElementById('successMessage').innerHTML = `<i class="fas fa-check-circle"></i> ${translations[lang]['successMessage']}`;
             
             // ترجمه منو
+            document.getElementById('home-link').innerHTML = `<i class="fas fa-home menu-icon"></i> ${translations[lang]['home']}`;
             document.getElementById('services-link').innerHTML = `<i class="fas fa-graduation-cap menu-icon"></i> ${translations[lang]['services']}`;
             document.getElementById('about-link').innerHTML = `<i class="fas fa-user-tie menu-icon"></i> ${translations[lang]['about']}`;
             document.getElementById('faq-link').innerHTML = `<i class="fas fa-question-circle menu-icon"></i> ${translations[lang]['faq']}`;
@@ -899,10 +911,7 @@
             
             // ترجمه چت
             document.querySelector('.chat-header span').textContent = translations[lang]['chatTitle'];
-            document.querySelector('.quick-questions p').textContent = translations[lang]['faqQuestions'];
-            document.querySelectorAll('.quick-question')[0].textContent = translations[lang]['courseSchedule'];
-            document.querySelectorAll('.quick-question')[1].textContent = translations[lang]['courseFee'];
-            document.querySelectorAll('.quick-question')[2].textContent = translations[lang]['paymentMethod'];
+            document.querySelector('.chat-messages .bot').textContent = translations[lang]['faqQuestions'];
             document.getElementById('chatInput').placeholder = translations[lang]['messagePlaceholder'];
             
             // ترجمه تیتر بخش‌ها
@@ -913,6 +922,38 @@
             
             // ترجمه متن انگیزشی
             document.querySelector('.motivation-text').textContent = translations[lang]['motivationText'];
+            
+            // ترجمه متن درباره ما
+            document.querySelector('.about-content').innerHTML = translations[lang]['aboutText'].split('\n\n').map(paragraph => `<p>${paragraph}</p>`).join('');
+            
+            // ترجمه بخش سوالات متداول
+            const faqContent = document.querySelector('.faq-content');
+            faqContent.innerHTML = translations[lang]['faqText'].map(item => `
+                <div class="faq-item">
+                    <h3>${item.question}</h3>
+                    <p>${item.answer}</p>
+                </div>
+            `).join('');
+            
+            // ترجمه بخش نظرات هنرجویان
+            const testimonialsContent = document.querySelector('.testimonials-content');
+            testimonialsContent.innerHTML = translations[lang]['testimonialsText'].map(testimonial => `
+                <div class="testimonial">
+                    <h3>${testimonial.name}</h3>
+                    <p>${testimonial.text}</p>
+                </div>
+            `).join('');
+            
+            // ترجمه بخش تماس با ما
+            const contactContent = document.querySelector('.contact-content');
+            contactContent.innerHTML = `
+                <p>${translations[lang]['contactText'].intro}</p>
+                <div class="contact-methods">
+                    ${translations[lang]['contactText'].methods.map(method => `
+                        <p><i class="fas fa-${method.icon}"></i> ${method.text}</p>
+                    `).join('')}
+                </div>
+            `;
         }
 
         // مدیریت فرم ثبت نام
@@ -935,7 +976,6 @@
             registrationForm.style.display = 'none';
             successMessage.style.display = 'block';
             
-            // در اینجا می‌توانید اطلاعات را به سرور ارسال کنید
             setTimeout(() => {
                 registerFormContainer.classList.remove('active');
                 registrationForm.style.display = 'block';
@@ -944,10 +984,10 @@
             }, 3000);
         });
 
-        // مدیریت منو
-        const menuToggle = document.getElementById('menu-toggle');
-        const menuBackBtn = document.getElementById('menuBackBtn');
+        // مدیریت لینک‌های منو
         const menuLinks = {
+            'home-link': 'heroSection',
+            'services-link': 'services.html',
             'about-link': 'about-section',
             'faq-link': 'faq-section',
             'testimonials-link': 'testimonials-section',
@@ -956,33 +996,27 @@
         
         Object.keys(menuLinks).forEach(linkId => {
             document.getElementById(linkId).addEventListener('click', function(e) {
-                e.preventDefault();
+                if (linkId !== 'services-link') {
+                    e.preventDefault();
+                }
                 
                 // مخفی کردن تمام بخش‌ها
                 document.querySelectorAll('.content-section').forEach(section => {
                     section.classList.remove('active');
                 });
                 
-                // نمایش بخش مورد نظر
-                document.getElementById(menuLinks[linkId]).classList.add('active');
-                
-                // مخفی کردن صفحه اول
-                document.getElementById('heroSection').style.display = 'none';
-                
-                // بستن منو در حالت موبایل
-                if (window.innerWidth <= 768) {
-                    menuToggle.checked = false;
-                    menuBackBtn.style.display = 'block';
+                // نمایش بخش مورد نظر یا صفحه اصلی
+                const targetId = menuLinks[linkId];
+                if (targetId === 'heroSection') {
+                    document.getElementById('heroSection').style.display = 'flex';
+                } else if (targetId !== 'services.html') {
+                    document.getElementById('heroSection').style.display = 'none';
+                    document.getElementById(targetId).classList.add('active');
                 }
+                
+                // بستن منو
+                menuBox.classList.remove('active');
             });
-        });
-        
-        menuBackBtn.addEventListener('click', function() {
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById('heroSection').style.display = 'flex';
-            this.style.display = 'none';
         });
 
         // مدیریت چت آنلاین
@@ -992,7 +1026,6 @@
         const chatMessages = document.getElementById('chatMessages');
         const chatInput = document.getElementById('chatInput');
         const sendBtn = document.getElementById('sendBtn');
-        const quickQuestions = document.querySelectorAll('.quick-question');
         
         chatIcon.addEventListener('click', function() {
             chatBox.classList.toggle('active');
@@ -1000,39 +1033,6 @@
         
         closeChat.addEventListener('click', function() {
             chatBox.classList.remove('active');
-        });
-        
-        quickQuestions.forEach(question => {
-            question.addEventListener('click', function() {
-                const questionText = this.textContent;
-                addMessage(questionText, 'user');
-                
-                // پاسخ خودکار
-                setTimeout(() => {
-                    let answer = '';
-                    const lang = document.documentElement.lang;
-                    
-                    if (questionText.includes('ساعت کاری') || questionText.includes('schedule')) {
-                        answer = lang === 'fa' ? 
-                            'دوره‌ها در روزهای شنبه تا چهارشنبه از ساعت ۱۶ تا ۲۰ برگزار می‌شوند.' : 
-                            'Courses are held from Saturday to Wednesday, 4 PM to 8 PM.';
-                    } else if (questionText.includes('هزینه دوره') || questionText.includes('fee')) {
-                        answer = lang === 'fa' ? 
-                            'هزینه دوره تخصصی ۵,۰۰۰,۰۰۰ تومان است که می‌توانید به صورت اقساط نیز پرداخت نمایید.' : 
-                            'The professional course fee is 5,000,000 Tomans which can also be paid in installments.';
-                    } else if (questionText.includes('نحوه پرداخت') || questionText.includes('Payment')) {
-                        answer = lang === 'fa' ? 
-                            'پرداخت از طریق درگاه بانکی، واریز کارت به کارت یا رمزارز امکان‌پذیر است.' : 
-                            'Payment is possible through bank gateway, card-to-card transfer or cryptocurrency.';
-                    } else {
-                        answer = lang === 'fa' ? 
-                            'لطفاً از طریق بخش پشتیبانی با ما در ارتباط باشید.' : 
-                            'Please contact our support team for more information.';
-                    }
-                    
-                    addMessage(answer, 'bot');
-                }, 1000);
-            });
         });
         
         sendBtn.addEventListener('click', sendMessage);
@@ -1050,8 +1050,8 @@
                 setTimeout(() => {
                     const lang = document.documentElement.lang;
                     const response = lang === 'fa' ? 
-                        'برای دریافت پاسخ دقیق‌تر، لطفاً از طریق بخش پشتیبانی با ما تماس بگیرید.' : 
-                        'For more accurate answers, please contact our support team.';
+                        'به پشتیبانی پیام دهید' : 
+                        'Message support';
                     
                     addMessage(response, 'bot');
                 }, 1500);
@@ -1066,17 +1066,8 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-        // نمایش صفحه اول به صورت پیش‌فرض
-        document.getElementById('about-link').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById('about-section').classList.add('active');
-            document.getElementById('heroSection').style.display = 'none';
-        });
+        // بارگذاری اولیه ترجمه
+        translatePage('fa');
     </script>
 </body>
 </html>
-    
-        
