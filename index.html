@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MWT Zodiac - آموزش ترید پیشرفته</title>
+    <title>MWT - آموزش ترید پیشرفته</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -16,17 +16,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Yekan', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        @font-face {
-            font-family: 'Yekan';
-            src: url('https://cdn.fontcdn.ir/Font/Persian/Yekan/Yekan.eot');
-            src: url('https://cdn.fontcdn.ir/Font/Persian/Yekan/Yekan.eot?#iefix') format('embedded-opentype'),
-                 url('https://cdn.fontcdn.ir/Font/Persian/Yekan/Yekan.woff') format('woff'),
-                 url('https://cdn.fontcdn.ir/Font/Persian/Yekan/Yekan.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
@@ -44,130 +34,179 @@
         /* هدر و نوار منو */
         header {
             background-color: rgba(0, 0, 0, 0.9);
-            padding: 20px 0;
+            padding: 15px 0;
             border-bottom: 1px solid var(--neon-blue);
             box-shadow: 0 0 20px rgba(11, 240, 252, 0.3);
             position: relative;
             z-index: 100;
         }
         
-        .header-content {
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        /* بخش سمت چپ - زبان و FX Team */
+        .left-section {
             display: flex;
             flex-direction: column;
-            align-items: center;
-        }
-        
-        .brand-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .logo-text {
-            font-size: 42px;
-            font-weight: bold;
-            color: var(--neon-blue);
-            text-shadow: 0 0 15px var(--neon-blue);
-            margin-bottom: 10px;
-            text-align: center;
-            line-height: 1.2;
-        }
-        
-        .logo-subtext {
-            font-size: 24px;
-            color: var(--neon-blue);
-            text-shadow: 0 0 10px var(--neon-blue);
-            margin-bottom: 20px;
+            align-items: flex-start;
         }
         
         .language-switch {
             display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
         
         .lang-btn {
             background: none;
             border: none;
             color: var(--neon-blue);
-            font-size: 18px;
+            font-size: 14px;
             cursor: pointer;
-            margin: 0 10px;
-            padding: 5px 15px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
+            margin-left: 10px;
+            padding: 2px 5px;
         }
         
         .lang-btn.active {
-            background-color: rgba(11, 240, 252, 0.2);
-            box-shadow: 0 0 10px var(--neon-blue);
+            text-decoration: underline;
+            text-shadow: 0 0 5px var(--neon-blue);
         }
         
-        .lang-btn:hover {
-            text-shadow: 0 0 10px var(--neon-blue);
+        .fx-team {
+            color: var(--neon-blue);
+            font-size: 16px;
+            margin-bottom: 20px;
         }
         
-        /* منوی اصلی */
-        .main-nav {
+        /* بخش منو */
+        .menu-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: var(--neon-blue);
+            font-size: 24px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        
+        /* بخش سمت راست - لوگو و متن */
+        .right-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--neon-blue);
             display: flex;
             justify-content: center;
-            width: 100%;
+            align-items: center;
+            box-shadow: 0 0 15px var(--neon-blue);
+            background-color: rgba(0, 0, 0, 0.7);
+            margin-bottom: 10px;
+        }
+        
+        .logo img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .founder-text {
+            font-size: 14px;
+            color: var(--neon-blue);
+            font-style: italic;
             margin-bottom: 15px;
         }
         
-        nav ul {
+        /* دکمه ثبت نام */
+        .register-container {
             display: flex;
+            align-items: center;
+        }
+        
+        .register-text {
+            color: var(--neon-blue);
+            font-size: 18px;
+            margin-left: 10px;
+        }
+        
+        .register-icon {
+            color: var(--neon-blue);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* منوی کشویی */
+        nav {
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.95);
+            border: 1px solid var(--neon-blue);
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 10px 20px rgba(11, 240, 252, 0.2);
+            width: 200px;
+            display: none;
+            z-index: 1000;
+        }
+        
+        nav.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        nav ul {
             list-style: none;
-            flex-wrap: wrap;
-            justify-content: center;
         }
         
         nav ul li {
-            margin: 0 10px;
+            border-bottom: 1px solid rgba(11, 240, 252, 0.1);
+        }
+        
+        nav ul li:last-child {
+            border-bottom: none;
         }
         
         nav ul li a {
             color: var(--text-color);
             text-decoration: none;
-            font-size: 18px;
+            font-size: 15px;
             display: flex;
             align-items: center;
-            padding: 10px 15px;
-            border-radius: 5px;
+            padding: 12px 15px;
             transition: all 0.3s ease;
         }
         
         nav ul li a i {
             margin-left: 8px;
-            font-size: 20px;
+            font-size: 16px;
             color: var(--neon-blue);
         }
         
         nav ul li a:hover {
             background-color: rgba(11, 240, 252, 0.1);
             color: var(--neon-blue);
-            text-shadow: 0 0 8px var(--neon-blue);
-        }
-        
-        /* دکمه ثبت نام */
-        .register-btn {
-            background: transparent;
-            color: var(--neon-blue);
-            border: 2px solid var(--neon-blue);
-            padding: 15px 40px;
-            font-size: 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px var(--neon-blue);
-            margin-top: 20px;
-        }
-        
-        .register-btn:hover {
-            background-color: rgba(11, 240, 252, 0.2);
-            box-shadow: 0 0 25px var(--neon-blue);
-            transform: scale(1.05);
+            padding-right: 20px;
         }
         
         /* فرم ثبت نام */
@@ -176,7 +215,7 @@
             background: rgba(0, 0, 0, 0.95);
             border: 1px solid var(--neon-blue);
             border-radius: 10px;
-            padding: 30px;
+            padding: 25px;
             margin: 40px auto;
             max-width: 600px;
             box-shadow: 0 0 30px rgba(11, 240, 252, 0.4);
@@ -188,30 +227,84 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* بقیه استایل‌ها... */
+        /* چت آنلاین */
+        .chat-container {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            z-index: 1000;
+        }
+        
+        .chat-btn {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--neon-blue);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--neon-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .chat-btn i {
+            font-size: 20px;
+            color: var(--neon-blue);
+        }
+        
+        .chat-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px var(--neon-blue);
+        }
+        
+        .chat-box {
+            display: none;
+            width: 320px;
+            height: 450px;
+            background: rgba(0, 0, 0, 0.95);
+            border: 1px solid var(--neon-blue);
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(11, 240, 252, 0.4);
+            overflow: hidden;
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        /* بقیه استایل‌های چت... */
+        
+        /* متن انگیزشی */
+        .motivational-text {
+            background: rgba(0, 0, 0, 0.8);
+            border-left: 3px solid var(--neon-blue);
+            padding: 25px;
+            margin: 40px auto;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+        }
         
         /* رسپانسیو */
         @media (max-width: 768px) {
-            .logo-text {
-                font-size: 32px;
-            }
-            
-            .logo-subtext {
-                font-size: 18px;
-            }
-            
-            nav ul {
+            .header-container {
                 flex-direction: column;
+            }
+            
+            .left-section, .right-section {
                 align-items: center;
+                width: 100%;
             }
             
-            nav ul li {
-                margin: 5px 0;
+            .menu-container {
+                margin: 15px 0;
             }
             
-            .register-btn {
-                padding: 12px 30px;
-                font-size: 18px;
+            nav {
+                right: 50%;
+                transform: translateX(50%);
             }
         }
     </style>
@@ -219,40 +312,85 @@
 <body>
     <header>
         <div class="container">
-            <div class="header-content">
-                <div class="brand-container">
-                    <div class="logo-text">
-                        Bounder MWT<br>
-                        <span style="font-size: 0.7em;">Concept</span>
+            <div class="header-container">
+                <!-- بخش سمت چپ -->
+                <div class="left-section">
+                    <div class="language-switch">
+                        <button class="lang-btn active" id="faLang">FA</button>
+                        <button class="lang-btn" id="enLang">EN</button>
                     </div>
-                    <div class="logo-subtext">FX Team</div>
+                    <div class="fx-team">FX Team</div>
+                    
+                    <!-- منو -->
+                    <div class="menu-container">
+                        <button class="menu-toggle" id="menuToggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        
+                        <nav id="mainNav">
+                            <ul>
+                                <li><a href="#services"><i class="fas fa-cogs"></i> خدمات</a></li>
+                                <li><a href="#about"><i class="fas fa-info-circle"></i> درباره ما</a></li>
+                                <li><a href="#faq"><i class="fas fa-question-circle"></i> سوالات متداول</a></li>
+                                <li><a href="#testimonials"><i class="fas fa-comment-alt"></i> نظرات هنرجویان</a></li>
+                                <li><a href="#contact"><i class="fas fa-phone-alt"></i> تماس با ما</a></li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
                 
-                <div class="language-switch">
-                    <button class="lang-btn active" id="faLang">FA</button>
-                    <button class="lang-btn" id="enLang">EN</button>
+                <!-- بخش سمت راست -->
+                <div class="right-section">
+                    <div class="logo">
+                        <img src="logo.png" alt="MWT Logo">
+                    </div>
+                    <div class="founder-text">Founder of MWT Concept</div>
+                    
+                    <div class="register-container">
+                        <i class="fas fa-user-plus register-icon" id="registerIcon"></i>
+                        <div class="register-text">ثبت نام</div>
+                    </div>
                 </div>
-                
-                <div class="main-nav">
-                    <nav>
-                        <ul>
-                            <li><a href="#services"><i class="fas fa-cogs"></i> خدمات</a></li>
-                            <li><a href="#about"><i class="fas fa-info-circle"></i> درباره ما</a></li>
-                            <li><a href="#faq"><i class="fas fa-question-circle"></i> سوالات متداول</a></li>
-                            <li><a href="#testimonials"><i class="fas fa-comment-alt"></i> نظرات هنرجویان</a></li>
-                            <li><a href="#contact"><i class="fas fa-phone-alt"></i> تماس با ما</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                
-                <button class="register-btn" id="registerBtn">
-                    ثبت نام
-                </button>
             </div>
         </div>
     </header>
     
-    <!-- بقیه محتوای سایت... -->
+    <main class="main-content">
+        <div class="container">
+            <!-- فرم ثبت نام که ابتدا مخفی است -->
+            <div class="registration-form" id="registrationForm">
+                <h2 class="form-title">فرم ثبت نام دوره‌های آموزشی</h2>
+                <form id="regForm">
+                    <!-- فیلدهای فرم... -->
+                </form>
+            </div>
+            
+            <div class="motivational-text">
+                <!-- متن انگیزشی... -->
+            </div>
+        </div>
+    </main>
+
+    <!-- چت آنلاین -->
+    <div class="chat-container">
+        <div class="chat-box" id="chatBox">
+            <div class="chat-header">
+                پشتیبانی آنلاین MWT
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="chat-message bot-message">
+                    سلام! به چت پشتیبانی MWT خوش آمدید. چگونه می‌توانم به شما کمک کنم؟
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="پیام خود را بنویسید...">
+                <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <div class="chat-btn" id="chatBtn">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+    </div>
 
     <script>
         // تغییر زبان
@@ -260,22 +398,109 @@
             this.classList.add('active');
             document.getElementById('enLang').classList.remove('active');
             // کد تغییر به فارسی
+            document.documentElement.lang = 'fa';
+            document.documentElement.dir = 'rtl';
+            document.title = 'MWT - آموزش ترید پیشرفته';
         });
         
         document.getElementById('enLang').addEventListener('click', function() {
             this.classList.add('active');
             document.getElementById('faLang').classList.remove('active');
             // کد تغییر به انگلیسی
+            document.documentElement.lang = 'en';
+            document.documentElement.dir = 'ltr';
+            document.title = 'MWT - Advanced Trading Education';
         });
         
-        // نمایش فرم ثبت نام
-        document.getElementById('registerBtn').addEventListener('click', function() {
+        // منوی کشویی
+        document.getElementById('menuToggle').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+        
+        // کلیک خارج از منو برای بستن آن
+        document.addEventListener('click', function() {
+            document.getElementById('mainNav').classList.remove('active');
+        });
+        
+        // نمایش فرم با کلیک روی آیکن ثبت نام
+        document.getElementById('registerIcon').addEventListener('click', function(e) {
+            e.stopPropagation();
             const form = document.getElementById('registrationForm');
             form.style.display = 'block';
             window.scrollTo({
                 top: form.offsetTop - 100,
                 behavior: 'smooth'
             });
+        });
+        
+        // چت هوشمند
+        const chatBtn = document.getElementById('chatBtn');
+        const chatBox = document.getElementById('chatBox');
+        const chatBody = document.getElementById('chatBody');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        
+        // نمایش/مخفی کردن چت
+        chatBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        // پاسخ‌های هوشمند
+        function getBotResponse(message) {
+            message = message.toLowerCase();
+            
+            if (message.includes('قیمت') || message.includes('هزینه') || message.includes('پول')) {
+                return "دوره رایگان ما کاملاً رایگان است. دوره تخصصی به مبلغ 5 میلیون تومان ارائه می‌شود. برای اطلاعات بیشتر می‌توانید با پشتیبانی تماس بگیرید.";
+            }
+            
+            if (message.includes('ثبت نام') || message.includes('نام‌نویسی')) {
+                return "برای ثبت نام می‌توانید روی دکمه ثبت نام در صفحه کلیک کنید یا شماره تماس خود را بگذارید تا با شما تماس بگیریم.";
+            }
+            
+            if (message.includes('زمان') || message.includes('شروع') || message.includes('تاریخ')) {
+                return "دوره بعدی ما از تاریخ 15 ماه آینده شروع می‌شود. ظرفیت محدود است، لطفاً زودتر ثبت نام کنید.";
+            }
+            
+            if (message.includes('پشتیبانی') || message.includes('تماس')) {
+                return "می‌توانید از طریق شماره 09123456789 با پشتیبانی تماس بگیرید یا در ساعات اداری به آدرس ما مراجعه کنید.";
+            }
+            
+            return "برای اطلاعات بیشتر درباره قیمت دوره‌ها لطفاً با پشتیبانی تماس بگیرید. شماره تماس: 09123456789";
+        }
+        
+        // ارسال پیام
+        function sendMessage() {
+            const message = userInput.value.trim();
+            if (message === '') return;
+            
+            const userMessage = document.createElement('div');
+            userMessage.className = 'chat-message user-message';
+            userMessage.textContent = message;
+            chatBody.appendChild(userMessage);
+            
+            setTimeout(function() {
+                const botResponse = getBotResponse(message);
+                const botMessage = document.createElement('div');
+                botMessage.className = 'chat-message bot-message';
+                botMessage.textContent = botResponse;
+                chatBody.appendChild(botMessage);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 500);
+            
+            userInput.value = '';
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+        
+        // ارسال با کلیک دکمه
+        sendBtn.addEventListener('click', sendMessage);
+        
+        // ارسال با اینتر
+        userInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
         });
     </script>
 </body>
