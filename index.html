@@ -8,8 +8,6 @@
     <style>
         :root {
             --neon-blue: #0ff0fc;
-            --neon-pink: #ff00ff;
-            --neon-purple: #bc13fe;
             --dark-bg: #0a0a0a;
             --text-color: #f0f0f0;
         }
@@ -35,30 +33,30 @@
         
         /* هدر و نوار منو */
         header {
-            background: linear-gradient(to right, #000428, #004e92);
+            background-color: rgba(0, 0, 0, 0.9);
             padding: 15px 0;
-            box-shadow: 0 0 20px rgba(0, 150, 255, 0.5);
+            border-bottom: 1px solid var(--neon-blue);
+            box-shadow: 0 0 20px rgba(11, 240, 252, 0.3);
             position: relative;
             z-index: 100;
         }
         
-        .header-container {
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
-        .logo-menu-container {
+        .logo-nav-container {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 10px;
         }
         
         .logo {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border: 2px solid var(--neon-blue);
-            border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -67,60 +65,61 @@
         }
         
         .logo img {
-            max-width: 80%;
-            max-height: 80%;
+            max-width: 90%;
+            max-height: 90%;
         }
         
         .logo-text {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
-            background: linear-gradient(to right, var(--neon-blue), var(--neon-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-        }
-        
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
             color: var(--neon-blue);
-            font-size: 24px;
-            cursor: pointer;
+            text-shadow: 0 0 10px var(--neon-blue);
+            margin-right: 10px;
         }
         
         /* منوی اصلی */
+        nav {
+            position: relative;
+        }
+        
+        .menu-label {
+            position: absolute;
+            top: -25px;
+            right: 10px;
+            font-size: 12px;
+            color: var(--neon-blue);
+        }
+        
         nav ul {
             display: flex;
             list-style: none;
+            gap: 5px;
         }
         
         nav ul li {
-            margin: 0 10px;
             position: relative;
         }
         
         nav ul li a {
             color: var(--text-color);
             text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
+            font-size: 15px;
             display: flex;
             align-items: center;
-            padding: 10px 15px;
+            padding: 8px 12px;
             border-radius: 5px;
             transition: all 0.3s ease;
         }
         
         nav ul li a i {
-            margin-left: 8px;
-            font-size: 18px;
+            margin-left: 5px;
+            font-size: 16px;
         }
         
         nav ul li a:hover {
-            background-color: rgba(0, 150, 255, 0.2);
+            background-color: rgba(11, 240, 252, 0.1);
             color: var(--neon-blue);
-            text-shadow: 0 0 10px var(--neon-blue);
+            text-shadow: 0 0 8px var(--neon-blue);
         }
         
         .founder-text {
@@ -133,32 +132,32 @@
         
         /* دکمه ثبت نام */
         .register-btn {
-            background: linear-gradient(to right, var(--neon-purple), var(--neon-blue));
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            font-size: 16px;
-            border-radius: 50px;
+            background: transparent;
+            color: var(--neon-blue);
+            border: 1px solid var(--neon-blue);
+            padding: 8px 20px;
+            font-size: 15px;
+            border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
         }
         
         .register-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px var(--neon-blue);
+            background-color: rgba(11, 240, 252, 0.2);
+            box-shadow: 0 0 15px var(--neon-blue);
         }
         
         /* فرم ثبت نام */
         .registration-form {
             display: none;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             border: 1px solid var(--neon-blue);
-            border-radius: 15px;
-            padding: 30px;
+            border-radius: 10px;
+            padding: 25px;
             margin: 40px auto;
             max-width: 600px;
-            box-shadow: 0 0 30px rgba(11, 240, 252, 0.5);
+            box-shadow: 0 0 30px rgba(11, 240, 252, 0.4);
             animation: fadeIn 0.5s ease;
         }
         
@@ -169,32 +168,33 @@
         
         .form-title {
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 24px;
+            margin-bottom: 25px;
+            font-size: 22px;
             color: var(--neon-blue);
-            text-shadow: 0 0 10px var(--neon-blue);
+            text-shadow: 0 0 8px var(--neon-blue);
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             color: var(--neon-blue);
+            font-size: 14px;
         }
         
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
-            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 12px;
+            background-color: rgba(0, 0, 0, 0.7);
             border: 1px solid var(--neon-blue);
-            border-radius: 8px;
+            border-radius: 6px;
             color: var(--text-color);
-            font-size: 16px;
+            font-size: 15px;
             transition: all 0.3s ease;
         }
         
@@ -202,140 +202,143 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--neon-pink);
-            box-shadow: 0 0 15px var(--neon-pink);
+            box-shadow: 0 0 10px var(--neon-blue);
         }
         
         .submit-btn {
-            background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 18px;
-            border-radius: 50px;
+            background: transparent;
+            color: var(--neon-blue);
+            border: 1px solid var(--neon-blue);
+            padding: 10px 25px;
+            font-size: 16px;
+            border-radius: 5px;
             cursor: pointer;
             display: block;
-            margin: 30px auto 0;
+            margin: 25px auto 0;
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
         }
         
         .submit-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px var(--neon-blue);
+            background-color: rgba(11, 240, 252, 0.2);
+            box-shadow: 0 0 15px var(--neon-blue);
         }
         
         .success-message {
             display: none;
             text-align: center;
-            color: #00ff00;
-            margin-top: 20px;
-            font-size: 18px;
+            color: var(--neon-blue);
+            margin-top: 15px;
+            font-size: 16px;
             animation: pulse 2s infinite;
         }
         
         @keyframes pulse {
             0% { opacity: 0.7; }
-            50% { opacity: 1; text-shadow: 0 0 15px #00ff00; }
+            50% { opacity: 1; text-shadow: 0 0 10px var(--neon-blue); }
             100% { opacity: 0.7; }
         }
         
         /* چت آنلاین */
         .chat-container {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
+            bottom: 25px;
+            left: 25px;
             z-index: 1000;
         }
         
         .chat-btn {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(to bottom right, var(--neon-blue), var(--neon-purple));
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--neon-blue);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            box-shadow: 0 0 20px var(--neon-blue);
+            box-shadow: 0 0 15px var(--neon-blue);
             transition: all 0.3s ease;
         }
         
         .chat-btn i {
-            font-size: 24px;
-            color: white;
+            font-size: 20px;
+            color: var(--neon-blue);
         }
         
         .chat-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 30px var(--neon-blue);
+            box-shadow: 0 0 25px var(--neon-blue);
         }
         
         .chat-box {
             display: none;
-            width: 350px;
-            height: 500px;
-            background: rgba(0, 0, 0, 0.9);
+            width: 320px;
+            height: 450px;
+            background: rgba(0, 0, 0, 0.95);
             border: 1px solid var(--neon-blue);
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(11, 240, 252, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(11, 240, 252, 0.4);
             overflow: hidden;
             position: absolute;
-            bottom: 70px;
+            bottom: 60px;
             left: 0;
             animation: fadeIn 0.3s ease;
         }
         
         .chat-header {
-            background: linear-gradient(to right, #000428, #004e92);
-            padding: 15px;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 12px;
             text-align: center;
             font-weight: bold;
             color: var(--neon-blue);
             border-bottom: 1px solid var(--neon-blue);
+            text-shadow: 0 0 8px var(--neon-blue);
         }
         
         .chat-body {
-            height: 380px;
-            padding: 15px;
+            height: 340px;
+            padding: 12px;
             overflow-y: auto;
         }
         
         .chat-message {
-            margin-bottom: 15px;
-            padding: 10px 15px;
-            border-radius: 10px;
+            margin-bottom: 12px;
+            padding: 8px 12px;
+            border-radius: 8px;
             max-width: 80%;
             word-wrap: break-word;
+            font-size: 14px;
         }
         
         .bot-message {
-            background: rgba(0, 150, 255, 0.2);
+            background: rgba(11, 240, 252, 0.1);
             border: 1px solid var(--neon-blue);
             margin-right: auto;
         }
         
         .user-message {
-            background: rgba(188, 19, 254, 0.2);
-            border: 1px solid var(--neon-purple);
+            background: rgba(11, 240, 252, 0.2);
+            border: 1px solid var(--neon-blue);
             margin-left: auto;
         }
         
         .chat-input {
             display: flex;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.7);
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.9);
             border-top: 1px solid var(--neon-blue);
         }
         
         .chat-input input {
             flex: 1;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.7);
             border: 1px solid var(--neon-blue);
-            border-radius: 20px;
+            border-radius: 18px;
             color: white;
-            margin-left: 10px;
+            margin-left: 8px;
+            font-size: 14px;
         }
         
         .chat-input button {
@@ -343,8 +346,8 @@
             color: black;
             border: none;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -353,10 +356,10 @@
         
         /* متن انگیزشی */
         .motivational-text {
-            background: rgba(0, 0, 0, 0.7);
-            border-left: 4px solid var(--neon-blue);
-            padding: 30px;
-            margin: 50px auto;
+            background: rgba(0, 0, 0, 0.8);
+            border-left: 3px solid var(--neon-blue);
+            padding: 25px;
+            margin: 40px auto;
             max-width: 800px;
             position: relative;
             overflow: hidden;
@@ -369,7 +372,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            background: radial-gradient(circle, rgba(11, 240, 252, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
             animation: rotate 20s linear infinite;
             z-index: -1;
         }
@@ -380,57 +383,36 @@
         }
         
         .motivational-text h2 {
-            color: var(--neon-pink);
-            margin-bottom: 20px;
+            color: var(--neon-blue);
+            margin-bottom: 18px;
             text-align: center;
-            font-size: 28px;
-            text-shadow: 0 0 10px var(--neon-pink);
+            font-size: 24px;
+            text-shadow: 0 0 8px var(--neon-blue);
         }
         
         .motivational-text p {
-            margin-bottom: 15px;
-            font-size: 16px;
-            line-height: 1.8;
+            margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 1.7;
             text-align: justify;
         }
         
         /* رسپانسیو */
         @media (max-width: 768px) {
-            .header-container {
+            .header-content {
                 flex-direction: column;
                 align-items: flex-start;
+                gap: 15px;
             }
             
-            .logo-menu-container {
+            .logo-nav-container {
                 width: 100%;
                 justify-content: space-between;
-                margin-bottom: 15px;
-            }
-            
-            .menu-toggle {
-                display: block;
-            }
-            
-            nav {
-                display: none;
-                width: 100%;
-            }
-            
-            nav.active {
-                display: block;
             }
             
             nav ul {
-                flex-direction: column;
-            }
-            
-            nav ul li {
-                margin: 5px 0;
-            }
-            
-            .register-btn {
-                width: 100%;
-                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
             .registration-form {
@@ -444,8 +426,8 @@
             }
             
             .chat-box {
-                width: 300px;
-                height: 400px;
+                width: 280px;
+                height: 380px;
             }
             
             .chat-body {
@@ -457,18 +439,23 @@
 <body>
     <header>
         <div class="container">
-            <div class="header-container">
-                <div class="logo-menu-container">
+            <div class="header-content">
+                <div class="logo-nav-container">
                     <div class="logo">
                         <!-- اینجا لوگوی شما قرار می‌گیرد -->
                         <img src="logo.png" alt="MWT Logo">
                     </div>
                     
-                    <nav id="mainNav">
+                    <div class="logo-text">MWT Concept</div>
+                    
+                    <nav>
+                        <div class="menu-label">منو</div>
                         <ul>
                             <li><a href="#services"><i class="fas fa-cogs"></i> خدمات</a></li>
                             <li><a href="#about"><i class="fas fa-info-circle"></i> درباره ما</a></li>
                             <li><a href="#faq"><i class="fas fa-question-circle"></i> سوالات متداول</a></li>
+                            <li><a href="#testimonials"><i class="fas fa-comment-alt"></i> نظرات هنرجویان</a></li>
+                            <li><a href="#contact"><i class="fas fa-phone-alt"></i> تماس با ما</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -531,16 +518,15 @@
             </div>
             
             <div class="motivational-text">
-                <h2>In a world full of fluctuations and endless financial opportunities</h2>
+                <h2>در دنیای پر از نوسان و فرصت‌های بی‌پایان بازارهای مالی</h2>
                 <p>
-                    In the volatile world of financial markets with endless opportunities, success belongs only to those who dare to take the first step, persevere, and constantly pursue learning and growth. Trading is the art of analysis and decision-making in critical moments that can transform your life.
+                    موفقیت تنها از آن کسانی است که جرئت می‌کنند قدم اول را بردارند، پشتکار دارند و همواره در مسیر یادگیری و رشد هستند. ترید کردن، هنر تحلیل و تصمیم‌گیری در لحظه‌های حساس است که می‌تواند زندگی شما را متحول کند.
                 </p>
                 <p>
-                    Alongside technical and fundamental analysis, we utilize the power of financial astrology - a knowledge that by examining planetary positions and their effects on collective market emotions, provides us with deeper insight and more precise timing for entry and exit. This intelligent combination of science and art can keep you several steps ahead of the market.
+                    ما در کنار تحلیل تکنیکال و فاندامنتال، از قدرت استرولوژی مالی نیز بهره می‌بریم؛ دانشی که با بررسی موقعیت سیارات و تأثیرات آن‌ها بر احساسات جمعی بازار، به ما دیدگاهی عمیق‌تر و زمان‌بندی دقیق‌تری برای ورود و خروج می‌دهد.
                 </p>
                 <p>
-                    Today is the time to put aside your fears and move toward a brighter future.
-                    With us, experience scalping and trend trading education along with a cosmic perspective.
+                    امروز زمان آن است که ترس‌ها را کنار بگذارید و به سمت آینده‌ای روشن‌تر حرکت کنید. با ما، آموزش ترید اسکلپی و روندی را به‌همراه نگاهی متفاوت از جنس کیهان تجربه می‌کنید.
                 </p>
             </div>
         </div>
@@ -631,16 +617,16 @@
         
         // پاسخ‌های از پیش تعیین شده
         const botResponses = {
-            '1': 'دوره‌های ما ترکیبی از تحلیل تکنیکال، فاندامنتال و استرولوژی مالی است که این ترکیب منحصر به فرد شما را از دیگر تریدرها متمایز می‌کند.',
-            '2': 'بله، دوره‌های ما از سطح مبتدی تا پیشرفته طراحی شده‌اند و ما به همه سطوح آموزش می‌دهیم.',
-            '3': 'تحلیل ما بر سه پایه تکنیکال، فاندامنتال و استرولوژی مالی استوار است که دیدگاه جامعی از بازار ارائه می‌دهد.',
-            '4': 'بله، برای دوره‌های تخصصی امکان پرداخت در دو یا سه قسط وجود دارد.',
-            '5': 'بله، در صورت عدم رضایت تا دو جلسه پس از شروع دوره، تمام مبلغ بازگردانده می‌شود.',
-            '6': 'دوره رایگان 2 هفته و دوره تخصصی 3 ماه به طول می‌انجامد.',
-            '7': 'بله، پس از اتمام موفقیت‌آمیز دوره، مدرک معتبر بین‌المللی اعطا می‌شود.',
-            '8': 'پشتیبانی به صورت گروه‌های خصوصی تلگرامی و جلسات هفتگی آنلاین انجام می‌شود.',
-            '9': 'بله، هفته‌ای دو جلسه تحلیل زنده بازار داریم که هنرجویان می‌توانند مشارکت کنند.',
-            '10': 'همین حالا! بازار همیشه در حال تغییر است و بهترین زمان برای شروع یادگیری همیشه "حالا" است.'
+            '1': 'دوره‌های ما ترکیبی منحصر به فرد از تحلیل تکنیکال، فاندامنتال و استرولوژی مالی ارائه می‌دهد که شما را از دیگر تریدرها متمایز می‌کند.',
+            '2': 'بله، دوره‌های ما از سطح مبتدی تا پیشرفته طراحی شده‌اند و برای همه سطوح مناسب هستند.',
+            '3': 'تحلیل ما بر سه پایه اصلی تکنیکال، فاندامنتال و استرولوژی مالی استوار است که دید جامعی از بازار ارائه می‌دهد.',
+            '4': 'بله، برای دوره‌های تخصصی امکان پرداخت در 2 یا 3 قسط وجود دارد.',
+            '5': 'بله، در صورت عدم رضایت تا پایان جلسه دوم، تمام مبلغ شما بازگردانده می‌شود.',
+            '6': 'دوره رایگان 2 هفته و دوره تخصصی 12 هفته به طول می‌انجامد.',
+            '7': 'بله، پس از اتمام موفقیت‌آمیز دوره، مدرک معتبر بین‌المللی برای شما صادر می‌شود.',
+            '8': 'پشتیبانی شامل گروه‌های خصوصی تلگرامی، جلسات هفتگی آنلاین و پاسخگویی به سوالات است.',
+            '9': 'بله، هفته‌ای دو جلسه تحلیل زنده بازار داریم که هنرجویان می‌توانند مشارکت فعال داشته باشند.',
+            '10': 'بهترین زمان برای شروع یادگیری همین امروز است! بازار همیشه در حال تغییر است و دیر نیست که شروع کنید.'
         };
         
         // نمایش/مخفی کردن چت
@@ -668,7 +654,7 @@
             if (botResponses[message]) {
                 botResponse = botResponses[message];
             } else {
-                botResponse = 'برای دریافت پاسخ دقیق‌تر، لطفاً شماره سوال مورد نظر را وارد کنید (1 تا 10). برای ارتباط با پشتیبانی می‌توانید شماره تماس خود را بگذارید تا با شما تماس بگیریم.';
+                botResponse = 'برای دریافت پاسخ، لطفاً شماره سوال مورد نظر را وارد کنید (1 تا 10). برای ارتباط مستقیم، شماره تماس خود را بگذارید تا با شما تماس بگیریم.';
             }
             
             setTimeout(function() {
@@ -692,18 +678,6 @@
                 sendMessage();
             }
         });
-        
-        // منوی موبایل
-        if (window.innerWidth <= 768) {
-            const menuToggle = document.createElement('button');
-            menuToggle.className = 'menu-toggle';
-            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            document.querySelector('.logo-menu-container').prepend(menuToggle);
-            
-            menuToggle.addEventListener('click', function() {
-                document.getElementById('mainNav').classList.toggle('active');
-            });
-        }
     </script>
 </body>
 </html>
