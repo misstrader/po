@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MWT Concept - آموزش ترید پیشرفته</title>
+    <title>MWT Zodiac - Advanced Trading Education</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -77,7 +77,27 @@
             text-shadow: 0 0 10px var(--neon-blue);
         }
         
+        /* دکمه ترجمه */
+        .translate-btn {
+            background: none;
+            border: none;
+            color: var(--neon-blue);
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .translate-btn:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+        
         /* منوی کشویی */
+        .menu-container {
+            position: relative;
+        }
+        
         .menu-toggle {
             background: none;
             border: none;
@@ -100,44 +120,40 @@
         }
         
         nav {
-            position: absolute;
-            top: 100%;
+            position: fixed;
+            bottom: 0;
             right: 0;
+            left: 0;
             background-color: rgba(0, 0, 0, 0.95);
-            border: 1px solid var(--neon-blue);
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 10px 20px rgba(11, 240, 252, 0.2);
-            width: 250px;
+            border-top: 1px solid var(--neon-blue);
+            box-shadow: 0 -10px 20px rgba(11, 240, 252, 0.2);
+            width: 100%;
             display: none;
             z-index: 1000;
+            transform: translateY(100%);
+            animation: slideUp 0.3s ease forwards;
         }
         
-        nav.active {
-            display: block;
-            animation: slideDown 0.3s ease;
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
+        @keyframes slideUp {
             to {
-                opacity: 1;
                 transform: translateY(0);
             }
         }
         
+        nav.active {
+            display: block;
+        }
+        
         nav ul {
             list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 15px 0;
         }
         
         nav ul li {
-            border-bottom: 1px solid rgba(11, 240, 252, 0.1);
-        }
-        
-        nav ul li:last-child {
-            border-bottom: none;
+            margin: 0 10px;
         }
         
         nav ul li a {
@@ -146,7 +162,8 @@
             font-size: 15px;
             display: flex;
             align-items: center;
-            padding: 12px 15px;
+            padding: 10px 15px;
+            border-radius: 5px;
             transition: all 0.3s ease;
         }
         
@@ -159,7 +176,6 @@
         nav ul li a:hover {
             background-color: rgba(11, 240, 252, 0.1);
             color: var(--neon-blue);
-            padding-right: 20px;
         }
         
         /* بخش پایینی هدر */
@@ -179,16 +195,17 @@
             margin: 0 15px;
         }
         
-        .register-icon {
+        .register-text {
+            display: flex;
+            align-items: center;
             color: var(--neon-blue);
-            font-size: 18px;
+            font-size: 14px;
             cursor: pointer;
-            transition: all 0.3s ease;
         }
         
-        .register-icon:hover {
-            transform: scale(1.2);
-            text-shadow: 0 0 10px var(--neon-blue);
+        .register-text i {
+            margin-right: 5px;
+            font-size: 16px;
         }
         
         /* فرم ثبت نام */
@@ -453,11 +470,20 @@
                 margin-bottom: 15px;
             }
             
-            nav {
-                position: static;
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px 0;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
                 width: 100%;
-                border-radius: 10px;
-                margin-top: 10px;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                justify-content: center;
             }
             
             .header-bottom {
@@ -488,10 +514,16 @@
                 <div class="logo-container">
                     <div class="logo">
                         <!-- اینجا لوگوی شما قرار می‌گیرد -->
-                        <img src="logo.png" alt="MWT Logo">
+                        <img src="logo.png" alt="MWT Zodiac Logo">
                     </div>
-                    <div class="logo-text">MWT Concept</div>
+                    <div class="logo-text">MWT Zodiac</div>
                     
+                    <button class="translate-btn" id="translateBtn" title="Switch to English">
+                        <i class="fas fa-language"></i>
+                    </button>
+                </div>
+                
+                <div class="menu-container">
                     <button class="menu-toggle" id="menuToggle">
                         منو
                         <i class="fas fa-bars"></i>
@@ -511,9 +543,12 @@
             
             <div class="header-bottom">
                 <div class="founder-text">
-                    Founder of MWT Concept
+                    Founder of MWT Zodiac Concept
                 </div>
-                <i class="fas fa-user-plus register-icon" id="registerIcon"></i>
+                <div class="register-text" id="registerText">
+                    <i class="fas fa-user-plus"></i>
+                    ثبت نام
+                </div>
             </div>
         </div>
     </header>
@@ -585,11 +620,11 @@
     <div class="chat-container">
         <div class="chat-box" id="chatBox">
             <div class="chat-header">
-                پشتیبانی آنلاین MWT
+                پشتیبانی آنلاین MWT Zodiac
             </div>
             <div class="chat-body" id="chatBody">
                 <div class="chat-message bot-message">
-                    سلام! به چت پشتیبانی MWT خوش آمدید. چگونه می‌توانم به شما کمک کنم؟
+                    سلام! به چت پشتیبانی MWT Zodiac خوش آمدید. چگونه می‌توانم به شما کمک کنم؟
                 </div>
                 <div class="chat-message bot-message">
                     لطفاً سوال خود را انتخاب کنید:
@@ -625,16 +660,194 @@
         </div>
     </div>
 
+    <!-- نسخه انگلیسی (مخفی) -->
+    <div id="englishVersion" style="display: none;">
+        <header>
+            <div class="container">
+                <div class="header-top">
+                    <div class="logo-container">
+                        <div class="logo">
+                            <img src="logo.png" alt="MWT Zodiac Logo">
+                        </div>
+                        <div class="logo-text">MWT Zodiac</div>
+                        
+                        <button class="translate-btn" id="translateBackBtn" title="Switch to Persian">
+                            <i class="fas fa-language"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="menu-container">
+                        <button class="menu-toggle" id="menuToggleEn">
+                            Menu
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        
+                        <nav id="mainNavEn">
+                            <ul>
+                                <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
+                                <li><a href="#about"><i class="fas fa-info-circle"></i> About Us</a></li>
+                                <li><a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                                <li><a href="#testimonials"><i class="fas fa-comment-alt"></i> Testimonials</a></li>
+                                <li><a href="#contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                
+                <div class="header-bottom">
+                    <div class="founder-text">
+                        Founder of MWT Zodiac Concept
+                    </div>
+                    <div class="register-text" id="registerTextEn">
+                        <i class="fas fa-user-plus"></i>
+                        Register
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <main class="main-content">
+            <div class="container">
+                <div class="registration-form" id="registrationFormEn">
+                    <h2 class="form-title">Course Registration Form</h2>
+                    <form id="regFormEn">
+                        <div class="form-group">
+                            <label for="fullnameEn">Full Name:</label>
+                            <input type="text" id="fullnameEn" name="fullname" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phoneEn">Phone Number:</label>
+                            <input type="tel" id="phoneEn" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="levelEn">Current Forex Knowledge Level:</label>
+                            <select id="levelEn" name="level" required>
+                                <option value="">-- Select --</option>
+                                <option value="beginner">Beginner</option>
+                                <option value="familiar">Familiar</option>
+                                <option value="semi-pro">Semi-Professional</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="courseEn">Course:</label>
+                            <select id="courseEn" name="course" required>
+                                <option value="">-- Select --</option>
+                                <option value="free">Free Course</option>
+                                <option value="pro">Professional Course</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="questionEn">Your Question (Optional):</label>
+                            <textarea id="questionEn" name="question" rows="4"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Register</button>
+                        
+                        <div id="successMessageEn" class="success-message">
+                            Registration successful! Our team will contact you within 24 hours.
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="motivational-text">
+                    <h2>In the Volatile World of Financial Markets</h2>
+                    <p>
+                        Success belongs only to those who dare to take the first step, persevere, and constantly pursue learning and growth. Trading is the art of analysis and decision-making in critical moments that can transform your life.
+                    </p>
+                    <p>
+                        Alongside technical and fundamental analysis, we utilize the power of financial astrology - a knowledge that by examining planetary positions and their effects on collective market emotions, provides us with deeper insight and more precise timing for entry and exit.
+                    </p>
+                    <p>
+                        Today is the time to put aside your fears and move toward a brighter future. With us, experience scalping and trend trading education along with a cosmic perspective.
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <!-- چت آنلاین انگلیسی -->
+        <div class="chat-container">
+            <div class="chat-box" id="chatBoxEn">
+                <div class="chat-header">
+                    MWT Zodiac Support
+                </div>
+                <div class="chat-body" id="chatBodyEn">
+                    <div class="chat-message bot-message">
+                        Hello! Welcome to MWT Zodiac support. How can I help you?
+                    </div>
+                    <div class="chat-message bot-message">
+                        Please select your question:
+                        <br><br>
+                        1. How are your courses different?
+                        <br>
+                        2. Do you teach beginners?
+                        <br>
+                        3. What's your analysis method?
+                        <br>
+                        4. Is installment payment available?
+                        <br>
+                        5. Do you offer money-back guarantee?
+                        <br>
+                        6. How long are the courses?
+                        <br>
+                        7. Do you provide certificates?
+                        <br>
+                        8. What's the post-course support?
+                        <br>
+                        9. Do you have live analysis sessions?
+                        <br>
+                        10. When is the best time to start learning?
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="userInputEn" placeholder="Type your message...">
+                    <button id="sendBtnEn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+            <div class="chat-btn" id="chatBtnEn">
+                <i class="fas fa-comment-dots"></i>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // منوی کشویی
+        // ترجمه به انگلیسی
+        document.getElementById('translateBtn').addEventListener('click', function() {
+            document.body.style.display = 'none';
+            document.getElementById('englishVersion').style.display = 'block';
+            document.documentElement.lang = 'en';
+            document.documentElement.dir = 'ltr';
+            document.title = 'MWT Zodiac - Advanced Trading Education';
+        });
+        
+        // ترجمه به فارسی
+        document.getElementById('translateBackBtn').addEventListener('click', function() {
+            document.getElementById('englishVersion').style.display = 'none';
+            document.body.style.display = 'block';
+            document.documentElement.lang = 'fa';
+            document.documentElement.dir = 'rtl';
+            document.title = 'MWT Zodiac - آموزش ترید پیشرفته';
+        });
+        
+        // منوی کشویی فارسی
         document.getElementById('menuToggle').addEventListener('click', function(e) {
             e.stopPropagation();
             document.getElementById('mainNav').classList.toggle('active');
         });
         
+        // منوی کشویی انگلیسی
+        document.getElementById('menuToggleEn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('mainNavEn').classList.toggle('active');
+        });
+        
         // کلیک خارج از منو برای بستن آن
         document.addEventListener('click', function() {
             document.getElementById('mainNav').classList.remove('active');
+            document.getElementById('mainNavEn').classList.remove('active');
         });
         
         // جلوگیری از بسته شدن منو هنگام کلیک روی آن
@@ -642,10 +855,29 @@
             e.stopPropagation();
         });
         
-        // نمایش فرم با کلیک روی آیکن ثبت نام
-        document.getElementById('registerIcon').addEventListener('click', function(e) {
+        document.getElementById('mainNavEn').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        
+        // نمایش فرم با کلیک روی متن ثبت نام فارسی
+        document.getElementById('registerText').addEventListener('click', function(e) {
             e.stopPropagation();
             const form = document.getElementById('registrationForm');
+            if (form.style.display === 'block') {
+                form.style.display = 'none';
+            } else {
+                form.style.display = 'block';
+                window.scrollTo({
+                    top: form.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+        
+        // نمایش فرم با کلیک روی متن ثبت نام انگلیسی
+        document.getElementById('registerTextEn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const form = document.getElementById('registrationFormEn');
             if (form.style.display === 'block') {
                 form.style.display = 'none';
             } else {
@@ -660,25 +892,32 @@
         // بستن فرم با کلیک خارج از آن
         document.addEventListener('click', function(e) {
             const form = document.getElementById('registrationForm');
-            const registerIcon = document.getElementById('registerIcon');
+            const registerText = document.getElementById('registerText');
             
             if (form.style.display === 'block' && 
                 !form.contains(e.target) && 
-                !registerIcon.contains(e.target)) {
+                !registerText.contains(e.target)) {
                 form.style.display = 'none';
+            }
+            
+            const formEn = document.getElementById('registrationFormEn');
+            const registerTextEn = document.getElementById('registerTextEn');
+            
+            if (formEn.style.display === 'block' && 
+                !formEn.contains(e.target) && 
+                !registerTextEn.contains(e.target)) {
+                formEn.style.display = 'none';
             }
         });
         
-        // ارسال فرم ثبت نام
+        // ارسال فرم فارسی
         document.getElementById('regForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // شبیه‌سازی ارسال فرم
             setTimeout(function() {
                 document.getElementById('successMessage').style.display = 'block';
                 document.getElementById('regForm').reset();
                 
-                // پنهان کردن پیام پس از 5 ثانیه
                 setTimeout(function() {
                     document.getElementById('successMessage').style.display = 'none';
                     document.getElementById('registrationForm').style.display = 'none';
@@ -686,14 +925,36 @@
             }, 1000);
         });
         
-        // چت آنلاین
+        // ارسال فرم انگلیسی
+        document.getElementById('regFormEn').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            setTimeout(function() {
+                document.getElementById('successMessageEn').style.display = 'block';
+                document.getElementById('regFormEn').reset();
+                
+                setTimeout(function() {
+                    document.getElementById('successMessageEn').style.display = 'none';
+                    document.getElementById('registrationFormEn').style.display = 'none';
+                }, 5000);
+            }, 1000);
+        });
+        
+        // چت فارسی
         const chatBtn = document.getElementById('chatBtn');
         const chatBox = document.getElementById('chatBox');
         const chatBody = document.getElementById('chatBody');
         const userInput = document.getElementById('userInput');
         const sendBtn = document.getElementById('sendBtn');
         
-        // پاسخ‌های از پیش تعیین شده
+        // چت انگلیسی
+        const chatBtnEn = document.getElementById('chatBtnEn');
+        const chatBoxEn = document.getElementById('chatBoxEn');
+        const chatBodyEn = document.getElementById('chatBodyEn');
+        const userInputEn = document.getElementById('userInputEn');
+        const sendBtnEn = document.getElementById('sendBtnEn');
+        
+        // پاسخ‌های فارسی
         const botResponses = {
             '1': 'دوره‌های ما ترکیبی منحصر به فرد از تحلیل تکنیکال، فاندامنتال و استرولوژی مالی ارائه می‌دهد که شما را از دیگر تریدرها متمایز می‌کند.',
             '2': 'بله، دوره‌های ما از سطح مبتدی تا پیشرفته طراحی شده‌اند و برای همه سطوح مناسب هستند.',
@@ -707,15 +968,36 @@
             '10': 'بهترین زمان برای شروع یادگیری همین امروز است! بازار همیشه در حال تغییر است و دیر نیست که شروع کنید.'
         };
         
-        // نمایش/مخفی کردن چت
+        // پاسخ‌های انگلیسی
+        const botResponsesEn = {
+            '1': 'Our courses offer a unique combination of technical, fundamental and financial astrology analysis that sets you apart from other traders.',
+            '2': 'Yes, our courses are designed for all levels from beginner to advanced.',
+            '3': 'Our analysis is based on three pillars: technical, fundamental and financial astrology that provide a comprehensive market view.',
+            '4': 'Yes, we offer installment payments (2-3 payments) for professional courses.',
+            '5': 'Yes, we offer full refund if you\'re not satisfied by the end of the second session.',
+            '6': 'Free course lasts 2 weeks and professional course takes 12 weeks.',
+            '7': 'Yes, you\'ll receive an international certificate upon successful completion.',
+            '8': 'Support includes private Telegram groups, weekly online sessions and Q&A.',
+            '9': 'Yes, we have two live market analysis sessions weekly with student participation.',
+            '10': 'The best time to start learning is today! The market is always changing and it\'s never too late to start.'
+        };
+        
+        // نمایش/مخفی کردن چت فارسی
         chatBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
         });
         
+        // نمایش/مخفی کردن چت انگلیسی
+        chatBtnEn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            chatBoxEn.style.display = chatBoxEn.style.display === 'block' ? 'none' : 'block';
+        });
+        
         // بستن چت با کلیک خارج از آن
         document.addEventListener('click', function() {
             chatBox.style.display = 'none';
+            chatBoxEn.style.display = 'none';
         });
         
         // جلوگیری از بسته شدن چت هنگام کلیک روی آن
@@ -723,18 +1005,20 @@
             e.stopPropagation();
         });
         
-        // ارسال پیام
+        chatBoxEn.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        
+        // ارسال پیام فارسی
         function sendMessage() {
             const message = userInput.value.trim();
             if (message === '') return;
             
-            // نمایش پیام کاربر
             const userMessage = document.createElement('div');
             userMessage.className = 'chat-message user-message';
             userMessage.textContent = message;
             chatBody.appendChild(userMessage);
             
-            // پاسخ ربات
             let botResponse;
             if (botResponses[message]) {
                 botResponse = botResponses[message];
@@ -754,19 +1038,63 @@
             chatBody.scrollTop = chatBody.scrollHeight;
         }
         
-        // ارسال با کلیک دکمه
+        // ارسال پیام انگلیسی
+        function sendMessageEn() {
+            const message = userInputEn.value.trim();
+            if (message === '') return;
+            
+            const userMessage = document.createElement('div');
+            userMessage.className = 'chat-message user-message';
+            userMessage.textContent = message;
+            chatBodyEn.appendChild(userMessage);
+            
+            let botResponse;
+            if (botResponsesEn[message]) {
+                botResponse = botResponsesEn[message];
+            } else {
+                botResponse = 'Please enter the question number (1-10) for quick answer. For direct contact, leave your phone number and we\'ll call you.';
+            }
+            
+            setTimeout(function() {
+                const botMessage = document.createElement('div');
+                botMessage.className = 'chat-message bot-message';
+                botMessage.textContent = botResponse;
+                chatBodyEn.appendChild(botMessage);
+                chatBodyEn.scrollTop = chatBodyEn.scrollHeight;
+            }, 500);
+            
+            userInputEn.value = '';
+            chatBodyEn.scrollTop = chatBodyEn.scrollHeight;
+        }
+        
+        // ارسال با کلیک دکمه فارسی
         sendBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             sendMessage();
         });
         
-        // ارسال با اینتر
+        // ارسال با کلیک دکمه انگلیسی
+        sendBtnEn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            sendMessageEn();
+        });
+        
+        // ارسال با اینتر فارسی
         userInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 e.stopPropagation();
                 sendMessage();
             }
         });
+        
+        // ارسال با اینتر انگلیسی
+        userInputEn.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.stopPropagation();
+                sendMessageEn();
+            }
+        });
     </script>
 </body>
 </html>
+           
