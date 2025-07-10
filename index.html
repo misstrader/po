@@ -90,6 +90,18 @@
             border-bottom: 1px solid #00f7ff;
         }
 
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #00f7ff;
+            font-size: 0.9rem;
+        }
+
+        .user-info i {
+            font-size: 1.2rem;
+        }
+
         .menu-btn {
             display: flex;
             flex-direction: column;
@@ -531,6 +543,19 @@
             box-shadow: 0 0 20px rgba(0, 247, 255, 0.7);
         }
 
+        /* فوتر */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 10, 20, 0.8);
+            border-top: 1px solid #00f7ff;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+
         /* رسپانسیو */
         @media (max-width: 768px) {
             body {
@@ -624,6 +649,10 @@
             .chat-box {
                 height: 300px;
             }
+            
+            .user-info {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -634,6 +663,11 @@
             <span></span>
             <span></span>
             <span></span>
+        </div>
+        
+        <div id="userInfoContainer" class="user-info" style="display: none;">
+            <i class="fas fa-user"></i>
+            <span id="userNameDisplay"></span>
         </div>
         
         <div class="right-controls">
@@ -651,10 +685,8 @@
     <!-- صفحه اول با لوگو و متن انگیزشی -->
     <section class="hero-section" id="heroSection">
         <div class="logo-container">
-            <img src="photo-output.jpeg " alt="آموزش فارکس - مهناز خورسند" class="logo">
-            <div class="logo-text">Empowering your trade journey</div>
-            <div class="logo-subtext">توانمندسازی سفر معاملاتی شما</div>
-            <div class="logo-subtext">founder of MWT concept</div>
+            <img src="logo.png" alt="آموزش فارکس - مهناز خورسند" class="logo">
+            <div class="logo-text">توانمندسازی سفر معاملاتی شما</div>
             <div class="logo-subtext">بنیانگذار مفهوم MWT</div>
         </div>
         <div class="motivation-box">
@@ -892,6 +924,11 @@
         <i class="fas fa-comment-dots"></i>
     </div>
 
+    <!-- فوتر -->
+    <footer class="footer">
+        تمام حقوق این سایت متعلق به مهناز خورسند می‌باشد و هرگونه کپی‌برداری پیگرد قانونی دارد.
+    </footer>
+
     <script>
         // مدیریت منو
         const menuBtn = document.getElementById('menuBtn');
@@ -1003,7 +1040,8 @@
                             'text': 'یوتیوب: MWT Zodiac'
                         }
                     ]
-                }
+                },
+                'footerText': 'تمام حقوق این سایت متعلق به مهناز خورسند می‌باشد و هرگونه کپی‌برداری پیگرد قانونی دارد.'
             },
             'en': {
                 'registerBtn': 'Register/Login',
@@ -1091,7 +1129,8 @@
                             'text': 'YouTube: MWT Zodiac'
                         }
                     ]
-                }
+                },
+                'footerText': 'All rights reserved to Mahnaz Khorsand. Any unauthorized copying is prohibited.'
             }
         };
         
@@ -1186,10 +1225,8 @@
             document.querySelector('.motivation-text').textContent = translations[lang]['motivationText'];
             
             // ترجمه متن لوگو
-            document.querySelector('.logo-text').textContent = 'Empowering your trade journey';
-            document.querySelectorAll('.logo-subtext')[0].textContent = translations[lang]['logoSubtext1'];
-            document.querySelectorAll('.logo-subtext')[1].textContent = 'founder of MWT concept';
-            document.querySelectorAll('.logo-subtext')[2].textContent = translations[lang]['logoSubtext3'];
+            document.querySelector('.logo-text').textContent = lang === 'fa' ? 'توانمندسازی سفر معاملاتی شما' : 'Empowering your trade journey';
+            document.querySelectorAll('.logo-subtext')[0].textContent = lang === 'fa' ? 'بنیانگذار مفهوم MWT' : 'founder of MWT concept';
             
             // ترجمه متن درباره ما
             document.querySelector('.about-content').innerHTML = translations[lang]['aboutText'].split('\n').map(paragraph => `<p>${paragraph}</p>`).join('');
@@ -1243,6 +1280,9 @@
                     `).join('')}
                 </div>
             `;
+            
+            // ترجمه فوتر
+            document.querySelector('.footer').textContent = translations[lang]['footerText'];
         }
 
         // مدیریت فرم‌های ثبت نام و ورود
@@ -1257,9 +1297,18 @@
         const loginForm = document.getElementById('loginForm');
         const registerSuccess = document.getElementById('register-success');
         const loginSuccess = document.getElementById('login-success');
+        const userInfoContainer = document.getElementById('userInfoContainer');
+        const userNameDisplay = document.getElementById('userNameDisplay');
+        const registerBtnElement = document.getElementById('registerBtn');
         
         // آرایه برای ذخیره کاربران
         let users = JSON.parse(localStorage.getItem('users')) || [];
+        let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+        
+        // بررسی کاربر لاگین کرده
+        if (currentUser) {
+            showUserInfo(currentUser.name);
+        }
         
         registerBtn.addEventListener('click', function() {
             registerFormContainer.classList.add('active');
@@ -1304,16 +1353,22 @@
             }
             
             // اضافه کردن کاربر جدید
-            users.push({
+            const newUser = {
                 name: name,
                 phone: phone,
                 email: email,
                 password: password,
                 registeredAt: new Date().toLocaleString()
-            });
+            };
+            
+            users.push(newUser);
             
             // ذخیره در localStorage
             localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem('currentUser', JSON.stringify(newUser));
+            
+            // نمایش اطلاعات کاربر
+            showUserInfo(name);
             
             // نمایش پیام موفقیت
             registrationForm.style.display = 'none';
@@ -1337,6 +1392,13 @@
             const user = users.find(user => user.email === email && user.password === password);
             
             if (user) {
+                // ذخیره کاربر فعلی
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                currentUser = user;
+                
+                // نمایش اطلاعات کاربر
+                showUserInfo(user.name);
+                
                 // نمایش پیام موفقیت
                 loginForm.style.display = 'none';
                 loginSuccess.style.display = 'block';
@@ -1351,6 +1413,12 @@
                 alert('ایمیل یا رمز عبور اشتباه است.');
             }
         });
+
+        function showUserInfo(name) {
+            userInfoContainer.style.display = 'flex';
+            userNameDisplay.textContent = name;
+            registerBtnElement.style.display = 'none';
+        }
 
         // مدیریت نظرات دانشجویان
         function submitTestimonialHandler() {
@@ -1372,7 +1440,7 @@
                 location: location,
                 text: text,
                 date: new Date().toLocaleString(),
-                approved: false // در ابتدا نظر تایید نشده است
+                approved: true // در حالت واقعی باید توسط ادمین تایید شود
             });
             
             // ذخیره در localStorage
@@ -1386,6 +1454,9 @@
             document.getElementById('testimonial-name').value = '';
             document.getElementById('testimonial-location').value = '';
             document.getElementById('testimonial-text').value = '';
+            
+            // بارگذاری مجدد نظرات
+            loadTestimonials();
             
             // مخفی کردن پیام موفقیت بعد از 3 ثانیه
             setTimeout(() => {
@@ -1511,6 +1582,9 @@
             
             // اضافه کردن رویداد برای دکمه ارسال نظر
             document.getElementById('submit-testimonial').addEventListener('click', submitTestimonialHandler);
+            
+            // بارگذاری نظرات
+            loadTestimonials();
         });
     </script>
 </body>
