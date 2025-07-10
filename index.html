@@ -41,12 +41,28 @@
 
         .logo-container {
             margin: 30px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .logo {
             max-width: 250px;
             width: 100%;
             filter: drop-shadow(0 0 10px rgba(0, 247, 255, 0.7));
+        }
+
+        .logo-text {
+            margin: 15px 0;
+            color: #00f7ff;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+        }
+
+        .logo-subtext {
+            color: #b8f8ff;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
         }
 
         .motivation-box {
@@ -179,6 +195,18 @@
             border-radius: 5px;
         }
 
+        .menu-icon-box {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #00f7ff;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+            box-shadow: 0 0 5px rgba(0, 247, 255, 0.3);
+        }
+
         .menu-box a:hover {
             color: #00f7ff;
             background: rgba(0, 132, 255, 0.2);
@@ -213,7 +241,8 @@
         }
 
         .faq-item, 
-        .testimonial {
+        .testimonial,
+        .add-testimonial {
             background: rgba(0, 20, 40, 0.5);
             padding: 15px;
             border-radius: 5px;
@@ -223,7 +252,8 @@
         }
 
         .faq-item h3, 
-        .testimonial h3 {
+        .testimonial h3,
+        .add-testimonial h3 {
             color: #00f7ff;
             margin-bottom: 10px;
             display: flex;
@@ -410,23 +440,7 @@
             color: #aaa;
         }
 
-        .optional-question {
-            position: relative;
-            margin-bottom: 15px;
-        }
-
-        .optional-question i {
-            position: absolute;
-            left: 10px;
-            top: 12px;
-            color: #00f7ff;
-        }
-
-        .optional-question input {
-            padding-left: 35px !important;
-        }
-
-        .register-form button {
+        .submit-btn {
             width: 100%;
             padding: 12px;
             background: linear-gradient(90deg, #0084ff 0%, #00f7ff 100%);
@@ -441,6 +455,23 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 30, 60, 0.7);
+            border: 1px solid #00f7ff;
+            border-radius: 5px;
+            color: #00f7ff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(0, 247, 255, 0.2);
         }
 
         .register-form button:hover {
@@ -460,6 +491,36 @@
             text-align: center;
             display: none;
             color: #b8f8ff;
+        }
+
+        /* فرم نظر سنجی */
+        .add-testimonial textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background: rgba(0, 30, 60, 0.7);
+            border: 1px solid #00f7ff;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1rem;
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .add-testimonial button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #0084ff 0%, #00f7ff 100%);
+            border: none;
+            border-radius: 5px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
         }
 
         /* رسپانسیو */
@@ -582,7 +643,11 @@
     <!-- صفحه اول با لوگو و متن انگیزشی -->
     <section class="hero-section" id="heroSection">
         <div class="logo-container">
-            <img src=" photo-output.jpeg" alt="آموزش فارکس - مهناز خورسند" class="logo">
+            <img src="logo.png" alt="آموزش فارکس - مهناز خورسند" class="logo">
+            <div class="logo-text">Empowering your trade journey</div>
+            <div class="logo-subtext">توانمندسازی سفر معاملاتی شما</div>
+            <div class="logo-subtext">founder of MWT concept</div>
+            <div class="logo-subtext">بنیانگذار مفهوم MWT</div>
         </div>
         <div class="motivation-box">
             <p class="motivation-text">
@@ -602,37 +667,49 @@
         <ul>
             <li>
                 <a href="#" id="home-link">
-                    <i class="fas fa-home menu-icon"></i>
+                    <div class="menu-icon-box">
+                        <i class="fas fa-home menu-icon"></i>
+                    </div>
                     صفحه اصلی
                 </a>
             </li>
             <li>
                 <a href="services.html" target="_blank" id="services-link">
-                    <i class="fas fa-graduation-cap menu-icon"></i>
+                    <div class="menu-icon-box">
+                        <i class="fas fa-graduation-cap menu-icon"></i>
+                    </div>
                     خدمات آموزشی
                 </a>
             </li>
             <li>
                 <a href="#" id="about-link">
-                    <i class="fas fa-user-tie menu-icon"></i>
+                    <div class="menu-icon-box">
+                        <i class="fas fa-user-tie menu-icon"></i>
+                    </div>
                     درباره ما
                 </a>
             </li>
             <li>
                 <a href="#" id="faq-link">
-                    <i class="fas fa-question-circle menu-icon"></i>
+                    <div class="menu-icon-box">
+                        <i class="fas fa-question-circle menu-icon"></i>
+                    </div>
                     سوالات متداول
                 </a>
             </li>
             <li>
                 <a href="#" id="testimonials-link">
-                    <i class="fas fa-comment-dots menu-icon"></i>
+                    <div class="menu-icon-box">
+                        <i class="fas fa-comment-dots menu-icon"></i>
+                    </div>
                     نظرات هنرجویان
                 </a>
             </li>
             <li>
                 <a href="#" id="contact-link">
-                    <i class="fas fa-phone-alt menu-icon"></i>
+                    <div class="menu-icon-box">
+                        <i class="fas fa-phone-alt menu-icon"></i>
+                    </div>
                     تماس با ما
                 </a>
             </li>
@@ -645,11 +722,14 @@
         <section id="about-section" class="content-section">
             <h2><i class="fas fa-user-tie"></i> درباره من</h2>
             <div class="about-content">
+                <p>سلام!</p>
                 <p>من مهناز خورسند هستم، متولد ۱۳۶۷، دارای مدرک فوق‌لیسانس مهندسی تکنولوژی معماری و با سابقه‌ای چندساله در مسیر پرچالش اما جذاب بازارهای مالی.</p>
                 <p>از سال ۱۳۹۸ با دنیای ترید آشنا شدم. مثل خیلی‌ها، مسیرم پر از سردرگمی، ضرر، تلاش و یادگیری بود. اما هیچ‌وقت متوقف نشدم. حالا، بعد از سال‌ها تجربه، آزمون و خطا، و یادگیری مداوم، خوشحالم که می‌تونم بگم بیش از سه ساله به سود مستمر در بازار فارکس رسیدم.</p>
                 <p>اینجا رو راه‌اندازی کردم تا آموزش‌هایی ارائه بدم که صرفاً تئوری نباشن، بلکه بر پایه تجربه واقعی و قابل استفاده در معاملات واقعی باشن. آموزش‌هایی ساده، کاربردی و بدون وابستگی به اندیکاتورها و روش‌های پیچیده؛ چون معتقدم ساده‌سازی مسیر، کلید موفقیته.</p>
                 <p>هدف من اینه که شما رو تبدیل کنم به یه تریدر مستقل، کسی که بازار رو می‌فهمه و بر اساس تحلیل خودش تصمیم می‌گیره — نه بر اساس سیگنال دیگران.</p>
+                <p>در کنار من، همکارم که در زمینه‌ی استرولوژی مالی (Financial Astrology) تخصص دارد، به مجموعه تحلیلی ما زاویه‌ای متفاوت و جذاب اضافه کرده است. ترکیب تحلیل تکنیکال با چرخه‌های زمانی و دیدگاه‌های کل‌نگر در بسیاری از مواقع توانسته درک دقیق‌تری از روندهای بزرگ بازار به هنرجویان ما بدهد.</p>
                 <p>اگر دنبال آموزش واقعی، مسیر درست و رشد مستمر در دنیای فارکس هستی، اینجا درست اومدی.</p>
+                <p>خوش اومدی به جایی که قراره تفاوت رو تجربه کنی.</p>
             </div>
         </section>
 
@@ -696,6 +776,15 @@
                     <h3>سحر.م – مشهد</h3>
                     <p>«تجربه من از یادگیری با این دوره‌ها عالی بود. سادگی بیان، تسلط مدرس و آموزش قدم‌به‌قدم باعث شد بالاخره به سود مستمر برسم.»</p>
                 </div>
+                
+                <div class="add-testimonial">
+                    <h3>نظر شما</h3>
+                    <textarea placeholder="نظر خود را درباره دوره‌ها بنویسید..."></textarea>
+                    <button type="button">
+                        <i class="fas fa-paper-plane"></i>
+                        ارسال نظر
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -705,9 +794,10 @@
             <div class="contact-content">
                 <p>در صورت تمایل به مشاوره، ثبت‌نام در دوره‌ها، یا دریافت راهنمایی بیشتر، می‌توانید از طریق راه‌های ارتباطی زیر با ما در تماس باشید:</p>
                 <div class="contact-methods">
-                    <p><i class="fas fa-envelope"></i> ایمیل: info@example.com</p>
-                    <p><i class="fas fa-phone"></i> واتساپ / تلگرام: ۰۹۱۲XXX۱۲۳۴</p>
-                    <p><i class="fab fa-instagram"></i> اینستاگرام: @forex_with_mahnaz</p>
+                    <p><i class="fas fa-envelope"></i> ایمیل: mahnaz.khorsaand@gmail.com</p>
+                    <p><i class="fab fa-telegram"></i> تلگرام: @khorsand_m2</p>
+                    <p><i class="fab fa-instagram"></i> اینستاگرام: @mwtzodiac</p>
+                    <p><i class="fab fa-youtube"></i> یوتیوب: MWT Zodiac</p>
                 </div>
             </div>
         </section>
@@ -717,32 +807,21 @@
     <div class="register-form-container" id="registerFormContainer">
         <i class="fas fa-times close-form" id="closeForm"></i>
         <div class="register-form">
-            <h3>فرم ثبت نام در دوره‌ها</h3>
+            <h3>فرم ثبت نام</h3>
             <form id="registrationForm">
                 <input type="text" placeholder="نام و نام خانوادگی" required>
                 <input type="tel" placeholder="شماره تماس" required>
+                <input type="email" placeholder="ایمیل" required>
+                <input type="password" placeholder="رمز عبور" required>
                 
-                <select required>
-                    <option value="">سطح آشنایی با فارکس</option>
-                    <option value="beginner">مبتدی</option>
-                    <option value="intermediate">آشنا</option>
-                    <option value="semi-pro">نیمه حرفه‌ای</option>
-                </select>
-                
-                <select required>
-                    <option value="">دوره مورد نظر</option>
-                    <option value="free">دوره رایگان</option>
-                    <option value="pro">دوره تخصصی</option>
-                </select>
-                
-                <div class="optional-question">
-                    <i class="fas fa-question-circle"></i>
-                    <input type="text" placeholder="سوال شما (اختیاری)">
-                </div>
-                
-                <button type="submit">
+                <button type="submit" class="submit-btn">
                     <i class="fas fa-paper-plane"></i>
-                    ارسال اطلاعات
+                    ارسال
+                </button>
+                
+                <button type="button" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    ورود
                 </button>
             </form>
             <div id="successMessage">
@@ -799,18 +878,13 @@
         const translations = {
             'fa': {
                 'registerBtn': 'ثبت نام',
-                'registerTitle': 'فرم ثبت نام در دوره‌ها',
+                'registerTitle': 'فرم ثبت نام',
                 'namePlaceholder': 'نام و نام خانوادگی',
                 'phonePlaceholder': 'شماره تماس',
-                'levelLabel': 'سطح آشنایی با فارکس',
-                'beginner': 'مبتدی',
-                'intermediate': 'آشنا',
-                'semi-pro': 'نیمه حرفه‌ای',
-                'courseLabel': 'دوره مورد نظر',
-                'freeCourse': 'دوره رایگان',
-                'proCourse': 'دوره تخصصی',
-                'questionPlaceholder': 'سوال شما (اختیاری)',
-                'submitBtn': 'ارسال اطلاعات',
+                'emailPlaceholder': 'ایمیل',
+                'passwordPlaceholder': 'رمز عبور',
+                'submitBtn': 'ارسال',
+                'loginBtn': 'ورود',
                 'successMessage': 'ثبت نام شما با موفقیت انجام شد. همکاران ما تا ۲۴ ساعت آینده با شما تماس خواهند گرفت.',
                 'home': 'صفحه اصلی',
                 'services': 'خدمات آموزشی',
@@ -822,7 +896,11 @@
                 'faqQuestions': 'چطور می‌توانم کمک‌تان کنم؟',
                 'messagePlaceholder': 'پیام شما...',
                 'motivationText': 'در دنیای پر از نوسان و فرصت‌های بی‌پایان بازارهای مالی، موفقیت تنها از آن کسانی است که جرئت می‌کنند قدم اول را بردارند، پشتکار دارند و همواره در مسیر یادگیری و رشد هستند. ترید کردن، هنر تحلیل و تصمیم‌گیری در لحظه‌های حساس است که می‌تواند زندگی شما را متحول کند.\n\nما در کنار تحلیل تکنیکال و فاندامنتال، از قدرت استرولوژی مالی نیز بهره می‌بریم؛ دانشی که با بررسی موقعیت سیارات و تأثیرات آن‌ها بر احساسات جمعی بازار، به ما دیدگاهی عمیق‌تر و زمان‌بندی دقیق‌تری برای ورود و خروج می‌دهد. این ترکیب هوشمندانه از علم و هنر، می‌تواند شما را چند قدم جلوتر از بازار نگه دارد.\n\nامروز زمان آن است که ترس‌ها را کنار بگذارید و به سمت آینده‌ای روشن‌تر حرکت کنید.\nبا ما، آموزش ترید اسکلپی و روندی را به‌همراه نگاهی متفاوت از جنس کیهان تجربه می‌کنید.',
-                'aboutText': 'من مهناز خورسند هستم، متولد ۱۳۶۷، دارای مدرک فوق‌لیسانس مهندسی تکنولوژی معماری و با سابقه‌ای چندساله در مسیر پرچالش اما جذاب بازارهای مالی.\n\nاز سال ۱۳۹۸ با دنیای ترید آشنا شدم. مثل خیلی‌ها، مسیرم پر از سردرگمی، ضرر، تلاش و یادگیری بود. اما هیچ‌وقت متوقف نشدم. حالا، بعد از سال‌ها تجربه، آزمون و خطا، و یادگیری مداوم، خوشحالم که می‌تونم بگم بیش از سه ساله به سود مستمر در بازار فارکس رسیدم.\n\nاینجا رو راه‌اندازی کردم تا آموزش‌هایی ارائه بدم که صرفاً تئوری نباشن، بلکه بر پایه تجربه واقعی و قابل استفاده در معاملات واقعی باشن. آموزش‌هایی ساده، کاربردی و بدون وابستگی به اندیکاتورها و روش‌های پیچیده؛ چون معتقدم ساده‌سازی مسیر، کلید موفقیته.\n\nهدف من اینه که شما رو تبدیل کنم به یه تریدر مستقل، کسی که بازار رو می‌فهمه و بر اساس تحلیل خودش تصمیم می‌گیره — نه بر اساس سیگنال دیگران.\n\nاگر دنبال آموزش واقعی، مسیر درست و رشد مستمر در دنیای فارکس هستی، اینجا درست اومدی.',
+                'logoText': 'Empowering your trade journey',
+                'logoSubtext1': 'توانمندسازی سفر معاملاتی شما',
+                'logoSubtext2': 'founder of MWT concept',
+                'logoSubtext3': 'بنیانگذار مفهوم MWT',
+                'aboutText': 'سلام!\nمن مهناز خورسند هستم، متولد ۱۳۶۷، دارای مدرک فوق‌لیسانس مهندسی تکنولوژی معماری و با سابقه‌ای چندساله در مسیر پرچالش اما جذاب بازارهای مالی.\n\nاز سال ۱۳۹۸ با دنیای ترید آشنا شدم. مثل خیلی‌ها، مسیرم پر از سردرگمی، ضرر، تلاش و یادگیری بود. اما هیچ‌وقت متوقف نشدم. حالا، بعد از سال‌ها تجربه، آزمون و خطا، و یادگیری مداوم، خوشحالم که می‌تونم بگم بیش از سه ساله به سود مستمر در بازار فارکس رسیدم.\n\nاینجا رو راه‌اندازی کردم تا آموزش‌هایی ارائه بدم که صرفاً تئوری نباشن، بلکه بر پایه تجربه واقعی و قابل استفاده در معاملات واقعی باشن. آموزش‌هایی ساده، کاربردی و بدون وابستگی به اندیکاتورها و روش‌های پیچیده؛ چون معتقدم ساده‌سازی مسیر، کلید موفقیته.\n\nهدف من اینه که شما رو تبدیل کنم به یه تریدر مستقل، کسی که بازار رو می‌فهمه و بر اساس تحلیل خودش تصمیم می‌گیره — نه بر اساس سیگنال دیگران.\n\nدر کنار من، همکارم که در زمینه‌ی استرولوژی مالی (Financial Astrology) تخصص دارد، به مجموعه تحلیلی ما زاویه‌ای متفاوت و جذاب اضافه کرده است. ترکیب تحلیل تکنیکال با چرخه‌های زمانی و دیدگاه‌های کل‌نگر در بسیاری از مواقع توانسته درک دقیق‌تری از روندهای بزرگ بازار به هنرجویان ما بدهد.\n\nاگر دنبال آموزش واقعی، مسیر درست و رشد مستمر در دنیای فارکس هستی، اینجا درست اومدی.\nخوش اومدی به جایی که قراره تفاوت رو تجربه کنی.',
                 'faqText': [
                     {
                         'question': '۱. آیا این دوره برای مبتدی‌ها مناسب است؟',
@@ -864,33 +942,37 @@
                     'methods': [
                         {
                             'icon': 'envelope',
-                            'text': 'ایمیل: info@example.com'
+                            'text': 'ایمیل: mahnaz.khorsaand@gmail.com'
                         },
                         {
-                            'icon': 'phone',
-                            'text': 'واتساپ / تلگرام: ۰۹۱۲XXX۱۲۳۴'
+                            'icon': 'telegram',
+                            'text': 'تلگرام: @khorsand_m2'
                         },
                         {
                             'icon': 'instagram',
-                            'text': 'اینستاگرام: @forex_with_mahnaz'
+                            'text': 'اینستاگرام: @mwtzodiac'
+                        },
+                        {
+                            'icon': 'youtube',
+                            'text': 'یوتیوب: MWT Zodiac'
                         }
                     ]
+                },
+                'addTestimonial': {
+                    'title': 'نظر شما',
+                    'placeholder': 'نظر خود را درباره دوره‌ها بنویسید...',
+                    'button': 'ارسال نظر'
                 }
             },
             'en': {
                 'registerBtn': 'Register',
-                'registerTitle': 'Course Registration Form',
+                'registerTitle': 'Registration Form',
                 'namePlaceholder': 'Full Name',
                 'phonePlaceholder': 'Phone Number',
-                'levelLabel': 'Current Forex Knowledge Level',
-                'beginner': 'Beginner',
-                'intermediate': 'Intermediate',
-                'semi-pro': 'Semi-Professional',
-                'courseLabel': 'Desired Course',
-                'freeCourse': 'Free Course',
-                'proCourse': 'Professional Course',
-                'questionPlaceholder': 'Your question (optional)',
+                'emailPlaceholder': 'Email',
+                'passwordPlaceholder': 'Password',
                 'submitBtn': 'Submit',
+                'loginBtn': 'Login',
                 'successMessage': 'Your registration was successful. Our team will contact you within 24 hours.',
                 'home': 'Home',
                 'services': 'Educational Services',
@@ -902,7 +984,11 @@
                 'faqQuestions': 'How can I help you?',
                 'messagePlaceholder': 'Your message...',
                 'motivationText': 'In the world of volatile and endless opportunities in financial markets, success belongs only to those who dare to take the first step, have perseverance and are always on the path of learning and growth. Trading is the art of analysis and decision-making in critical moments that can transform your life.\n\nAlong with technical and fundamental analysis, we also use the power of financial astrology; a knowledge that by examining the position of planets and their effects on the collective emotions of the market, gives us a deeper perspective and more precise timing for entry and exit. This smart combination of science and art can keep you several steps ahead of the market.\n\nToday is the time to put aside your fears and move towards a brighter future.\nWith us, experience scalp and trend trading along with a unique cosmic perspective.',
-                'aboutText': 'I am Mahnaz Khorsand, born in 1988, with a Master\'s degree in Architectural Engineering Technology and several years of experience in the challenging yet fascinating path of financial markets.\n\nSince 2019, I became familiar with trading. Like many others, my path was full of confusion, loss, effort and learning. But I never stopped. Now, after years of experience, trial and error, and continuous learning, I\'m happy to say that I\'ve been consistently profitable in the Forex market for over three years.\n\nI established this platform to provide training that is not merely theoretical, but based on real experience and applicable in real trading. Simple, practical training without dependency on complex indicators and methods; because I believe simplifying the path is the key to success.\n\nMy goal is to transform you into an independent trader, someone who understands the market and makes decisions based on their own analysis - not based on others\' signals.\n\nIf you\'re looking for real education, the right path and continuous growth in the world of Forex, you\'ve come to the right place.',
+                'logoText': 'Empowering your trade journey',
+                'logoSubtext1': 'توانمندسازی سفر معاملاتی شما',
+                'logoSubtext2': 'founder of MWT concept',
+                'logoSubtext3': 'بنیانگذار مفهوم MWT',
+                'aboutText': 'Hello!\nI am Mahnaz Khorsand, born in 1988, with a Master\'s degree in Architectural Engineering Technology and several years of experience in the challenging yet fascinating path of financial markets.\n\nSince 2019, I became familiar with trading. Like many others, my path was full of confusion, loss, effort and learning. But I never stopped. Now, after years of experience, trial and error, and continuous learning, I\'m happy to say that I\'ve been consistently profitable in the Forex market for over three years.\n\nI established this platform to provide training that is not merely theoretical, but based on real experience and applicable in real trading. Simple, practical training without dependency on complex indicators and methods; because I believe simplifying the path is the key to success.\n\nMy goal is to transform you into an independent trader, someone who understands the market and makes decisions based on their own analysis - not based on others\' signals.\n\nAlongside me, my colleague who specializes in Financial Astrology has added a unique and fascinating perspective to our analytical team. The combination of technical analysis with timing cycles and holistic views has often provided our students with a more precise understanding of major market trends.\n\nIf you\'re looking for real education, the right path and continuous growth in the world of Forex, you\'ve come to the right place.\nWelcome to where you\'ll experience the difference.',
                 'faqText': [
                     {
                         'question': '1. Is this course suitable for beginners?',
@@ -944,17 +1030,26 @@
                     'methods': [
                         {
                             'icon': 'envelope',
-                            'text': 'Email: info@example.com'
+                            'text': 'Email: mahnaz.khorsaand@gmail.com'
                         },
                         {
-                            'icon': 'phone',
-                            'text': 'WhatsApp/Telegram: +98 912 XXX 1234'
+                            'icon': 'telegram',
+                            'text': 'Telegram: @khorsand_m2'
                         },
                         {
                             'icon': 'instagram',
-                            'text': 'Instagram: @forex_with_mahnaz'
+                            'text': 'Instagram: @mwtzodiac'
+                        },
+                        {
+                            'icon': 'youtube',
+                            'text': 'YouTube: MWT Zodiac'
                         }
                     ]
+                },
+                'addTestimonial': {
+                    'title': 'Your Feedback',
+                    'placeholder': 'Write your feedback about the courses...',
+                    'button': 'Submit Feedback'
                 }
             }
         };
@@ -981,24 +1076,49 @@
             document.querySelector('.register-form h3').textContent = translations[lang]['registerTitle'];
             document.querySelector('.register-form input[type="text"]').placeholder = translations[lang]['namePlaceholder'];
             document.querySelector('.register-form input[type="tel"]').placeholder = translations[lang]['phonePlaceholder'];
-            document.querySelector('.register-form select:first-of-type option:first-of-type').textContent = translations[lang]['levelLabel'];
-            document.querySelector('.register-form select:first-of-type option:nth-of-type(2)').textContent = translations[lang]['beginner'];
-            document.querySelector('.register-form select:first-of-type option:nth-of-type(3)').textContent = translations[lang]['intermediate'];
-            document.querySelector('.register-form select:first-of-type option:nth-of-type(4)').textContent = translations[lang]['semi-pro'];
-            document.querySelector('.register-form select:last-of-type option:first-of-type').textContent = translations[lang]['courseLabel'];
-            document.querySelector('.register-form select:last-of-type option:nth-of-type(2)').textContent = translations[lang]['freeCourse'];
-            document.querySelector('.register-form select:last-of-type option:nth-of-type(3)').textContent = translations[lang]['proCourse'];
-            document.querySelector('.optional-question input').placeholder = translations[lang]['questionPlaceholder'];
-            document.querySelector('.register-form button').innerHTML = `<i class="fas fa-paper-plane"></i> ${translations[lang]['submitBtn']}`;
+            document.querySelector('.register-form input[type="email"]').placeholder = translations[lang]['emailPlaceholder'];
+            document.querySelector('.register-form input[type="password"]').placeholder = translations[lang]['passwordPlaceholder'];
+            document.querySelector('.submit-btn').innerHTML = `<i class="fas fa-paper-plane"></i> ${translations[lang]['submitBtn']}`;
+            document.querySelector('.login-btn').innerHTML = `<i class="fas fa-sign-in-alt"></i> ${translations[lang]['loginBtn']}`;
             document.getElementById('successMessage').innerHTML = `<i class="fas fa-check-circle"></i> ${translations[lang]['successMessage']}`;
             
             // ترجمه منو
-            document.getElementById('home-link').innerHTML = `<i class="fas fa-home menu-icon"></i> ${translations[lang]['home']}`;
-            document.getElementById('services-link').innerHTML = `<i class="fas fa-graduation-cap menu-icon"></i> ${translations[lang]['services']}`;
-            document.getElementById('about-link').innerHTML = `<i class="fas fa-user-tie menu-icon"></i> ${translations[lang]['about']}`;
-            document.getElementById('faq-link').innerHTML = `<i class="fas fa-question-circle menu-icon"></i> ${translations[lang]['faq']}`;
-            document.getElementById('testimonials-link').innerHTML = `<i class="fas fa-comment-dots menu-icon"></i> ${translations[lang]['testimonials']}`;
-            document.getElementById('contact-link').innerHTML = `<i class="fas fa-phone-alt menu-icon"></i> ${translations[lang]['contact']}`;
+            document.getElementById('home-link').innerHTML = `
+                <div class="menu-icon-box">
+                    <i class="fas fa-home menu-icon"></i>
+                </div>
+                ${translations[lang]['home']}
+            `;
+            document.getElementById('services-link').innerHTML = `
+                <div class="menu-icon-box">
+                    <i class="fas fa-graduation-cap menu-icon"></i>
+                </div>
+                ${translations[lang]['services']}
+            `;
+            document.getElementById('about-link').innerHTML = `
+                <div class="menu-icon-box">
+                    <i class="fas fa-user-tie menu-icon"></i>
+                </div>
+                ${translations[lang]['about']}
+            `;
+            document.getElementById('faq-link').innerHTML = `
+                <div class="menu-icon-box">
+                    <i class="fas fa-question-circle menu-icon"></i>
+                </div>
+                ${translations[lang]['faq']}
+            `;
+            document.getElementById('testimonials-link').innerHTML = `
+                <div class="menu-icon-box">
+                    <i class="fas fa-comment-dots menu-icon"></i>
+                </div>
+                ${translations[lang]['testimonials']}
+            `;
+            document.getElementById('contact-link').innerHTML = `
+                <div class="menu-icon-box">
+                    <i class="fas fa-phone-alt menu-icon"></i>
+                </div>
+                ${translations[lang]['contact']}
+            `;
             
             // ترجمه چت
             document.querySelector('.chat-header span').textContent = translations[lang]['chatTitle'];
@@ -1014,8 +1134,14 @@
             // ترجمه متن انگیزشی
             document.querySelector('.motivation-text').textContent = translations[lang]['motivationText'];
             
+            // ترجمه متن لوگو
+            document.querySelector('.logo-text').textContent = translations[lang]['logoText'];
+            document.querySelectorAll('.logo-subtext')[0].textContent = translations[lang]['logoSubtext1'];
+            document.querySelectorAll('.logo-subtext')[1].textContent = translations[lang]['logoSubtext2'];
+            document.querySelectorAll('.logo-subtext')[2].textContent = translations[lang]['logoSubtext3'];
+            
             // ترجمه متن درباره ما
-            document.querySelector('.about-content').innerHTML = translations[lang]['aboutText'].split('\n\n').map(paragraph => `<p>${paragraph}</p>`).join('');
+            document.querySelector('.about-content').innerHTML = translations[lang]['aboutText'].split('\n').map(paragraph => `<p>${paragraph}</p>`).join('');
             
             // ترجمه بخش سوالات متداول
             const faqContent = document.querySelector('.faq-content');
@@ -1035,13 +1161,26 @@
                 </div>
             `).join('');
             
+            // ترجمه بخش اضافه کردن نظر
+            const addTestimonial = document.querySelector('.add-testimonial');
+            if (addTestimonial) {
+                addTestimonial.innerHTML = `
+                    <h3>${translations[lang]['addTestimonial']['title']}</h3>
+                    <textarea placeholder="${translations[lang]['addTestimonial']['placeholder']}"></textarea>
+                    <button type="button">
+                        <i class="fas fa-paper-plane"></i>
+                        ${translations[lang]['addTestimonial']['button']}
+                    </button>
+                `;
+            }
+            
             // ترجمه بخش تماس با ما
             const contactContent = document.querySelector('.contact-content');
             contactContent.innerHTML = `
                 <p>${translations[lang]['contactText'].intro}</p>
                 <div class="contact-methods">
                     ${translations[lang]['contactText'].methods.map(method => `
-                        <p><i class="fas fa-${method.icon}"></i> ${method.text}</p>
+                        <p><i class="fab fa-${method.icon}"></i> ${method.text}</p>
                     `).join('')}
                 </div>
             `;
@@ -1141,8 +1280,8 @@
                 setTimeout(() => {
                     const lang = document.documentElement.lang;
                     const response = lang === 'fa' ? 
-                        'به پشتیبانی پیام دهید' : 
-                        'Message support';
+                        'برای ارتباط با پشتیبانی می‌توانید از طریق راه‌های ارتباطی در صفحه "تماس با ما" اقدام نمایید.' : 
+                        'To contact support, please use the contact methods on the "Contact Us" page.';
                     
                     addMessage(response, 'bot');
                 }, 1500);
