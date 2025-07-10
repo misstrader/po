@@ -917,7 +917,7 @@
 
     <!-- فوتر -->
     <footer class="footer">
-        تمام حقوق این سایت متعلق به مهناز خورسند می‌باشد و هرگونه کپی‌برداری پیگرد قانونی دارد.
+        تمامی حقوق این سایت متعلق به مهندس مهناز خورسند است و هرگونه کپی برداری از آن پیگرد قانونی دارد
     </footer>
 
     <script>
@@ -1065,6 +1065,14 @@
             
             // ترجمه فوتر
             document.querySelector('.footer').textContent = translations[lang]['footerText'];
+            
+            // ترجمه فرم نظرات
+            document.querySelector('#testimonials-section .add-testimonial h3').textContent = translations[lang]['submitTestimonialTitle'];
+            document.getElementById('testimonial-name').placeholder = translations[lang]['testimonialName'];
+            document.getElementById('testimonial-location').placeholder = translations[lang]['testimonialLocation'];
+            document.getElementById('testimonial-text').placeholder = translations[lang]['testimonialText'];
+            document.getElementById('submit-testimonial').innerHTML = `<i class="fas fa-paper-plane"></i> ${translations[lang]['submitTestimonial']}`;
+            document.getElementById('testimonial-success').textContent = translations[lang]['testimonialSuccess'];
         }
 
         // مدیریت فرم‌های ثبت نام و ورود
@@ -1256,7 +1264,7 @@
             
             // اگر نظری وجود ندارد، نظرات پیش‌فرض را اضافه کن
             if (testimonials.length === 0) {
-                const initialTestimonials = [
+                const initialTestimonials = lang === 'fa' ? [
                     {
                         name: "فرزانه.ک – تهران",
                         text: "من چند دوره مختلف شرکت کرده بودم اما همیشه سردرگم بودم. دوره‌های مهناز خورسند به‌قدری منظم و شفاف بود که برای اولین بار واقعاً مفهوم روند، کندل و تحلیل را درک کردم.",
@@ -1270,6 +1278,22 @@
                     {
                         name: "سحر.م – مشهد",
                         text: "تجربه من از یادگیری با این دوره‌ها عالی بود. سادگی بیان، تسلط مدرس و آموزش قدم‌به‌قدم باعث شد بالاخره به سود مستمر برسم.",
+                        approved: true
+                    }
+                ] : [
+                    {
+                        name: "Farzaneh K - Tehran",
+                        text: "I had taken several different courses but was always confused. Mahnaz Khorsand's courses were so organized and clear that for the first time I truly understood the concepts of trend, candles, and analysis.",
+                        approved: true
+                    },
+                    {
+                        name: "Saman N - Shiraz",
+                        text: "The real difference in this training was the support and follow-up. Even though I started from scratch, now I trade with peace of mind and my money management is in my own hands.",
+                        approved: true
+                    },
+                    {
+                        name: "Sahar M - Mashhad",
+                        text: "My experience with these courses was excellent. The simplicity of expression, the instructor's mastery, and step-by-step training finally led me to consistent profits.",
                         approved: true
                     }
                 ];
@@ -1401,6 +1425,7 @@
                 'registerSuccess': 'ثبت نام شما با موفقیت انجام شد.',
                 'loginSuccess': 'ورود شما با موفقیت انجام شد.',
                 'testimonialSuccess': 'نظر شما با موفقیت ثبت شد و پس از تایید نمایش داده خواهد شد.',
+                'submitTestimonialTitle': 'ثبت نظر جدید',
                 'home': 'صفحه اصلی',
                 'services': 'خدمات آموزشی',
                 'about': 'درباره ما',
@@ -1459,7 +1484,7 @@
                         }
                     ]
                 },
-                'footerText': 'تمام حقوق این سایت متعلق به مهناز خورسند می‌باشد و هرگونه کپی‌برداری پیگرد قانونی دارد.'
+                'footerText': 'تمامی حقوق این سایت متعلق به مهندس مهناز خورسند است و هرگونه کپی برداری از آن پیگرد قانونی دارد'
             },
             'en': {
                 'registerBtn': 'Register/Login',
@@ -1476,6 +1501,7 @@
                 'registerSuccess': 'Your registration was successful.',
                 'loginSuccess': 'You have successfully logged in.',
                 'testimonialSuccess': 'Your feedback has been submitted successfully and will be displayed after approval.',
+                'submitTestimonialTitle': 'Submit New Feedback',
                 'home': 'Home',
                 'services': 'Educational Services',
                 'about': 'About Us',
@@ -1534,7 +1560,7 @@
                         }
                     ]
                 },
-                'footerText': 'All rights reserved to Mahnaz Khorsand. Any unauthorized copying is prohibited.'
+                'footerText': 'All rights reserved to Engineer Mahnaz Khorsand. Any unauthorized copying is prohibited.'
             }
         };
 
