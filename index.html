@@ -287,7 +287,7 @@
         /* چت آنلاین */
         .chat-icon {
             position: fixed;
-            bottom: 80px;
+            bottom: 120px;
             left: 30px;
             width: 60px;
             height: 60px;
@@ -313,7 +313,7 @@
 
         .chat-box {
             position: fixed;
-            bottom: 150px;
+            bottom: 190px;
             left: -350px;
             width: 300px;
             height: 400px;
@@ -558,6 +558,7 @@
             left: 0;
             right: 0;
             z-index: 999;
+            font-size: 0.9rem;
         }
 
         /* رسپانسیو */
@@ -598,13 +599,13 @@
                 width: 90%;
                 max-width: 300px;
                 height: 350px;
-                bottom: 130px;
+                bottom: 160px;
             }
             
             .chat-icon {
                 width: 50px;
                 height: 50px;
-                bottom: 70px;
+                bottom: 110px;
                 left: 20px;
             }
             
@@ -652,10 +653,20 @@
             
             .chat-box {
                 height: 300px;
+                bottom: 140px;
+            }
+            
+            .chat-icon {
+                bottom: 100px;
             }
             
             .user-info {
                 font-size: 0.8rem;
+            }
+            
+            .footer {
+                font-size: 0.8rem;
+                padding: 10px;
             }
         }
     </style>
@@ -689,7 +700,7 @@
     <!-- صفحه اول با لوگو و متن انگیزشی -->
     <section class="hero-section" id="heroSection">
         <div class="logo-container">
-            <img src=" photo-output.jpeg" alt="آموزش فارکس - مهناز خورسند" class="logo">
+            <img src="logo.png" alt="آموزش فارکس - مهناز خورسند" class="logo">
             <div class="logo-text">توانمندسازی سفر معاملاتی شما</div>
             <div class="logo-subtext">بنیانگذار مفهوم MWT</div>
         </div>
@@ -1034,8 +1045,8 @@
             document.querySelector('.motivation-text').textContent = translations[lang]['motivationText'];
             
             // ترجمه متن لوگو
-            document.querySelector('.logo-text').textContent = lang === 'fa' ? 'توانمندسازی سفر معاملاتی شما' : 'Empowering your trade journey';
-            document.querySelectorAll('.logo-subtext')[0].textContent = lang === 'fa' ? 'بنیانگذار مفهوم MWT' : 'founder of MWT concept';
+            document.querySelector('.logo-text').textContent = translations[lang]['logoText'];
+            document.querySelector('.logo-subtext').textContent = translations[lang]['logoSubtext'];
             
             // ترجمه متن درباره ما
             document.querySelector('.about-content').innerHTML = translations[lang]['aboutText'].split('\n').map(paragraph => `<p>${paragraph}</p>`).join('');
@@ -1264,40 +1275,7 @@
             
             // اگر نظری وجود ندارد، نظرات پیش‌فرض را اضافه کن
             if (testimonials.length === 0) {
-                const initialTestimonials = lang === 'fa' ? [
-                    {
-                        name: "فرزانه.ک – تهران",
-                        text: "من چند دوره مختلف شرکت کرده بودم اما همیشه سردرگم بودم. دوره‌های مهناز خورسند به‌قدری منظم و شفاف بود که برای اولین بار واقعاً مفهوم روند، کندل و تحلیل را درک کردم.",
-                        approved: true
-                    },
-                    {
-                        name: "سامان.ن – شیراز",
-                        text: "پشتیبانی و پیگیری واقعی‌ترین تفاوت این آموزش با بقیه بود. با اینکه از صفر شروع کرده بودم، الان با خیال راحت ترید می‌کنم و مدیریت سرمایه‌ام دست خودمه.",
-                        approved: true
-                    },
-                    {
-                        name: "سحر.م – مشهد",
-                        text: "تجربه من از یادگیری با این دوره‌ها عالی بود. سادگی بیان، تسلط مدرس و آموزش قدم‌به‌قدم باعث شد بالاخره به سود مستمر برسم.",
-                        approved: true
-                    }
-                ] : [
-                    {
-                        name: "Farzaneh K - Tehran",
-                        text: "I had taken several different courses but was always confused. Mahnaz Khorsand's courses were so organized and clear that for the first time I truly understood the concepts of trend, candles, and analysis.",
-                        approved: true
-                    },
-                    {
-                        name: "Saman N - Shiraz",
-                        text: "The real difference in this training was the support and follow-up. Even though I started from scratch, now I trade with peace of mind and my money management is in my own hands.",
-                        approved: true
-                    },
-                    {
-                        name: "Sahar M - Mashhad",
-                        text: "My experience with these courses was excellent. The simplicity of expression, the instructor's mastery, and step-by-step training finally led me to consistent profits.",
-                        approved: true
-                    }
-                ];
-                
+                const initialTestimonials = translations[lang]['initialTestimonials'];
                 localStorage.setItem('testimonials', JSON.stringify(initialTestimonials));
                 testimonials.push(...initialTestimonials);
             }
@@ -1317,7 +1295,7 @@
             
             // اگر نظری وجود ندارد، پیام مناسب نمایش دهید
             if (testimonials.filter(t => t.approved).length === 0) {
-                testimonialsContainer.innerHTML = `<p class="no-testimonials">${lang === 'fa' ? 'هنوز نظری ثبت نشده است.' : 'No testimonials yet.'}</p>`;
+                testimonialsContainer.innerHTML = `<p class="no-testimonials">${translations[lang]['noTestimonialsText']}</p>`;
             }
         }
 
@@ -1390,11 +1368,7 @@
                 
                 // پاسخ خودکار به پیام‌های کاربر
                 setTimeout(() => {
-                    const lang = document.documentElement.lang;
-                    const response = lang === 'fa' ? 
-                        'برای ارتباط با پشتیبانی می‌توانید از طریق راه‌های ارتباطی در صفحه "تماس با ما" اقدام نمایید.' : 
-                        'To contact support, please use the contact methods on the "Contact Us" page.';
-                    
+                    const response = translations[currentLang]['chatResponse'];
                     addMessage(response, 'bot');
                 }, 1500);
             }
@@ -1439,6 +1413,10 @@
                 'testimonialLocation': 'شهر و استان',
                 'testimonialText': 'نظر خود را درباره دوره‌ها بنویسید...',
                 'submitTestimonial': 'ارسال نظر',
+                'noTestimonialsText': 'هنوز نظری ثبت نشده است.',
+                'chatResponse': 'برای ارتباط با پشتیبانی می‌توانید از طریق راه‌های ارتباطی در صفحه "تماس با ما" اقدام نمایید.',
+                'logoText': 'توانمندسازی سفر معاملاتی شما',
+                'logoSubtext': 'بنیانگذار مفهوم MWT',
                 'motivationText': 'در دنیای پر از نوسان و فرصت‌های بی‌پایان بازارهای مالی، موفقیت تنها از آن کسانی است که جرئت می‌کنند قدم اول را بردارند، پشتکار دارند و همواره در مسیر یادگیری و رشد هستند. ترید کردن، هنر تحلیل و تصمیم‌گیری در لحظه‌های حساس است که می‌تواند زندگی شما را متحول کند.\n\nما در کنار تحلیل تکنیکال و فاندامنتال، از قدرت استرولوژی مالی نیز بهره می‌بریم؛ دانشی که با بررسی موقعیت سیارات و تأثیرات آن‌ها بر احساسات جمعی بازار، به ما دیدگاهی عمیق‌تر و زمان‌بندی دقیق‌تری برای ورود و خروج می‌دهد. این ترکیب هوشمندانه از علم و هنر، می‌تواند شما را چند قدم جلوتر از بازار نگه دارد.\n\nامروز زمان آن است که ترس‌ها را کنار بگذارید و به سمت آینده‌ای روشن‌تر حرکت کنید.\nبا ما، آموزش ترید اسکلپی و روندی را به‌همراه نگاهی متفاوت از جنس کیهان تجربه می‌کنید.',
                 'aboutText': 'سلام!\nمن مهناز خورسند هستم، متولد ۱۳۶۷، دارای مدرک فوق‌لیسانس مهندسی تکنولوژی معماری و با سابقه‌ای چندساله در مسیر پرچالش اما جذاب بازارهای مالی.\n\nاز سال ۱۳۹۸ با دنیای ترید آشنا شدم. مثل خیلی‌ها، مسیرم پر از سردرگمی، ضرر، تلاش و یادگیری بود. اما هیچ‌وقت متوقف نشدم. حالا، بعد از سال‌ها تجربه، آزمون و خطا، و یادگیری مداوم، خوشحالم که می‌تونم بگم بیش از سه ساله به سود مستمر در بازار فارکس رسیدم.\n\nاینجا رو راه‌اندازی کردم تا آموزش‌هایی ارائه بدم که صرفاً تئوری نباشن، بلکه بر پایه تجربه واقعی و قابل استفاده در معاملات واقعی باشن. آموزش‌هایی ساده، کاربردی و بدون وابستگی به اندیکاتورها و روش‌های پیچیده؛ چون معتقدم ساده‌سازی مسیر، کلید موفقیته.\n\nهدف من اینه که شما رو تبدیل کنم به یه تریدر مستقل، کسی که بازار رو می‌فهمه و بر اساس تحلیل خودش تصمیم می‌گیره — نه بر اساس سیگنال دیگران.\n\nدر کنار من، همکارم که در زمینه‌ی استرولوژی مالی (Financial Astrology) تخصص دارد، به مجموعه تحلیلی ما زاویه‌ای متفاوت و جذاب اضافه کرده است. ترکیب تحلیل تکنیکال با چرخه‌های زمانی و دیدگاه‌های کل‌نگر در بسیاری از مواقع توانسته درک دقیق‌تری از روندهای بزرگ بازار به هنرجویان ما بدهد.\n\nاگر دنبال آموزش واقعی، مسیر درست و رشد مستمر در دنیای فارکس هستی، اینجا درست اومدی.\nخوش اومدی به جایی که قراره تفاوت رو تجربه کنی.',
                 'faqText': [
@@ -1484,7 +1462,24 @@
                         }
                     ]
                 },
-                'footerText': 'تمامی حقوق این سایت متعلق به مهندس مهناز خورسند است و هرگونه کپی برداری از آن پیگرد قانونی دارد'
+                'footerText': 'تمامی حقوق این سایت متعلق به مهندس مهناز خورسند است و هرگونه کپی برداری از آن پیگرد قانونی دارد',
+                'initialTestimonials': [
+                    {
+                        "name": "فرزانه.ک – تهران",
+                        "text": "من چند دوره مختلف شرکت کرده بودم اما همیشه سردرگم بودم. دوره‌های مهناز خورسند به‌قدری منظم و شفاف بود که برای اولین بار واقعاً مفهوم روند، کندل و تحلیل را درک کردم.",
+                        "approved": true
+                    },
+                    {
+                        "name": "سامان.ن – شیراز",
+                        "text": "پشتیبانی و پیگیری واقعی‌ترین تفاوت این آموزش با بقیه بود. با اینکه از صفر شروع کرده بودم، الان با خیال راحت ترید می‌کنم و مدیریت سرمایه‌ام دست خودمه.",
+                        "approved": true
+                    },
+                    {
+                        "name": "سحر.م – مشهد",
+                        "text": "تجربه من از یادگیری با این دوره‌ها عالی بود. سادگی بیان، تسلط مدرس و آموزش قدم‌به‌قدم باعث شد بالاخره به سود مستمر برسم.",
+                        "approved": true
+                    }
+                ]
             },
             'en': {
                 'registerBtn': 'Register/Login',
@@ -1515,6 +1510,10 @@
                 'testimonialLocation': 'City and Province',
                 'testimonialText': 'Write your feedback about the courses...',
                 'submitTestimonial': 'Submit Feedback',
+                'noTestimonialsText': 'No testimonials yet.',
+                'chatResponse': 'To contact support, please use the contact methods on the "Contact Us" page.',
+                'logoText': 'Empowering your trade journey',
+                'logoSubtext': 'Founder of MWT concept',
                 'motivationText': 'In the world of volatile and endless opportunities in financial markets, success belongs only to those who dare to take the first step, have perseverance and are always on the path of learning and growth. Trading is the art of analysis and decision-making in critical moments that can transform your life.\n\nAlong with technical and fundamental analysis, we also use the power of financial astrology; a knowledge that by examining the position of planets and their effects on the collective emotions of the market, gives us a deeper perspective and more precise timing for entry and exit. This smart combination of science and art can keep you several steps ahead of the market.\n\nToday is the time to put aside your fears and move towards a brighter future.\nWith us, experience scalp and trend trading along with a unique cosmic perspective.',
                 'aboutText': 'Hello!\nI am Mahnaz Khorsand, born in 1988, with a Master\'s degree in Architectural Engineering Technology and several years of experience in the challenging yet fascinating path of financial markets.\n\nSince 2019, I became familiar with trading. Like many others, my path was full of confusion, loss, effort and learning. But I never stopped. Now, after years of experience, trial and error, and continuous learning, I\'m happy to say that I\'ve been consistently profitable in the Forex market for over three years.\n\nI established this platform to provide training that is not merely theoretical, but based on real experience and applicable in real trading. Simple, practical training without dependency on complex indicators and methods; because I believe simplifying the path is the key to success.\n\nMy goal is to transform you into an independent trader, someone who understands the market and makes decisions based on their own analysis - not based on others\' signals.\n\nAlongside me, my colleague who specializes in Financial Astrology has added a unique and fascinating perspective to our analytical team. The combination of technical analysis with timing cycles and holistic views has often provided our students with a more precise understanding of major market trends.\n\nIf you\'re looking for real education, the right path and continuous growth in the world of Forex, you\'ve come to the right place.\nWelcome to where you\'ll experience the difference.',
                 'faqText': [
@@ -1560,7 +1559,24 @@
                         }
                     ]
                 },
-                'footerText': 'All rights reserved to Engineer Mahnaz Khorsand. Any unauthorized copying is prohibited.'
+                'footerText': 'All rights reserved to Engineer Mahnaz Khorsand. Any unauthorized copying is prohibited.',
+                'initialTestimonials': [
+                    {
+                        "name": "Farzaneh K - Tehran",
+                        "text": "I had taken several different courses but was always confused. Mahnaz Khorsand's courses were so organized and clear that for the first time I truly understood the concepts of trend, candles, and analysis.",
+                        "approved": true
+                    },
+                    {
+                        "name": "Saman N - Shiraz",
+                        "text": "The real difference in this training was the support and follow-up. Even though I started from scratch, now I trade with peace of mind and my money management is in my own hands.",
+                        "approved": true
+                    },
+                    {
+                        "name": "Sahar M - Mashhad",
+                        "text": "My experience with these courses was excellent. The simplicity of expression, the instructor's mastery, and step-by-step training finally led me to consistent profits.",
+                        "approved": true
+                    }
+                ]
             }
         };
 
