@@ -474,7 +474,7 @@
             margin-left: 8px;
         }
 
-        #successMessage {
+        .success-message {
             margin-top: 15px;
             padding: 15px;
             background: rgba(0, 255, 0, 0.1);
@@ -651,7 +651,7 @@
     <!-- صفحه اول با لوگو و متن انگیزشی -->
     <section class="hero-section" id="heroSection">
         <div class="logo-container">
-            <img src=" photo-output.jpeg" alt="آموزش فارکس - مهناز خورسند" class="logo">
+            <img src="logo.png" alt="آموزش فارکس - مهناز خورسند" class="logo">
             <div class="logo-text">Empowering your trade journey</div>
             <div class="logo-subtext">توانمندسازی سفر معاملاتی شما</div>
             <div class="logo-subtext">founder of MWT concept</div>
@@ -785,15 +785,20 @@
                     <p>«تجربه من از یادگیری با این دوره‌ها عالی بود. سادگی بیان، تسلط مدرس و آموزش قدم‌به‌قدم باعث شد بالاخره به سود مستمر برسم.»</p>
                 </div>
                 
+                <!-- اینجا نظرات جدید اضافه خواهند شد -->
+                
                 <div class="add-testimonial">
                     <h3>ثبت نظر جدید</h3>
-                    <input type="text" id="testimonial-name" placeholder="نام شما">
-                    <input type="text" id="testimonial-location" placeholder="شهر و استان">
-                    <textarea id="testimonial-text" placeholder="نظر خود را درباره دوره‌ها بنویسید..."></textarea>
+                    <input type="text" id="testimonial-name" placeholder="نام شما" required>
+                    <input type="text" id="testimonial-location" placeholder="شهر و استان" required>
+                    <textarea id="testimonial-text" placeholder="نظر خود را درباره دوره‌ها بنویسید..." required></textarea>
                     <button type="button" id="submit-testimonial">
                         <i class="fas fa-paper-plane"></i>
                         ارسال نظر
                     </button>
+                    <div id="testimonial-success" class="success-message">
+                        نظر شما با موفقیت ثبت شد و پس از تایید نمایش داده خواهد شد.
+                    </div>
                 </div>
             </div>
         </section>
@@ -834,7 +839,7 @@
                     ورود به حساب کاربری
                 </button>
             </form>
-            <div id="registerSuccessMessage">
+            <div id="register-success" class="success-message">
                 <i class="fas fa-check-circle"></i>
                 ثبت نام شما با موفقیت انجام شد.
             </div>
@@ -860,7 +865,7 @@
                     ایجاد حساب جدید
                 </button>
             </form>
-            <div id="loginSuccessMessage">
+            <div id="login-success" class="success-message">
                 <i class="fas fa-check-circle"></i>
                 ورود شما با موفقیت انجام شد.
             </div>
@@ -926,6 +931,7 @@
                 'switchToRegister': 'ایجاد حساب جدید',
                 'registerSuccess': 'ثبت نام شما با موفقیت انجام شد.',
                 'loginSuccess': 'ورود شما با موفقیت انجام شد.',
+                'testimonialSuccess': 'نظر شما با موفقیت ثبت شد و پس از تایید نمایش داده خواهد شد.',
                 'home': 'صفحه اصلی',
                 'services': 'خدمات آموزشی',
                 'about': 'درباره ما',
@@ -1013,6 +1019,7 @@
                 'switchToRegister': 'Create new account',
                 'registerSuccess': 'Your registration was successful.',
                 'loginSuccess': 'You have successfully logged in.',
+                'testimonialSuccess': 'Your feedback has been submitted successfully and will be displayed after approval.',
                 'home': 'Home',
                 'services': 'Educational Services',
                 'about': 'About Us',
@@ -1116,7 +1123,7 @@
             document.getElementById('reg-password').placeholder = translations[lang]['passwordPlaceholder'];
             document.querySelector('#registerFormContainer .submit-btn').innerHTML = `<i class="fas fa-user-plus"></i> ${translations[lang]['submitBtn']}`;
             document.getElementById('switchToLogin').innerHTML = `<i class="fas fa-sign-in-alt"></i> ${translations[lang]['switchToLogin']}`;
-            document.getElementById('registerSuccessMessage').innerHTML = `<i class="fas fa-check-circle"></i> ${translations[lang]['registerSuccess']}`;
+            document.getElementById('register-success').innerHTML = `<i class="fas fa-check-circle"></i> ${translations[lang]['registerSuccess']}`;
             
             // ترجمه فرم ورود
             document.querySelector('#loginFormContainer h3').textContent = translations[lang]['loginTitle'];
@@ -1124,7 +1131,7 @@
             document.getElementById('login-password').placeholder = translations[lang]['passwordPlaceholder'];
             document.querySelector('#loginFormContainer .submit-btn').innerHTML = `<i class="fas fa-sign-in-alt"></i> ${translations[lang]['loginBtn']}`;
             document.getElementById('switchToRegister').innerHTML = `<i class="fas fa-user-plus"></i> ${translations[lang]['switchToRegister']}`;
-            document.getElementById('loginSuccessMessage').innerHTML = `<i class="fas fa-check-circle"></i> ${translations[lang]['loginSuccess']}`;
+            document.getElementById('login-success').innerHTML = `<i class="fas fa-check-circle"></i> ${translations[lang]['loginSuccess']}`;
             
             // ترجمه منو
             document.getElementById('home-link').innerHTML = `
@@ -1210,13 +1217,16 @@
             if (addTestimonial) {
                 addTestimonial.innerHTML = `
                     <h3>${translations[lang]['submitTestimonial']}</h3>
-                    <input type="text" id="testimonial-name" placeholder="${translations[lang]['testimonialName']}">
-                    <input type="text" id="testimonial-location" placeholder="${translations[lang]['testimonialLocation']}">
-                    <textarea id="testimonial-text" placeholder="${translations[lang]['testimonialText']}"></textarea>
+                    <input type="text" id="testimonial-name" placeholder="${translations[lang]['testimonialName']}" required>
+                    <input type="text" id="testimonial-location" placeholder="${translations[lang]['testimonialLocation']}" required>
+                    <textarea id="testimonial-text" placeholder="${translations[lang]['testimonialText']}" required></textarea>
                     <button type="button" id="submit-testimonial">
                         <i class="fas fa-paper-plane"></i>
                         ${translations[lang]['submitTestimonial']}
                     </button>
+                    <div id="testimonial-success" class="success-message">
+                        ${translations[lang]['testimonialSuccess']}
+                    </div>
                 `;
                 
                 // اضافه کردن رویداد برای دکمه ارسال نظر
@@ -1245,8 +1255,8 @@
         const switchToRegister = document.getElementById('switchToRegister');
         const registrationForm = document.getElementById('registrationForm');
         const loginForm = document.getElementById('loginForm');
-        const registerSuccessMessage = document.getElementById('registerSuccessMessage');
-        const loginSuccessMessage = document.getElementById('loginSuccessMessage');
+        const registerSuccess = document.getElementById('register-success');
+        const loginSuccess = document.getElementById('login-success');
         
         // آرایه برای ذخیره کاربران
         let users = JSON.parse(localStorage.getItem('users')) || [];
@@ -1257,13 +1267,13 @@
         
         closeRegisterForm.addEventListener('click', function() {
             registerFormContainer.classList.remove('active');
-            registerSuccessMessage.style.display = 'none';
+            registerSuccess.style.display = 'none';
             registrationForm.reset();
         });
         
         closeLoginForm.addEventListener('click', function() {
             loginFormContainer.classList.remove('active');
-            loginSuccessMessage.style.display = 'none';
+            loginSuccess.style.display = 'none';
             loginForm.reset();
         });
         
@@ -1307,12 +1317,12 @@
             
             // نمایش پیام موفقیت
             registrationForm.style.display = 'none';
-            registerSuccessMessage.style.display = 'block';
+            registerSuccess.style.display = 'block';
             
             setTimeout(() => {
                 registerFormContainer.classList.remove('active');
                 registrationForm.style.display = 'block';
-                registerSuccessMessage.style.display = 'none';
+                registerSuccess.style.display = 'none';
                 registrationForm.reset();
             }, 2000);
         });
@@ -1329,12 +1339,12 @@
             if (user) {
                 // نمایش پیام موفقیت
                 loginForm.style.display = 'none';
-                loginSuccessMessage.style.display = 'block';
+                loginSuccess.style.display = 'block';
                 
                 setTimeout(() => {
                     loginFormContainer.classList.remove('active');
                     loginForm.style.display = 'block';
-                    loginSuccessMessage.style.display = 'none';
+                    loginSuccess.style.display = 'none';
                     loginForm.reset();
                 }, 2000);
             } else {
@@ -1361,30 +1371,26 @@
                 name: name,
                 location: location,
                 text: text,
-                date: new Date().toLocaleString()
+                date: new Date().toLocaleString(),
+                approved: false // در ابتدا نظر تایید نشده است
             });
             
             // ذخیره در localStorage
             localStorage.setItem('testimonials', JSON.stringify(testimonials));
             
-            // نمایش نظر جدید
-            const testimonialsContent = document.querySelector('.testimonials-content');
-            const newTestimonial = document.createElement('div');
-            newTestimonial.className = 'testimonial';
-            newTestimonial.innerHTML = `
-                <h3>${name} – ${location}</h3>
-                <p>«${text}»</p>
-            `;
-            
-            // اضافه کردن نظر جدید قبل از فرم
-            testimonialsContent.insertBefore(newTestimonial, document.querySelector('.add-testimonial'));
+            // نمایش پیام موفقیت
+            const successMsg = document.getElementById('testimonial-success');
+            successMsg.style.display = 'block';
             
             // پاک کردن فرم
             document.getElementById('testimonial-name').value = '';
             document.getElementById('testimonial-location').value = '';
             document.getElementById('testimonial-text').value = '';
             
-            alert('نظر شما با موفقیت ثبت شد.');
+            // مخفی کردن پیام موفقیت بعد از 3 ثانیه
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 3000);
         }
 
         // بارگذاری نظرات از localStorage هنگام لود صفحه
@@ -1396,17 +1402,19 @@
             const initialTestimonials = document.querySelectorAll('.testimonial:not(.add-testimonial)');
             initialTestimonials.forEach(el => el.remove());
             
-            // اضافه کردن نظرات از localStorage
-            testimonials.forEach(testimonial => {
-                const newTestimonial = document.createElement('div');
-                newTestimonial.className = 'testimonial';
-                newTestimonial.innerHTML = `
-                    <h3>${testimonial.name} – ${testimonial.location}</h3>
-                    <p>«${testimonial.text}»</p>
-                `;
-                
-                testimonialsContent.insertBefore(newTestimonial, document.querySelector('.add-testimonial'));
-            });
+            // اضافه کردن نظرات از localStorage (فقط نظرات تایید شده)
+            testimonials
+                .filter(testimonial => testimonial.approved)
+                .forEach(testimonial => {
+                    const newTestimonial = document.createElement('div');
+                    newTestimonial.className = 'testimonial';
+                    newTestimonial.innerHTML = `
+                        <h3>${testimonial.name} – ${testimonial.location}</h3>
+                        <p>«${testimonial.text}»</p>
+                    `;
+                    
+                    testimonialsContent.insertBefore(newTestimonial, document.querySelector('.add-testimonial'));
+                });
         }
 
         // مدیریت لینک‌های منو
@@ -1437,6 +1445,11 @@
                 } else if (targetId !== 'services.html') {
                     document.getElementById('heroSection').style.display = 'none';
                     document.getElementById(targetId).classList.add('active');
+                    
+                    // اگر بخش نظرات است، نظرات را بارگذاری کن
+                    if (targetId === 'testimonials-section') {
+                        loadTestimonials();
+                    }
                 }
                 
                 // بستن منو
@@ -1495,9 +1508,6 @@
         window.addEventListener('DOMContentLoaded', function() {
             // بارگذاری ترجمه
             translatePage('fa');
-            
-            // بارگذاری نظرات
-            loadTestimonials();
             
             // اضافه کردن رویداد برای دکمه ارسال نظر
             document.getElementById('submit-testimonial').addEventListener('click', submitTestimonialHandler);
