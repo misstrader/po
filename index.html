@@ -424,8 +424,7 @@
             text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
         }
 
-        .register-form input, 
-        .register-form select {
+        .register-form input {
             width: 100%;
             padding: 12px;
             margin-bottom: 15px;
@@ -496,10 +495,16 @@
         /* فرم نظر سنجی */
         .add-testimonial {
             margin-top: 30px;
+            background: rgba(0, 20, 40, 0.5);
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid rgba(0, 247, 255, 0.3);
         }
 
         .add-testimonial h3 {
+            color: #00f7ff;
             margin-bottom: 15px;
+            text-align: center;
         }
 
         .add-testimonial input,
@@ -537,6 +542,41 @@
 
         .add-testimonial button:hover {
             box-shadow: 0 0 20px rgba(0, 247, 255, 0.7);
+        }
+
+        /* پنل مدیریت */
+        .admin-panel {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0, 20, 40, 0.9);
+            border: 1px solid #00f7ff;
+            border-radius: 5px;
+            padding: 10px;
+            z-index: 1000;
+            display: none;
+        }
+
+        .admin-panel h4 {
+            color: #00f7ff;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .admin-panel-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff0084 0%, #f700ff 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(247, 0, 255, 0.7);
+            z-index: 1000;
         }
 
         /* رسپانسیو */
@@ -659,7 +699,7 @@
     <!-- صفحه اول با لوگو و متن انگیزشی -->
     <section class="hero-section" id="heroSection">
         <div class="logo-container">
-            <img src=" photo-output.jpeg" alt="آموزش فارکس - مهناز خورسند" class="logo">
+            <img src="logo.png" alt="آموزش فارکس - مهناز خورسند" class="logo">
             <div class="logo-text">Empowering your trade journey</div>
             <div class="logo-subtext">توانمندسازی سفر معاملاتی شما</div>
             <div class="logo-subtext">founder of MWT concept</div>
@@ -795,10 +835,9 @@
                 
                 <div class="add-testimonial">
                     <h3>ثبت نظر جدید</h3>
-                    <input type="text" placeholder="نام شما">
-                    <input type="text" placeholder="شهر و استان">
-                    <textarea placeholder="نظر خود را درباره دوره‌ها بنویسید..."></textarea>
-                    <button type="button">
+                    <input type="text" id="testimonial-name" placeholder="نام شما (اختیاری)">
+                    <textarea id="testimonial-text" placeholder="نظر خود را درباره دوره‌ها بنویسید..."></textarea>
+                    <button type="button" id="submit-testimonial">
                         <i class="fas fa-paper-plane"></i>
                         ارسال نظر
                     </button>
@@ -827,8 +866,6 @@
         <div class="register-form">
             <h3>ثبت نام/ورود</h3>
             <form id="registrationForm">
-                <input type="text" placeholder="نام و نام خانوادگی" required>
-                <input type="tel" placeholder="شماره تماس" required>
                 <input type="email" placeholder="ایمیل" required>
                 <input type="password" placeholder="رمز عبور" required>
                 
@@ -869,6 +906,18 @@
         <i class="fas fa-comment-dots"></i>
     </div>
 
+    <!-- پنل مدیریت -->
+    <div class="admin-panel" id="adminPanel">
+        <h4>پنل مدیریت</h4>
+        <div id="registeredUsers">
+            <p>تعداد کاربران ثبت‌نام شده: <span id="usersCount">0</span></p>
+            <div id="usersList"></div>
+        </div>
+    </div>
+    <div class="admin-panel-btn" id="adminPanelBtn">
+        <i class="fas fa-user-shield"></i>
+    </div>
+
     <script>
         // مدیریت منو
         const menuBtn = document.getElementById('menuBtn');
@@ -897,8 +946,6 @@
             'fa': {
                 'registerBtn': 'ثبت نام/ورود',
                 'registerTitle': 'ثبت نام/ورود',
-                'namePlaceholder': 'نام و نام خانوادگی',
-                'phonePlaceholder': 'شماره تماس',
                 'emailPlaceholder': 'ایمیل',
                 'passwordPlaceholder': 'رمز عبور',
                 'submitBtn': 'ثبت نام',
@@ -957,8 +1004,7 @@
                 ],
                 'addTestimonial': {
                     'title': 'ثبت نظر جدید',
-                    'namePlaceholder': 'نام شما',
-                    'locationPlaceholder': 'شهر و استان',
+                    'namePlaceholder': 'نام شما (اختیاری)',
                     'textPlaceholder': 'نظر خود را درباره دوره‌ها بنویسید...',
                     'button': 'ارسال نظر'
                 },
@@ -982,13 +1028,16 @@
                             'text': 'یوتیوب: MWT Zodiac'
                         }
                     ]
+                },
+                'adminPanel': {
+                    'title': 'پنل مدیریت',
+                    'usersCount': 'تعداد کاربران ثبت‌نام شده:',
+                    'noUsers': 'هنوز کاربری ثبت نام نکرده است'
                 }
             },
             'en': {
                 'registerBtn': 'Register/Login',
                 'registerTitle': 'Register/Login',
-                'namePlaceholder': 'Full Name',
-                'phonePlaceholder': 'Phone Number',
                 'emailPlaceholder': 'Email',
                 'passwordPlaceholder': 'Password',
                 'submitBtn': 'Register',
@@ -1047,8 +1096,7 @@
                 ],
                 'addTestimonial': {
                     'title': 'Add New Testimonial',
-                    'namePlaceholder': 'Your Name',
-                    'locationPlaceholder': 'City and Province',
+                    'namePlaceholder': 'Your Name (optional)',
                     'textPlaceholder': 'Write your feedback about the courses...',
                     'button': 'Submit Feedback'
                 },
@@ -1072,6 +1120,11 @@
                             'text': 'YouTube: MWT Zodiac'
                         }
                     ]
+                },
+                'adminPanel': {
+                    'title': 'Admin Panel',
+                    'usersCount': 'Registered users:',
+                    'noUsers': 'No users registered yet'
                 }
             }
         };
@@ -1096,8 +1149,6 @@
             // ترجمه عناصر صفحه
             document.getElementById('registerBtn').innerHTML = `<i class="fas fa-user-plus"></i> ${translations[lang]['registerBtn']}`;
             document.querySelector('.register-form h3').textContent = translations[lang]['registerTitle'];
-            document.querySelector('.register-form input[type="text"]').placeholder = translations[lang]['namePlaceholder'];
-            document.querySelector('.register-form input[type="tel"]').placeholder = translations[lang]['phonePlaceholder'];
             document.querySelector('.register-form input[type="email"]').placeholder = translations[lang]['emailPlaceholder'];
             document.querySelector('.register-form input[type="password"]').placeholder = translations[lang]['passwordPlaceholder'];
             document.querySelector('.submit-btn').innerHTML = `<i class="fas fa-user-plus"></i> ${translations[lang]['submitBtn']}`;
@@ -1188,10 +1239,9 @@
             if (addTestimonial) {
                 addTestimonial.innerHTML = `
                     <h3>${translations[lang]['addTestimonial']['title']}</h3>
-                    <input type="text" placeholder="${translations[lang]['addTestimonial']['namePlaceholder']}">
-                    <input type="text" placeholder="${translations[lang]['addTestimonial']['locationPlaceholder']}">
-                    <textarea placeholder="${translations[lang]['addTestimonial']['textPlaceholder']}"></textarea>
-                    <button type="button">
+                    <input type="text" id="testimonial-name" placeholder="${translations[lang]['addTestimonial']['namePlaceholder']}">
+                    <textarea id="testimonial-text" placeholder="${translations[lang]['addTestimonial']['textPlaceholder']}"></textarea>
+                    <button type="button" id="submit-testimonial">
                         <i class="fas fa-paper-plane"></i>
                         ${translations[lang]['addTestimonial']['button']}
                     </button>
@@ -1208,6 +1258,15 @@
                     `).join('')}
                 </div>
             `;
+            
+            // ترجمه پنل مدیریت
+            const adminPanel = document.getElementById('adminPanel');
+            if (adminPanel) {
+                adminPanel.querySelector('h4').textContent = translations[lang]['adminPanel']['title'];
+                adminPanel.querySelector('#registeredUsers p').innerHTML = `
+                    ${translations[lang]['adminPanel']['usersCount']} <span id="usersCount">0</span>
+                `;
+            }
         }
 
         // مدیریت فرم ثبت نام
@@ -1216,6 +1275,10 @@
         const closeForm = document.getElementById('closeForm');
         const registrationForm = document.getElementById('registrationForm');
         const successMessage = document.getElementById('successMessage');
+        const loginBtn = document.querySelector('.login-btn');
+        
+        // ذخیره کاربران ثبت نام شده
+        let registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
         
         registerBtn.addEventListener('click', function() {
             registerFormContainer.classList.add('active');
@@ -1227,6 +1290,13 @@
         
         registrationForm.addEventListener('submit', function(e) {
             e.preventDefault();
+            const email = document.querySelector('.register-form input[type="email"]').value;
+            const password = document.querySelector('.register-form input[type="password"]').value;
+            
+            // ذخیره کاربر جدید
+            registeredUsers.push({ email, password });
+            localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+            
             registrationForm.style.display = 'none';
             successMessage.style.display = 'block';
             
@@ -1236,6 +1306,78 @@
                 successMessage.style.display = 'none';
                 registrationForm.reset();
             }, 3000);
+        });
+        
+        loginBtn.addEventListener('click', function() {
+            const email = document.querySelector('.register-form input[type="email"]').value;
+            const password = document.querySelector('.register-form input[type="password"]').value;
+            
+            // بررسی وجود کاربر
+            const user = registeredUsers.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                alert('ورود با موفقیت انجام شد!');
+                registerFormContainer.classList.remove('active');
+                registrationForm.reset();
+            } else {
+                alert('ایمیل یا رمز عبور اشتباه است!');
+            }
+        });
+
+        // مدیریت ثبت نظر جدید
+        const submitTestimonialBtn = document.getElementById('submit-testimonial');
+        if (submitTestimonialBtn) {
+            submitTestimonialBtn.addEventListener('click', function() {
+                const name = document.getElementById('testimonial-name').value || 'ناشناس';
+                const text = document.getElementById('testimonial-text').value;
+                
+                if (text.trim() === '') {
+                    alert('لطفا نظر خود را وارد کنید');
+                    return;
+                }
+                
+                // ایجاد عنصر نظر جدید
+                const newTestimonial = document.createElement('div');
+                newTestimonial.classList.add('testimonial');
+                newTestimonial.innerHTML = `
+                    <h3>${name}</h3>
+                    <p>«${text}»</p>
+                `;
+                
+                // اضافه کردن نظر جدید به لیست نظرات
+                const testimonialsContent = document.querySelector('.testimonials-content');
+                testimonialsContent.insertBefore(newTestimonial, document.querySelector('.add-testimonial'));
+                
+                // پاک کردن فیلدها
+                document.getElementById('testimonial-name').value = '';
+                document.getElementById('testimonial-text').value = '';
+                
+                alert('نظر شما با موفقیت ثبت شد!');
+            });
+        }
+
+        // مدیریت پنل مدیریت
+        const adminPanelBtn = document.getElementById('adminPanelBtn');
+        const adminPanel = document.getElementById('adminPanel');
+        
+        adminPanelBtn.addEventListener('click', function() {
+            adminPanel.style.display = adminPanel.style.display === 'block' ? 'none' : 'block';
+            
+            // نمایش کاربران ثبت نام شده
+            const usersList = document.getElementById('usersList');
+            const usersCount = document.getElementById('usersCount');
+            
+            usersCount.textContent = registeredUsers.length;
+            
+            if (registeredUsers.length === 0) {
+                usersList.innerHTML = `<p>${currentLang === 'fa' ? 'هنوز کاربری ثبت نام نکرده است' : 'No users registered yet'}</p>`;
+            } else {
+                usersList.innerHTML = registeredUsers.map(user => `
+                    <div class="user-item">
+                        <p><strong>${currentLang === 'fa' ? 'ایمیل' : 'Email'}:</strong> ${user.email}</p>
+                    </div>
+                `).join('');
+            }
         });
 
         // مدیریت لینک‌های منو
