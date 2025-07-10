@@ -625,38 +625,6 @@
                 height: 300px;
             }
         }
-
-        /* استایل برای نمایش کاربران ثبت‌نام‌شده */
-        .registered-users {
-            margin-top: 30px;
-            background: rgba(0, 20, 40, 0.5);
-            padding: 15px;
-            border-radius: 5px;
-            border: 1px solid rgba(0, 247, 255, 0.3);
-        }
-
-        .registered-users h3 {
-            color: #00f7ff;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #00f7ff;
-            padding-bottom: 5px;
-        }
-
-        .user-list {
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .user-item {
-            padding: 8px;
-            border-bottom: 1px dashed rgba(0, 247, 255, 0.2);
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .user-item:last-child {
-            border-bottom: none;
-        }
     </style>
 </head>
 <body>
@@ -742,7 +710,7 @@
                     <div class="menu-icon-box">
                         <i class="fas fa-comment-dots menu-icon"></i>
                     </div>
-                    نظرات هنرجویان
+                    نظرات دانشجویان
                 </a>
             </li>
             <li>
@@ -751,14 +719,6 @@
                         <i class="fas fa-phone-alt menu-icon"></i>
                     </div>
                     تماس با ما
-                </a>
-            </li>
-            <li>
-                <a href="#" id="users-link">
-                    <div class="menu-icon-box">
-                        <i class="fas fa-users menu-icon"></i>
-                    </div>
-                    کاربران ثبت‌نام‌شده
                 </a>
             </li>
         </ul>
@@ -808,9 +768,9 @@
             </div>
         </section>
 
-        <!-- نظرات هنرجویان -->
+        <!-- نظرات دانشجویان -->
         <section id="testimonials-section" class="content-section">
-            <h2><i class="fas fa-comment-dots"></i> نظرات هنرجویان</h2>
+            <h2><i class="fas fa-comment-dots"></i> نظرات دانشجویان</h2>
             <div class="testimonials-content">
                 <div class="testimonial">
                     <h3>فرزانه.ک – تهران</h3>
@@ -851,17 +811,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- کاربران ثبت‌نام‌شده -->
-        <section id="users-section" class="content-section">
-            <h2><i class="fas fa-users"></i> کاربران ثبت‌نام‌شده</h2>
-            <div class="registered-users">
-                <h3>لیست کاربران</h3>
-                <div class="user-list" id="userList">
-                    <!-- کاربران از localStorage اینجا نمایش داده می‌شوند -->
-                </div>
-            </div>
-        </section>
     </div>
 
     <!-- فرم ثبت نام -->
@@ -871,6 +820,7 @@
             <h3>ثبت نام</h3>
             <form id="registrationForm">
                 <input type="text" placeholder="نام و نام خانوادگی" id="reg-name" required>
+                <input type="tel" placeholder="شماره تماس" id="reg-phone" required>
                 <input type="email" placeholder="ایمیل" id="reg-email" required>
                 <input type="password" placeholder="رمز عبور" id="reg-password" required>
                 
@@ -967,6 +917,7 @@
                 'registerTitle': 'ثبت نام',
                 'loginTitle': 'ورود به حساب کاربری',
                 'namePlaceholder': 'نام و نام خانوادگی',
+                'phonePlaceholder': 'شماره تماس',
                 'emailPlaceholder': 'ایمیل',
                 'passwordPlaceholder': 'رمز عبور',
                 'submitBtn': 'ثبت نام',
@@ -979,22 +930,81 @@
                 'services': 'خدمات آموزشی',
                 'about': 'درباره ما',
                 'faq': 'سوالات متداول',
-                'testimonials': 'نظرات هنرجویان',
+                'testimonials': 'نظرات دانشجویان',
                 'contact': 'تماس با ما',
-                'users': 'کاربران ثبت‌نام‌شده',
                 'chatTitle': 'چت آنلاین',
                 'faqQuestions': 'چطور می‌توانم کمک‌تان کنم؟',
                 'messagePlaceholder': 'پیام شما...',
                 'testimonialName': 'نام شما',
                 'testimonialLocation': 'شهر و استان',
                 'testimonialText': 'نظر خود را درباره دوره‌ها بنویسید...',
-                'submitTestimonial': 'ارسال نظر'
+                'submitTestimonial': 'ارسال نظر',
+                'motivationText': 'در دنیای پر از نوسان و فرصت‌های بی‌پایان بازارهای مالی، موفقیت تنها از آن کسانی است که جرئت می‌کنند قدم اول را بردارند، پشتکار دارند و همواره در مسیر یادگیری و رشد هستند. ترید کردن، هنر تحلیل و تصمیم‌گیری در لحظه‌های حساس است که می‌تواند زندگی شما را متحول کند.\n\nما در کنار تحلیل تکنیکال و فاندامنتال، از قدرت استرولوژی مالی نیز بهره می‌بریم؛ دانشی که با بررسی موقعیت سیارات و تأثیرات آن‌ها بر احساسات جمعی بازار، به ما دیدگاهی عمیق‌تر و زمان‌بندی دقیق‌تری برای ورود و خروج می‌دهد. این ترکیب هوشمندانه از علم و هنر، می‌تواند شما را چند قدم جلوتر از بازار نگه دارد.\n\nامروز زمان آن است که ترس‌ها را کنار بگذارید و به سمت آینده‌ای روشن‌تر حرکت کنید.\nبا ما، آموزش ترید اسکلپی و روندی را به‌همراه نگاهی متفاوت از جنس کیهان تجربه می‌کنید.',
+                'aboutText': 'سلام!\nمن مهناز خورسند هستم، متولد ۱۳۶۷، دارای مدرک فوق‌لیسانس مهندسی تکنولوژی معماری و با سابقه‌ای چندساله در مسیر پرچالش اما جذاب بازارهای مالی.\n\nاز سال ۱۳۹۸ با دنیای ترید آشنا شدم. مثل خیلی‌ها، مسیرم پر از سردرگمی، ضرر، تلاش و یادگیری بود. اما هیچ‌وقت متوقف نشدم. حالا، بعد از سال‌ها تجربه، آزمون و خطا، و یادگیری مداوم، خوشحالم که می‌تونم بگم بیش از سه ساله به سود مستمر در بازار فارکس رسیدم.\n\nاینجا رو راه‌اندازی کردم تا آموزش‌هایی ارائه بدم که صرفاً تئوری نباشن، بلکه بر پایه تجربه واقعی و قابل استفاده در معاملات واقعی باشن. آموزش‌هایی ساده، کاربردی و بدون وابستگی به اندیکاتورها و روش‌های پیچیده؛ چون معتقدم ساده‌سازی مسیر، کلید موفقیته.\n\nهدف من اینه که شما رو تبدیل کنم به یه تریدر مستقل، کسی که بازار رو می‌فهمه و بر اساس تحلیل خودش تصمیم می‌گیره — نه بر اساس سیگنال دیگران.\n\nدر کنار من، همکارم که در زمینه‌ی استرولوژی مالی (Financial Astrology) تخصص دارد، به مجموعه تحلیلی ما زاویه‌ای متفاوت و جذاب اضافه کرده است. ترکیب تحلیل تکنیکال با چرخه‌های زمانی و دیدگاه‌های کل‌نگر در بسیاری از مواقع توانسته درک دقیق‌تری از روندهای بزرگ بازار به هنرجویان ما بدهد.\n\nاگر دنبال آموزش واقعی، مسیر درست و رشد مستمر در دنیای فارکس هستی، اینجا درست اومدی.\nخوش اومدی به جایی که قراره تفاوت رو تجربه کنی.',
+                'faqText': [
+                    {
+                        'question': '۱. آیا این دوره برای مبتدی‌ها مناسب است؟',
+                        'answer': 'بله. دوره رایگان مخصوص افرادی طراحی شده که هیچ آشنایی قبلی با بازار فارکس ندارند.'
+                    },
+                    {
+                        'question': '۲. دوره‌ها چه فرقی با آموزش‌های یوتیوب و اینستاگرام دارند؟',
+                        'answer': 'این دوره‌ها ساختاریافته، گام‌به‌گام، پروژه‌محور و با تمرین و پشتیبانی طراحی شده‌اند. محتوای رایگان شبکه‌های اجتماعی به هیچ‌وجه عمق لازم برای سودآوری واقعی را ندارد.'
+                    },
+                    {
+                        'question': '۳. آیا پس از اتمام دوره امکان دریافت مشاوره یا منتورینگ هست؟',
+                        'answer': 'بله. هنرجویان دوره تخصصی می‌توانند در جلسات کوچینگ اختصاصی شرکت کنند.'
+                    },
+                    {
+                        'question': '۴. آیا به نرم‌افزار یا ابزار خاصی نیاز دارم؟',
+                        'answer': 'خیر، تنها نیاز شما اینترنت، موبایل یا کامپیوتر و انگیزه برای یادگیری و تمرین مستمر است.'
+                    },
+                    {
+                        'question': '۵. آیا گواهی پایان دوره ارائه می‌شود؟',
+                        'answer': 'در حال حاضر گواهی رسمی ارائه نمی‌شود، اما تمرکز اصلی بر روی مهارت واقعی و تسلط عملی بر بازار است.'
+                    }
+                ],
+                'testimonialsText': [
+                    {
+                        'name': 'فرزانه.ک – تهران',
+                        'text': '«من چند دوره مختلف شرکت کرده بودم اما همیشه سردرگم بودم. دوره‌های مهناز خورسند به‌قدری منظم و شفاف بود که برای اولین بار واقعاً مفهوم روند، کندل و تحلیل را درک کردم.»'
+                    },
+                    {
+                        'name': 'سامان.ن – شیراز',
+                        'text': '«پشتیبانی و پیگیری واقعی‌ترین تفاوت این آموزش با بقیه بود. با اینکه از صفر شروع کرده بودم، الان با خیال راحت ترید می‌کنم و مدیریت سرمایه‌ام دست خودمه.»'
+                    },
+                    {
+                        'name': 'سحر.م – مشهد',
+                        'text': '«تجربه من از یادگیری با این دوره‌ها عالی بود. سادگی بیان، تسلط مدرس و آموزش قدم‌به‌قدم باعث شد بالاخره به سود مستمر برسم.»'
+                    }
+                ],
+                'contactText': {
+                    'intro': 'در صورت تمایل به مشاوره، ثبت‌نام در دوره‌ها، یا دریافت راهنمایی بیشتر، می‌توانید از طریق راه‌های ارتباطی زیر با ما در تماس باشید:',
+                    'methods': [
+                        {
+                            'icon': 'envelope',
+                            'text': 'ایمیل: mahnaz.khorsaand@gmail.com'
+                        },
+                        {
+                            'icon': 'telegram',
+                            'text': 'تلگرام: @khorsand_m2'
+                        },
+                        {
+                            'icon': 'instagram',
+                            'text': 'اینستاگرام: @mwtzodiac'
+                        },
+                        {
+                            'icon': 'youtube',
+                            'text': 'یوتیوب: MWT Zodiac'
+                        }
+                    ]
+                }
             },
             'en': {
                 'registerBtn': 'Register/Login',
                 'registerTitle': 'Register',
                 'loginTitle': 'Login',
                 'namePlaceholder': 'Full Name',
+                'phonePlaceholder': 'Phone Number',
                 'emailPlaceholder': 'Email',
                 'passwordPlaceholder': 'Password',
                 'submitBtn': 'Register',
@@ -1007,16 +1017,74 @@
                 'services': 'Educational Services',
                 'about': 'About Us',
                 'faq': 'FAQ',
-                'testimonials': 'Testimonials',
+                'testimonials': 'Student Testimonials',
                 'contact': 'Contact Us',
-                'users': 'Registered Users',
                 'chatTitle': 'Online Chat',
                 'faqQuestions': 'How can I help you?',
                 'messagePlaceholder': 'Your message...',
                 'testimonialName': 'Your Name',
                 'testimonialLocation': 'City and Province',
                 'testimonialText': 'Write your feedback about the courses...',
-                'submitTestimonial': 'Submit Feedback'
+                'submitTestimonial': 'Submit Feedback',
+                'motivationText': 'In the world of volatile and endless opportunities in financial markets, success belongs only to those who dare to take the first step, have perseverance and are always on the path of learning and growth. Trading is the art of analysis and decision-making in critical moments that can transform your life.\n\nAlong with technical and fundamental analysis, we also use the power of financial astrology; a knowledge that by examining the position of planets and their effects on the collective emotions of the market, gives us a deeper perspective and more precise timing for entry and exit. This smart combination of science and art can keep you several steps ahead of the market.\n\nToday is the time to put aside your fears and move towards a brighter future.\nWith us, experience scalp and trend trading along with a unique cosmic perspective.',
+                'aboutText': 'Hello!\nI am Mahnaz Khorsand, born in 1988, with a Master\'s degree in Architectural Engineering Technology and several years of experience in the challenging yet fascinating path of financial markets.\n\nSince 2019, I became familiar with trading. Like many others, my path was full of confusion, loss, effort and learning. But I never stopped. Now, after years of experience, trial and error, and continuous learning, I\'m happy to say that I\'ve been consistently profitable in the Forex market for over three years.\n\nI established this platform to provide training that is not merely theoretical, but based on real experience and applicable in real trading. Simple, practical training without dependency on complex indicators and methods; because I believe simplifying the path is the key to success.\n\nMy goal is to transform you into an independent trader, someone who understands the market and makes decisions based on their own analysis - not based on others\' signals.\n\nAlongside me, my colleague who specializes in Financial Astrology has added a unique and fascinating perspective to our analytical team. The combination of technical analysis with timing cycles and holistic views has often provided our students with a more precise understanding of major market trends.\n\nIf you\'re looking for real education, the right path and continuous growth in the world of Forex, you\'ve come to the right place.\nWelcome to where you\'ll experience the difference.',
+                'faqText': [
+                    {
+                        'question': '1. Is this course suitable for beginners?',
+                        'answer': 'Yes. The free course is designed for those who have no prior knowledge of the Forex market.'
+                    },
+                    {
+                        'question': '2. How are these courses different from YouTube and Instagram tutorials?',
+                        'answer': 'These courses are structured, step-by-step, project-based with exercises and support. Free content on social media lacks the depth needed for real profitability.'
+                    },
+                    {
+                        'question': '3. Is there mentoring or consulting available after completing the course?',
+                        'answer': 'Yes. Students of the professional course can participate in private coaching sessions.'
+                    },
+                    {
+                        'question': '4. Do I need any special software or tools?',
+                        'answer': 'No, all you need is internet, a mobile or computer, and motivation to learn and practice consistently.'
+                    },
+                    {
+                        'question': '5. Is a certificate provided upon completion?',
+                        'answer': 'Currently no official certificate is provided, as the main focus is on real skills and practical mastery of the market.'
+                    }
+                ],
+                'testimonialsText': [
+                    {
+                        'name': 'Farzaneh K - Tehran',
+                        'text': '"I had taken several different courses but was always confused. Mahnaz Khorsand\'s courses were so organized and clear that for the first time I truly understood the concepts of trend, candlestick and analysis."'
+                    },
+                    {
+                        'name': 'Saman N - Shiraz',
+                        'text': '"The real difference in this training was the support and follow-up. Even though I started from zero, now I trade with peace of mind and my money management is in my own hands."'
+                    },
+                    {
+                        'name': 'Sahar M - Mashhad',
+                        'text': '"My learning experience with these courses was excellent. The simple explanations, the instructor\'s mastery, and step-by-step training finally helped me achieve consistent profits."'
+                    }
+                ],
+                'contactText': {
+                    'intro': 'For consultation, course registration, or further guidance, you can contact us through the following methods:',
+                    'methods': [
+                        {
+                            'icon': 'envelope',
+                            'text': 'Email: mahnaz.khorsaand@gmail.com'
+                        },
+                        {
+                            'icon': 'telegram',
+                            'text': 'Telegram: @khorsand_m2'
+                        },
+                        {
+                            'icon': 'instagram',
+                            'text': 'Instagram: @mwtzodiac'
+                        },
+                        {
+                            'icon': 'youtube',
+                            'text': 'YouTube: MWT Zodiac'
+                        }
+                    ]
+                }
             }
         };
         
@@ -1043,6 +1111,7 @@
             // ترجمه فرم ثبت نام
             document.querySelector('#registerFormContainer h3').textContent = translations[lang]['registerTitle'];
             document.getElementById('reg-name').placeholder = translations[lang]['namePlaceholder'];
+            document.getElementById('reg-phone').placeholder = translations[lang]['phonePlaceholder'];
             document.getElementById('reg-email').placeholder = translations[lang]['emailPlaceholder'];
             document.getElementById('reg-password').placeholder = translations[lang]['passwordPlaceholder'];
             document.querySelector('#registerFormContainer .submit-btn').innerHTML = `<i class="fas fa-user-plus"></i> ${translations[lang]['submitBtn']}`;
@@ -1094,12 +1163,6 @@
                 </div>
                 ${translations[lang]['contact']}
             `;
-            document.getElementById('users-link').innerHTML = `
-                <div class="menu-icon-box">
-                    <i class="fas fa-users menu-icon"></i>
-                </div>
-                ${translations[lang]['users']}
-            `;
             
             // ترجمه چت
             document.querySelector('.chat-header span').textContent = translations[lang]['chatTitle'];
@@ -1111,14 +1174,65 @@
             document.querySelector('#faq-section h2').innerHTML = `<i class="fas fa-question-circle"></i> ${translations[lang]['faq']}`;
             document.querySelector('#testimonials-section h2').innerHTML = `<i class="fas fa-comment-dots"></i> ${translations[lang]['testimonials']}`;
             document.querySelector('#contact-section h2').innerHTML = `<i class="fas fa-phone-alt"></i> ${translations[lang]['contact']}`;
-            document.querySelector('#users-section h2').innerHTML = `<i class="fas fa-users"></i> ${translations[lang]['users']}`;
             
-            // ترجمه فرم نظر سنجی
-            document.querySelector('.add-testimonial h3').textContent = translations[lang]['submitTestimonial'];
-            document.getElementById('testimonial-name').placeholder = translations[lang]['testimonialName'];
-            document.getElementById('testimonial-location').placeholder = translations[lang]['testimonialLocation'];
-            document.getElementById('testimonial-text').placeholder = translations[lang]['testimonialText'];
-            document.getElementById('submit-testimonial').innerHTML = `<i class="fas fa-paper-plane"></i> ${translations[lang]['submitTestimonial']}`;
+            // ترجمه متن انگیزشی
+            document.querySelector('.motivation-text').textContent = translations[lang]['motivationText'];
+            
+            // ترجمه متن لوگو
+            document.querySelector('.logo-text').textContent = 'Empowering your trade journey';
+            document.querySelectorAll('.logo-subtext')[0].textContent = translations[lang]['logoSubtext1'];
+            document.querySelectorAll('.logo-subtext')[1].textContent = 'founder of MWT concept';
+            document.querySelectorAll('.logo-subtext')[2].textContent = translations[lang]['logoSubtext3'];
+            
+            // ترجمه متن درباره ما
+            document.querySelector('.about-content').innerHTML = translations[lang]['aboutText'].split('\n').map(paragraph => `<p>${paragraph}</p>`).join('');
+            
+            // ترجمه بخش سوالات متداول
+            const faqContent = document.querySelector('.faq-content');
+            faqContent.innerHTML = translations[lang]['faqText'].map(item => `
+                <div class="faq-item">
+                    <h3>${item.question}</h3>
+                    <p>${item.answer}</p>
+                </div>
+            `).join('');
+            
+            // ترجمه بخش نظرات دانشجویان
+            const testimonialsContent = document.querySelector('.testimonials-content');
+            testimonialsContent.innerHTML = translations[lang]['testimonialsText'].map(testimonial => `
+                <div class="testimonial">
+                    <h3>${testimonial.name}</h3>
+                    <p>${testimonial.text}</p>
+                </div>
+            `).join('');
+            
+            // ترجمه بخش اضافه کردن نظر
+            const addTestimonial = document.querySelector('.add-testimonial');
+            if (addTestimonial) {
+                addTestimonial.innerHTML = `
+                    <h3>${translations[lang]['submitTestimonial']}</h3>
+                    <input type="text" id="testimonial-name" placeholder="${translations[lang]['testimonialName']}">
+                    <input type="text" id="testimonial-location" placeholder="${translations[lang]['testimonialLocation']}">
+                    <textarea id="testimonial-text" placeholder="${translations[lang]['testimonialText']}"></textarea>
+                    <button type="button" id="submit-testimonial">
+                        <i class="fas fa-paper-plane"></i>
+                        ${translations[lang]['submitTestimonial']}
+                    </button>
+                `;
+                
+                // اضافه کردن رویداد برای دکمه ارسال نظر
+                document.getElementById('submit-testimonial').addEventListener('click', submitTestimonialHandler);
+            }
+            
+            // ترجمه بخش تماس با ما
+            const contactContent = document.querySelector('.contact-content');
+            contactContent.innerHTML = `
+                <p>${translations[lang]['contactText'].intro}</p>
+                <div class="contact-methods">
+                    ${translations[lang]['contactText'].methods.map(method => `
+                        <p><i class="fab fa-${method.icon}"></i> ${method.text}</p>
+                    `).join('')}
+                </div>
+            `;
         }
 
         // مدیریت فرم‌های ثبت نام و ورود
@@ -1167,6 +1281,7 @@
             e.preventDefault();
             
             const name = document.getElementById('reg-name').value;
+            const phone = document.getElementById('reg-phone').value;
             const email = document.getElementById('reg-email').value;
             const password = document.getElementById('reg-password').value;
             
@@ -1181,6 +1296,7 @@
             // اضافه کردن کاربر جدید
             users.push({
                 name: name,
+                phone: phone,
                 email: email,
                 password: password,
                 registeredAt: new Date().toLocaleString()
@@ -1192,9 +1308,6 @@
             // نمایش پیام موفقیت
             registrationForm.style.display = 'none';
             registerSuccessMessage.style.display = 'block';
-            
-            // به‌روزرسانی لیست کاربران
-            updateUserList();
             
             setTimeout(() => {
                 registerFormContainer.classList.remove('active');
@@ -1228,27 +1341,9 @@
                 alert('ایمیل یا رمز عبور اشتباه است.');
             }
         });
-        
-        // تابع به‌روزرسانی لیست کاربران
-        function updateUserList() {
-            const userList = document.getElementById('userList');
-            userList.innerHTML = '';
-            
-            users.forEach(user => {
-                const userItem = document.createElement('div');
-                userItem.className = 'user-item';
-                userItem.innerHTML = `
-                    <span>${user.name}</span>
-                    <span>${user.email}</span>
-                `;
-                userList.appendChild(userItem);
-            });
-        }
 
-        // مدیریت نظرات هنرجویان
-        const submitTestimonial = document.getElementById('submit-testimonial');
-        
-        submitTestimonial.addEventListener('click', function() {
+        // مدیریت نظرات دانشجویان
+        function submitTestimonialHandler() {
             const name = document.getElementById('testimonial-name').value;
             const location = document.getElementById('testimonial-location').value;
             const text = document.getElementById('testimonial-text').value;
@@ -1290,7 +1385,7 @@
             document.getElementById('testimonial-text').value = '';
             
             alert('نظر شما با موفقیت ثبت شد.');
-        });
+        }
 
         // بارگذاری نظرات از localStorage هنگام لود صفحه
         function loadTestimonials() {
@@ -1321,8 +1416,7 @@
             'about-link': 'about-section',
             'faq-link': 'faq-section',
             'testimonials-link': 'testimonials-section',
-            'contact-link': 'contact-section',
-            'users-link': 'users-section'
+            'contact-link': 'contact-section'
         };
         
         Object.keys(menuLinks).forEach(linkId => {
@@ -1343,11 +1437,6 @@
                 } else if (targetId !== 'services.html') {
                     document.getElementById('heroSection').style.display = 'none';
                     document.getElementById(targetId).classList.add('active');
-                    
-                    // اگر بخش کاربران است، لیست را به‌روزرسانی کن
-                    if (targetId === 'users-section') {
-                        updateUserList();
-                    }
                 }
                 
                 // بستن منو
@@ -1410,8 +1499,8 @@
             // بارگذاری نظرات
             loadTestimonials();
             
-            // بارگذاری کاربران
-            updateUserList();
+            // اضافه کردن رویداد برای دکمه ارسال نظر
+            document.getElementById('submit-testimonial').addEventListener('click', submitTestimonialHandler);
         });
     </script>
 </body>
