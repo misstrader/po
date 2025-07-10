@@ -494,6 +494,15 @@
         }
 
         /* فرم نظر سنجی */
+        .add-testimonial {
+            margin-top: 30px;
+        }
+
+        .add-testimonial h3 {
+            margin-bottom: 15px;
+        }
+
+        .add-testimonial input,
         .add-testimonial textarea {
             width: 100%;
             padding: 12px;
@@ -503,7 +512,10 @@
             border-radius: 5px;
             color: #fff;
             font-size: 1rem;
-            min-height: 100px;
+        }
+
+        .add-testimonial textarea {
+            min-height: 150px;
             resize: vertical;
         }
 
@@ -521,6 +533,10 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+        }
+
+        .add-testimonial button:hover {
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.7);
         }
 
         /* رسپانسیو */
@@ -635,7 +651,7 @@
             </div>
             <button class="register-btn" id="registerBtn">
                 <i class="fas fa-user-plus"></i>
-                ثبت نام
+                ثبت نام/ورود
             </button>
         </div>
     </div>
@@ -643,7 +659,7 @@
     <!-- صفحه اول با لوگو و متن انگیزشی -->
     <section class="hero-section" id="heroSection">
         <div class="logo-container">
-            <img src=" photo-output.jpeg" alt="آموزش فارکس - مهناز خورسند" class="logo">
+            <img src="logo.png" alt="آموزش فارکس - مهناز خورسند" class="logo">
             <div class="logo-text">Empowering your trade journey</div>
             <div class="logo-subtext">توانمندسازی سفر معاملاتی شما</div>
             <div class="logo-subtext">founder of MWT concept</div>
@@ -778,7 +794,9 @@
                 </div>
                 
                 <div class="add-testimonial">
-                    <h3>نظر شما</h3>
+                    <h3>ثبت نظر جدید</h3>
+                    <input type="text" placeholder="نام شما">
+                    <input type="text" placeholder="شهر و استان">
                     <textarea placeholder="نظر خود را درباره دوره‌ها بنویسید..."></textarea>
                     <button type="button">
                         <i class="fas fa-paper-plane"></i>
@@ -807,7 +825,7 @@
     <div class="register-form-container" id="registerFormContainer">
         <i class="fas fa-times close-form" id="closeForm"></i>
         <div class="register-form">
-            <h3>فرم ثبت نام</h3>
+            <h3>ثبت نام/ورود</h3>
             <form id="registrationForm">
                 <input type="text" placeholder="نام و نام خانوادگی" required>
                 <input type="tel" placeholder="شماره تماس" required>
@@ -815,8 +833,8 @@
                 <input type="password" placeholder="رمز عبور" required>
                 
                 <button type="submit" class="submit-btn">
-                    <i class="fas fa-paper-plane"></i>
-                    ارسال
+                    <i class="fas fa-user-plus"></i>
+                    ثبت نام
                 </button>
                 
                 <button type="button" class="login-btn">
@@ -877,13 +895,13 @@
         // متون دو زبانه
         const translations = {
             'fa': {
-                'registerBtn': 'ثبت نام',
-                'registerTitle': 'فرم ثبت نام',
+                'registerBtn': 'ثبت نام/ورود',
+                'registerTitle': 'ثبت نام/ورود',
                 'namePlaceholder': 'نام و نام خانوادگی',
                 'phonePlaceholder': 'شماره تماس',
                 'emailPlaceholder': 'ایمیل',
                 'passwordPlaceholder': 'رمز عبور',
-                'submitBtn': 'ارسال',
+                'submitBtn': 'ثبت نام',
                 'loginBtn': 'ورود',
                 'successMessage': 'ثبت نام شما با موفقیت انجام شد. همکاران ما تا ۲۴ ساعت آینده با شما تماس خواهند گرفت.',
                 'home': 'صفحه اصلی',
@@ -937,6 +955,13 @@
                         'text': '«تجربه من از یادگیری با این دوره‌ها عالی بود. سادگی بیان، تسلط مدرس و آموزش قدم‌به‌قدم باعث شد بالاخره به سود مستمر برسم.»'
                     }
                 ],
+                'addTestimonial': {
+                    'title': 'ثبت نظر جدید',
+                    'namePlaceholder': 'نام شما',
+                    'locationPlaceholder': 'شهر و استان',
+                    'textPlaceholder': 'نظر خود را درباره دوره‌ها بنویسید...',
+                    'button': 'ارسال نظر'
+                },
                 'contactText': {
                     'intro': 'در صورت تمایل به مشاوره، ثبت‌نام در دوره‌ها، یا دریافت راهنمایی بیشتر، می‌توانید از طریق راه‌های ارتباطی زیر با ما در تماس باشید:',
                     'methods': [
@@ -957,21 +982,16 @@
                             'text': 'یوتیوب: MWT Zodiac'
                         }
                     ]
-                },
-                'addTestimonial': {
-                    'title': 'نظر شما',
-                    'placeholder': 'نظر خود را درباره دوره‌ها بنویسید...',
-                    'button': 'ارسال نظر'
                 }
             },
             'en': {
-                'registerBtn': 'Register',
-                'registerTitle': 'Registration Form',
+                'registerBtn': 'Register/Login',
+                'registerTitle': 'Register/Login',
                 'namePlaceholder': 'Full Name',
                 'phonePlaceholder': 'Phone Number',
                 'emailPlaceholder': 'Email',
                 'passwordPlaceholder': 'Password',
-                'submitBtn': 'Submit',
+                'submitBtn': 'Register',
                 'loginBtn': 'Login',
                 'successMessage': 'Your registration was successful. Our team will contact you within 24 hours.',
                 'home': 'Home',
@@ -1025,6 +1045,13 @@
                         'text': '"My learning experience with these courses was excellent. The simple explanations, the instructor\'s mastery, and step-by-step training finally helped me achieve consistent profits."'
                     }
                 ],
+                'addTestimonial': {
+                    'title': 'Add New Testimonial',
+                    'namePlaceholder': 'Your Name',
+                    'locationPlaceholder': 'City and Province',
+                    'textPlaceholder': 'Write your feedback about the courses...',
+                    'button': 'Submit Feedback'
+                },
                 'contactText': {
                     'intro': 'For consultation, course registration, or further guidance, you can contact us through the following methods:',
                     'methods': [
@@ -1045,11 +1072,6 @@
                             'text': 'YouTube: MWT Zodiac'
                         }
                     ]
-                },
-                'addTestimonial': {
-                    'title': 'Your Feedback',
-                    'placeholder': 'Write your feedback about the courses...',
-                    'button': 'Submit Feedback'
                 }
             }
         };
@@ -1078,7 +1100,7 @@
             document.querySelector('.register-form input[type="tel"]').placeholder = translations[lang]['phonePlaceholder'];
             document.querySelector('.register-form input[type="email"]').placeholder = translations[lang]['emailPlaceholder'];
             document.querySelector('.register-form input[type="password"]').placeholder = translations[lang]['passwordPlaceholder'];
-            document.querySelector('.submit-btn').innerHTML = `<i class="fas fa-paper-plane"></i> ${translations[lang]['submitBtn']}`;
+            document.querySelector('.submit-btn').innerHTML = `<i class="fas fa-user-plus"></i> ${translations[lang]['submitBtn']}`;
             document.querySelector('.login-btn').innerHTML = `<i class="fas fa-sign-in-alt"></i> ${translations[lang]['loginBtn']}`;
             document.getElementById('successMessage').innerHTML = `<i class="fas fa-check-circle"></i> ${translations[lang]['successMessage']}`;
             
@@ -1166,7 +1188,9 @@
             if (addTestimonial) {
                 addTestimonial.innerHTML = `
                     <h3>${translations[lang]['addTestimonial']['title']}</h3>
-                    <textarea placeholder="${translations[lang]['addTestimonial']['placeholder']}"></textarea>
+                    <input type="text" placeholder="${translations[lang]['addTestimonial']['namePlaceholder']}">
+                    <input type="text" placeholder="${translations[lang]['addTestimonial']['locationPlaceholder']}">
+                    <textarea placeholder="${translations[lang]['addTestimonial']['textPlaceholder']}"></textarea>
                     <button type="button">
                         <i class="fas fa-paper-plane"></i>
                         ${translations[lang]['addTestimonial']['button']}
